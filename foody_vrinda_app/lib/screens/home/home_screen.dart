@@ -552,13 +552,29 @@ class _HomeScreenState extends State<HomeScreen> {
                   scrollDirection: Axis.horizontal,
                   padding: const EdgeInsets.symmetric(horizontal: 12),
                   children: [
-                    _buildCategoryChip('🍕', 'Pizza'),
+                    _buildCategoryChip(
+                      '🍕',
+                      'Pizza',
+                      lottieAsset: LottieAssets.pizzaSlices,
+                    ),
                     _buildCategoryChip('🍔', 'Burger'),
-                    _buildCategoryChip('🍜', 'Noodles'),
-                    _buildCategoryChip('🍱', 'Thali'),
+                    _buildCategoryChip(
+                      '🥦',
+                      'Broccoli',
+                      lottieAsset: LottieAssets.walkingBroccoli,
+                    ),
+                    _buildCategoryChip(
+                      '🥔',
+                      'Potato',
+                      lottieAsset: LottieAssets.potato,
+                    ),
+                    _buildCategoryChip(
+                      '🍅',
+                      'Tomato',
+                      lottieAsset: LottieAssets.growingTomatoes,
+                    ),
                     _buildCategoryChip('🥗', 'Salad'),
                     _buildCategoryChip('🍰', 'Desserts'),
-                    _buildCategoryChip('☕', 'Beverages'),
                     _buildCategoryChip('🥪', 'Sandwich'),
                   ],
                 ),
@@ -638,8 +654,12 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  /// Build a category chip with emoji and label
-  Widget _buildCategoryChip(String emoji, String label) {
+  /// Build a category chip with emoji or lottie and label
+  Widget _buildCategoryChip(
+    String? emoji,
+    String label, {
+    String? lottieAsset,
+  }) {
     return GestureDetector(
       onTap: () {
         // Navigate to search with category filter
@@ -669,7 +689,20 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
               child: Center(
-                child: Text(emoji, style: const TextStyle(fontSize: 32)),
+                child: lottieAsset != null
+                    ? LottieAssets.build(
+                        lottieAsset,
+                        width: 44,
+                        height: 44,
+                        fit: BoxFit.contain,
+                        errorBuilder: (context, error, stackTrace) {
+                          return Text(
+                            emoji ?? '🍴',
+                            style: const TextStyle(fontSize: 32),
+                          );
+                        },
+                      )
+                    : Text(emoji ?? '🍴', style: const TextStyle(fontSize: 32)),
               ),
             ),
             const SizedBox(height: 8),

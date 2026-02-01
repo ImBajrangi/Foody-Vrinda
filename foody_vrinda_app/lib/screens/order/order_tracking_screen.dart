@@ -188,17 +188,9 @@ class _OrderTrackingScreenState extends State<OrderTrackingScreen> {
                                       if (!isCompleted &&
                                           !isCancelled &&
                                           !isReturned)
-                                        Container(
-                                          padding: const EdgeInsets.all(12),
-                                          decoration: BoxDecoration(
-                                            color: AppTheme.primaryBlue
-                                                .withValues(alpha: 0.1),
-                                            shape: BoxShape.circle,
-                                          ),
-                                          child: const Icon(
-                                            Icons.timer_outlined,
-                                            color: AppTheme.primaryBlue,
-                                          ),
+                                        const OrderStatusAnimation(
+                                          status: 'status_tracking',
+                                          size: 60,
                                         ),
                                     ],
                                   ),

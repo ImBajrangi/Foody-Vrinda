@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../models/shop_model.dart';
 import '../models/menu_item_model.dart';
+import 'hit_soochi_service.dart';
 
 /// Represents a search result that can be either a Shop or a Menu Item
 class SearchResult {
@@ -12,6 +13,7 @@ class SearchResult {
   final ShopModel? shop; // For direct navigation
   final MenuItemModel? menuItem;
   final String? shopId; // For menu items, to navigate to the shop
+  final double? relevanceScore; // From HitSoochi semantic ranking
 
   SearchResult({
     required this.type,
@@ -22,13 +24,110 @@ class SearchResult {
     this.shop,
     this.menuItem,
     this.shopId,
+    this.relevanceScore,
+  });
+}
+
+/// Enhanced search response with HitSoochi integration
+class EnhancedSearchResponse {
+  final String originalQuery;
+  final String? optimizedQuery;
+  final String? detectedIntent;
+  final String? confidence;
+  final List<SearchResult> results;
+  final RecommendationResponse? recommendation;
+
+  EnhancedSearchResponse({
+    required this.originalQuery,
+    this.optimizedQuery,
+    this.detectedIntent,
+    this.confidence,
+    required this.results,
+    this.recommendation,
   });
 }
 
 class SearchService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final HitSoochiService _hitSoochi = HitSoochiService();
 
-  /// Searches across shops and menu items
+  /// Enhanced search using HitSoochi for optimization and ranking
+  Future<EnhancedSearchResponse> enhancedSearch(String query) async {
+    if (query.trim().isEmpty) {
+      return EnhancedSearchResponse(originalQuery: query, results: []);
+    }
+
+    // Fetch results and HitSoochi data in parallel
+    final resultsFuture = search(query);
+    final optimizeFuture = _hitSoochi.optimizeQuery(query);
+    final recommendFuture = _hitSoochi.getRecommendations(query);
+
+    final results = await resultsFuture;
+    final optimized = await optimizeFuture;
+    final recommendation = await recommendFuture;
+
+    // If we got results and HitSoochi is available, rank them semantically
+    List<SearchResult> rankedResults = results;
+    if (results.length > 1 && optimized != null) {
+      final itemsForRanking = results
+          .map(
+            (r) => {
+              'title': r.title,
+              'description': r.subtitle ?? '',
+              'category': r.type,
+            },
+          )
+          .toList();
+
+      final ranked = await _hitSoochi.rankResults(
+        query,
+        itemsForRanking,
+        context: SearchContext(platform: 'app', source: 'foody_vrinda_app'),
+      );
+
+      if (ranked.isNotEmpty) {
+        // Create score map
+        final scoreMap = <String, double>{};
+        for (final item in ranked) {
+          if (item.title != null) {
+            scoreMap[item.title!] = item.relevanceScore;
+          }
+        }
+
+        // Sort results by relevance
+        rankedResults = results
+            .map(
+              (r) => SearchResult(
+                type: r.type,
+                id: r.id,
+                title: r.title,
+                subtitle: r.subtitle,
+                imageUrl: r.imageUrl,
+                shop: r.shop,
+                menuItem: r.menuItem,
+                shopId: r.shopId,
+                relevanceScore: scoreMap[r.title] ?? 0.0,
+              ),
+            )
+            .toList();
+
+        rankedResults.sort(
+          (a, b) => (b.relevanceScore ?? 0).compareTo(a.relevanceScore ?? 0),
+        );
+      }
+    }
+
+    return EnhancedSearchResponse(
+      originalQuery: query,
+      optimizedQuery: optimized?.optimized,
+      detectedIntent: optimized?.intent,
+      confidence: optimized?.confidence,
+      results: rankedResults,
+      recommendation: recommendation,
+    );
+  }
+
+  /// Searches across shops and menu items (basic matching)
   Future<List<SearchResult>> search(String query) async {
     if (query.trim().isEmpty) {
       return [];
@@ -115,5 +214,10 @@ class SearchService {
       print('SearchService: Error getting shop: $e');
     }
     return null;
+  }
+
+  /// Get autocomplete suggestions
+  Future<List<Suggestion>> getSuggestions(String partial) async {
+    return _hitSoochi.getSuggestions(partial);
   }
 }

@@ -1,5 +1,8 @@
-/// Lottie animation URLs from LottieFiles
-/// These are lightweight, cached network animations to keep the app size small
+import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
+
+/// Lottie animation URLs and local assets
+/// Provides a unified interface for loading both network and local animations
 class LottieAssets {
   // Food & Delivery themed animations (Verified)
   static const String cooking =
@@ -59,6 +62,27 @@ class LottieAssets {
   static const String profile =
       'https://assets8.lottiefiles.com/packages/lf20_m6cuL6.json';
 
+  // New Animations (Added 2026-02-01) - Optimized for JSON compatibility
+  static const String growingTomatoes =
+      'https://assets3.lottiefiles.com/packages/lf20_GKQOcDtWhF.json';
+  static const String badCat = 'assets/animations/bad_cat.json';
+  static const String deliveryWaiting =
+      'https://assets3.lottiefiles.com/packages/lf20_ef929666.json';
+  static const String walkingBroccoli =
+      'https://assets3.lottiefiles.com/packages/lf20_C9edDzEy7H.json';
+  static const String pizzaSlices =
+      'https://assets3.lottiefiles.com/packages/lf20_OEskn908sL.json';
+  static const String chefPizza =
+      'https://assets3.lottiefiles.com/packages/lf20_fdb6df10.json';
+  static const String orderStatus =
+      'https://assets3.lottiefiles.com/packages/lf20_8Sz3aaaLc0.json';
+  static const String deliveryScooter =
+      'assets/animations/delivery_scooter.json';
+  static const String potato =
+      'https://assets3.lottiefiles.com/packages/lf20_pJLA1UHM2k.json';
+  static const String pizza =
+      'https://assets3.lottiefiles.com/packages/lf20_a56082fa.json';
+
   // Splash & Welcome (Verified)
   static const String welcome =
       'https://assets10.lottiefiles.com/packages/lf20_V9t630.json';
@@ -84,4 +108,37 @@ class LottieAssets {
       'https://assets9.lottiefiles.com/packages/lf20_m4znnezt.json';
   static const String clock =
       'https://assets5.lottiefiles.com/packages/lf20_vPnn3K.json';
+
+  /// Helper to build a Lottie animation from either a URL or an asset path
+  static Widget build(
+    String source, {
+    double? width,
+    double? height,
+    BoxFit fit = BoxFit.contain,
+    bool repeat = true,
+    bool animate = true,
+    Widget Function(BuildContext, Object, StackTrace?)? errorBuilder,
+  }) {
+    if (source.startsWith('http')) {
+      return Lottie.network(
+        source,
+        width: width,
+        height: height,
+        fit: fit,
+        repeat: repeat,
+        animate: animate,
+        errorBuilder: errorBuilder,
+      );
+    } else {
+      return Lottie.asset(
+        source,
+        width: width,
+        height: height,
+        fit: fit,
+        repeat: repeat,
+        animate: animate,
+        errorBuilder: errorBuilder,
+      );
+    }
+  }
 }

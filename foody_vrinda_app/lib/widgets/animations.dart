@@ -101,6 +101,14 @@ class EmptyState extends StatelessWidget {
         return LottieAssets.noData;
       case 'profile':
         return LottieAssets.profile;
+      case 'bad_cat':
+        return LottieAssets.badCat;
+      case 'potato':
+        return LottieAssets.potato;
+      case 'broccoli':
+        return LottieAssets.walkingBroccoli;
+      case 'tomato':
+        return LottieAssets.growingTomatoes;
       default:
         return LottieAssets.emptyCart;
     }
@@ -114,7 +122,7 @@ class EmptyState extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Lottie.network(
+            LottieAssets.build(
               _animationUrl,
               width: 200,
               height: 200,
@@ -195,7 +203,7 @@ class _SuccessAnimationState extends State<SuccessAnimation> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Lottie.network(
+            LottieAssets.build(
               LottieAssets.orderSuccess,
               width: 200,
               height: 200,
@@ -240,13 +248,15 @@ class OrderStatusAnimation extends StatelessWidget {
       case 'new':
         return LottieAssets.newOrder;
       case 'preparing':
-        return LottieAssets.preparing;
+        return LottieAssets.chefPizza;
       case 'ready_for_pickup':
-        return LottieAssets.ready;
+        return LottieAssets.deliveryWaiting;
       case 'out_for_delivery':
-        return LottieAssets.outForDelivery;
+        return LottieAssets.deliveryScooter;
       case 'completed':
-        return LottieAssets.success;
+        return LottieAssets.orderSuccess;
+      case 'status_tracking':
+        return LottieAssets.orderStatus;
       default:
         return LottieAssets.foodLoading;
     }
@@ -254,7 +264,7 @@ class OrderStatusAnimation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Lottie.network(
+    return LottieAssets.build(
       _animationUrl,
       width: size,
       height: size,
@@ -275,7 +285,7 @@ class CelebrationOverlay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IgnorePointer(
-      child: Lottie.network(
+      child: LottieAssets.build(
         LottieAssets.confetti,
         width: double.infinity,
         height: double.infinity,

@@ -12,6 +12,7 @@ import 'screens/home/home_screen.dart';
 import 'package:lottie/lottie.dart';
 import 'config/lottie_assets.dart';
 import 'services/notification_service.dart';
+import 'services/hit_soochi_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,6 +23,9 @@ void main() async {
   // Initialize Notification Service
   await NotificationService().initialize();
   await NotificationService().requestPermissions();
+
+  // Configure HitSoochi Service
+  HitSoochiService.configure(baseUrl: 'http://localhost:8000');
 
   // Set system UI overlay style
   SystemChrome.setSystemUIOverlayStyle(

@@ -4,6 +4,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import '../../config/theme.dart';
 import '../../services/search_service.dart';
 import '../menu/menu_screen.dart';
+import 'package:lottie/lottie.dart';
+import '../../config/lottie_assets.dart';
 import '../../widgets/animations.dart';
 
 class SearchScreen extends StatefulWidget {
@@ -140,86 +142,104 @@ class _SearchScreenState extends State<SearchScreen> {
   }
 
   Widget _buildEmptyState() {
-    return ListView(
-      padding: const EdgeInsets.all(16),
+    return Stack(
       children: [
-        // Search Nearby Section
-        const Text(
-          'SEARCH NEARBY',
-          style: TextStyle(
-            fontSize: 12,
-            fontWeight: FontWeight.w600,
-            color: AppTheme.textSecondary,
-            letterSpacing: 1.2,
+        // Fun background animation
+        Positioned(
+          bottom: -20,
+          right: -20,
+          child: Opacity(
+            opacity: 0.1,
+            child: LottieAssets.build(
+              LottieAssets.potato,
+              width: 150,
+              height: 150,
+              errorBuilder: (context, error, stackTrace) => const SizedBox(),
+            ),
           ),
         ),
-        const SizedBox(height: 16),
-        // Category Chips
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              _buildCategoryChip(
-                'Restaurant',
-                Icons.restaurant,
-                Colors.orange,
-                () => _performSearch('restaurant'),
+        ListView(
+          padding: const EdgeInsets.all(16),
+          children: [
+            // Search Nearby Section
+            const Text(
+              'SEARCH NEARBY',
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w600,
+                color: AppTheme.textSecondary,
+                letterSpacing: 1.2,
               ),
-              _buildCategoryChip(
-                'Fast Food',
-                Icons.fastfood,
-                Colors.red,
-                () => _performSearch('fast food'),
+            ),
+            const SizedBox(height: 16),
+            // Category Chips
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  _buildCategoryChip(
+                    'Restaurant',
+                    Icons.restaurant,
+                    Colors.orange,
+                    () => _performSearch('restaurant'),
+                  ),
+                  _buildCategoryChip(
+                    'Fast Food',
+                    Icons.fastfood,
+                    Colors.red,
+                    () => _performSearch('fast food'),
+                  ),
+                  _buildCategoryChip(
+                    'Sweets',
+                    Icons.cake,
+                    Colors.pink,
+                    () => _performSearch('sweets'),
+                  ),
+                  _buildCategoryChip(
+                    'Snacks',
+                    Icons.local_pizza,
+                    Colors.amber,
+                    () => _performSearch('snacks'),
+                  ),
+                  _buildCategoryChip(
+                    'Drinks',
+                    Icons.local_cafe,
+                    Colors.brown,
+                    () => _performSearch('drinks'),
+                  ),
+                ],
               ),
-              _buildCategoryChip(
-                'Sweets',
-                Icons.cake,
-                Colors.pink,
-                () => _performSearch('sweets'),
-              ),
-              _buildCategoryChip(
-                'Snacks',
-                Icons.local_pizza,
-                Colors.amber,
-                () => _performSearch('snacks'),
-              ),
-              _buildCategoryChip(
-                'Drinks',
-                Icons.local_cafe,
-                Colors.brown,
-                () => _performSearch('drinks'),
-              ),
-            ],
-          ),
-        ),
-        const SizedBox(height: 32),
+            ),
+            const SizedBox(height: 32),
 
-        // Popular Shops Section
-        _buildSuggestionSection(
-          title: 'Popular Shops',
-          icon: Icons.trending_up,
-        ),
-        const SizedBox(height: 12),
-        _buildPopularShopsList(),
+            // Popular Shops Section
+            _buildSuggestionSection(
+              title: 'Popular Shops',
+              icon: Icons.trending_up,
+            ),
+            const SizedBox(height: 12),
+            _buildPopularShopsList(),
 
-        const SizedBox(height: 32),
+            const SizedBox(height: 32),
 
-        // Quick Actions Section
-        _buildSuggestionSection(title: 'Quick Actions', icon: Icons.bolt),
-        const SizedBox(height: 12),
-        _buildQuickActionTile(
-          'Open Now',
-          'Find shops currently open',
-          Icons.access_time_filled,
-          Colors.green,
-          () => _performSearch('open'),
-        ),
-        _buildQuickActionTile(
-          'New Arrivals',
-          'Recently added shops',
-          Icons.new_releases,
-          Colors.blue,
-          () => _performSearch('new'),
+            // Quick Actions Section
+            _buildSuggestionSection(title: 'Quick Actions', icon: Icons.bolt),
+            const SizedBox(height: 12),
+            _buildQuickActionTile(
+              'Open Now',
+              'Find shops currently open',
+              Icons.access_time_filled,
+              Colors.green,
+              () => _performSearch('open'),
+            ),
+            _buildQuickActionTile(
+              'New Arrivals',
+              'Recently added shops',
+              Icons.new_releases,
+              Colors.blue,
+              () => _performSearch('new'),
+            ),
+          ],
         ),
       ],
     );
@@ -385,31 +405,10 @@ class _SearchScreenState extends State<SearchScreen> {
   }
 
   Widget _buildNoResults() {
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(32),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              Icons.search_off,
-              size: 80,
-              color: AppTheme.textTertiary.withOpacity(0.5),
-            ),
-            const SizedBox(height: 24),
-            Text(
-              'No Results Found',
-              style: Theme.of(context).textTheme.headlineSmall,
-            ),
-            const SizedBox(height: 8),
-            Text(
-              'Try a different search term.',
-              textAlign: TextAlign.center,
-              style: TextStyle(color: AppTheme.textSecondary),
-            ),
-          ],
-        ),
-      ),
+    return const EmptyState(
+      title: 'No Results Found',
+      subtitle: 'Try a different search term. That cat isn\'t happy either!',
+      animationType: 'bad_cat',
     );
   }
 
