@@ -843,7 +843,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget _buildTrendingItemCard(MenuItemModel item, ShopModel shop) {
     return Consumer<CartProvider>(
       builder: (context, cartProvider, child) {
-        final quantity = cartProvider.getItemQuantity(item.id);
+        final _ = cartProvider.getItemQuantity(item.id);
 
         return GestureDetector(
           onTap: () {
