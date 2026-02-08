@@ -2943,11 +2943,15 @@
             }
 
             const isDev = userRole === 'developer';
-            const hasDevPermissions = userDevPermissions && userDevPermissions.length > 0;
-            const canSeeDevPanel = isDev || (userRole === 'owner' && hasDevPermissions);
-
+            
+            // RBAC Logic: 
+            // - Dev Panel is strictly for developers
+            // - Kitchen is for kitchen staff, owners, and developers
+            // - Transport (Delivery) is for delivery staff and developers only
+            // - Dashboard (Owner) is for owners and developers
+            const canSeeDevPanel = isDev; 
             const canSeeKitchen = isDev || (['kitchen', 'owner'].includes(userRole) && currentUserShopId);
-            const canSeeTransport = isDev || (['delivery', 'owner'].includes(userRole) && currentUserShopId);
+            const canSeeTransport = isDev || (userRole === 'delivery' && currentUserShopId);
             const canSeeOwner = isDev || (userRole === 'owner' && currentUserShopId);
 
             document.querySelector('[data-view="kitchen"]').classList.toggle('hidden', !canSeeKitchen);
