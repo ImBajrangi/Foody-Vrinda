@@ -579,6 +579,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
               ),
+              // Special Offers Bar
+              Padding(
+                padding: const EdgeInsets.only(top: 8),
+                child: _buildSpecialOffersBar(shops),
+              ),
+
               const SizedBox(height: 24),
 
               // Trending Items Section
@@ -654,7 +660,205 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  /// Build a category chip with emoji or lottie and label
+  /// Get a premium gradient based on shop index (avoiding green)
+  LinearGradient _getOfferGradient(int index) {
+    final gradients = [
+      // Flame Orange
+      const LinearGradient(
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+        colors: [Color(0xFFFF8C00), Color(0xFFFF4500)],
+      ),
+      // Deep Red / Pink
+      const LinearGradient(
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+        colors: [Color(0xFFFF416C), Color(0xFFFF4B2B)],
+      ),
+      // Royal Blue
+      const LinearGradient(
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+        colors: [Color(0xFF2193B0), Color(0xFF6DD5ED)],
+      ),
+      // Mystic Purple
+      const LinearGradient(
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+        colors: [Color(0xFF8E2DE2), Color(0xFF4A00E0)],
+      ),
+      // Midnight Teal (Blue-ish, not green)
+      const LinearGradient(
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+        colors: [Color(0xFF2C3E50), Color(0xFF000000)],
+      ),
+    ];
+
+    return gradients[index % gradients.length];
+  }
+
+  /// Get a matching shadow color for the gradient
+  Color _getOfferShadow(int index) {
+    final colors = [
+      const Color(0xFFFF4500), // Orange
+      const Color(0xFFFF416C), // Red
+      const Color(0xFF2193B0), // Blue
+      const Color(0xFF8E2DE2), // Purple
+      const Color(0xFF2C3E50), // Teal/Dark
+    ];
+    return colors[index % colors.length].withValues(alpha: 0.3);
+  }
+
+  /// Build professional special offers bar
+  Widget _buildSpecialOffersBar(List<ShopModel> shops) {
+    final shopsWithOffers = shops
+        .where((s) => s.discountTag != null && s.discountTag!.isNotEmpty)
+        .toList();
+
+    if (shopsWithOffers.isEmpty) return const SizedBox.shrink();
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(6),
+                decoration: BoxDecoration(
+                  color: AppTheme.primaryOrange.withValues(alpha: 0.1),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: const Icon(
+                  Icons.auto_awesome,
+                  size: 16,
+                  color: AppTheme.primaryOrange,
+                ),
+              ),
+              const SizedBox(width: 8),
+              Text(
+                'Exclusive Offers for You',
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.w800,
+                  fontSize: 17,
+                  letterSpacing: -0.3,
+                ),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(height: 12),
+        SizedBox(
+          height: 110,
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            padding: const EdgeInsets.symmetric(horizontal: 12),
+            itemCount: shopsWithOffers.length,
+            itemBuilder: (context, index) {
+              final shop = shopsWithOffers[index];
+              return _buildOfferCard(shop, index);
+            },
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildOfferCard(ShopModel shop, int index) {
+    final gradient = _getOfferGradient(index);
+    final shadowColor = _getOfferShadow(index);
+    final primaryColor = gradient.colors.first;
+
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => MenuScreen(shop: shop)),
+        );
+      },
+      child: Container(
+        width: 200,
+        margin: const EdgeInsets.symmetric(horizontal: 4),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16),
+          gradient: gradient,
+          boxShadow: [
+            BoxShadow(
+              color: shadowColor,
+              blurRadius: 10,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        child: Stack(
+          children: [
+            // Decorative background circles
+            Positioned(
+              right: -10,
+              bottom: -10,
+              child: Icon(
+                Icons.local_offer,
+                size: 80,
+                color: Colors.white.withValues(alpha: 0.1),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(14),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 8,
+                      vertical: 4,
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                    child: Text(
+                      shop.discountTag!,
+                      style: TextStyle(
+                        color: primaryColor,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 6),
+                  Text(
+                    shop.name,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  if (shop.discountDescription != null)
+                    Text(
+                      shop.discountDescription!,
+                      style: TextStyle(
+                        color: Colors.white.withValues(alpha: 0.9),
+                        fontSize: 10,
+                        fontWeight: FontWeight.w500,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   Widget _buildCategoryChip(
     String? emoji,
     String label, {

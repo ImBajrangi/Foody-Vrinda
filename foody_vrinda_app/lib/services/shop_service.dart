@@ -16,13 +16,9 @@ class ShopService {
   final Map<String, ShopModel> _shopCache = {};
   final Map<String, List<MenuItemModel>> _menuCache = {};
 
-  // Shared Streams for performance
-  Stream<List<ShopModel>>? _shopsStream;
-  Stream<List<MenuItemModel>>? _allMenuItemsStream;
-
   /// Get all shops - direct Firestore stream with caching
   Stream<List<ShopModel>> getShops() {
-    _shopsStream ??= _firestore.collection('shops').snapshots().map((snapshot) {
+    return _firestore.collection('shops').snapshots().map((snapshot) {
       final shops = snapshot.docs.map((doc) {
         try {
           final shop = ShopModel.fromFirestore(doc);
@@ -36,9 +32,7 @@ class ShopService {
       // Update cache
       _cachedShops = shops;
       return shops;
-    }).asBroadcastStream();
-
-    return _shopsStream!;
+    });
   }
 
   /// Get cached shops synchronously (for instant access)
@@ -150,11 +144,8 @@ class ShopService {
   List<MenuItemModel> getCachedMenuItems(String shopId) =>
       _menuCache[shopId] ?? [];
 
-  /// Get all menu items from all shops (for trending section)
   Stream<List<MenuItemModel>> getAllMenuItems() {
-    _allMenuItemsStream ??= _firestore.collection('menus').snapshots().map((
-      snapshot,
-    ) {
+    return _firestore.collection('menus').snapshots().map((snapshot) {
       final items = snapshot.docs.map((doc) {
         try {
           return MenuItemModel.fromFirestore(doc);
@@ -168,9 +159,7 @@ class ShopService {
         }
       }).toList();
       return items;
-    }).asBroadcastStream();
-
-    return _allMenuItemsStream!;
+    });
   }
 
   /// Get available menu items for a shop

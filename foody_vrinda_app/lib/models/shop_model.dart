@@ -293,6 +293,8 @@ class ShopModel {
   final double minimumOrderAmount; // Minimum order value required
   final double deliveryCharge; // Delivery fee
   final double gstPercentage; // GST percentage
+  final String? discountTag; // e.g., "50% OFF"
+  final String? discountDescription; // e.g., "Up to ₹100 on first order"
 
   ShopModel({
     required this.id,
@@ -314,6 +316,8 @@ class ShopModel {
     this.minimumOrderAmount = 0.0,
     this.deliveryCharge = 0.0,
     this.gstPercentage = 5.0,
+    this.discountTag,
+    this.discountDescription,
   }) : schedule = schedule ?? ShopSchedule(),
        alarmSettings = alarmSettings ?? AlarmSettings();
 
@@ -372,6 +376,8 @@ class ShopModel {
       minimumOrderAmount: (data['minimumOrderAmount'] ?? 0.0).toDouble(),
       deliveryCharge: (data['deliveryCharge'] ?? 0.0).toDouble(),
       gstPercentage: (data['gstPercentage'] ?? 5.0).toDouble(),
+      discountTag: data['discountTag']?.toString(),
+      discountDescription: data['discountDescription']?.toString(),
     );
   }
 
@@ -397,6 +403,8 @@ class ShopModel {
       'minimumOrderAmount': minimumOrderAmount,
       'deliveryCharge': deliveryCharge,
       'gstPercentage': gstPercentage,
+      'discountTag': discountTag,
+      'discountDescription': discountDescription,
     };
   }
 
@@ -420,6 +428,8 @@ class ShopModel {
     double? minimumOrderAmount,
     double? deliveryCharge,
     double? gstPercentage,
+    String? discountTag,
+    String? discountDescription,
   }) {
     return ShopModel(
       id: id ?? this.id,
@@ -441,6 +451,8 @@ class ShopModel {
       minimumOrderAmount: minimumOrderAmount ?? this.minimumOrderAmount,
       deliveryCharge: deliveryCharge ?? this.deliveryCharge,
       gstPercentage: gstPercentage ?? this.gstPercentage,
+      discountTag: discountTag ?? this.discountTag,
+      discountDescription: discountDescription ?? this.discountDescription,
     );
   }
 
