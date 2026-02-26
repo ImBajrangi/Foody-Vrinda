@@ -15,7 +15,7 @@ import '../../widgets/buttons.dart';
 import '../../widgets/inputs.dart';
 import '../../widgets/address_autocomplete_field.dart';
 import '../../widgets/location_picker_dialog.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:latlong2/latlong.dart' as ll2;
 import '../order/order_tracking_screen.dart';
 import '../auth/login_screen.dart';
 import '../../models/order_model.dart';
@@ -51,7 +51,7 @@ class _CartScreenState extends State<CartScreen> {
   String? _pendingCustomerName;
   String? _pendingCustomerPhone;
   String? _pendingDeliveryAddress;
-  LatLng? _deliveryLocation; // Store coordinates for distance calculation
+  ll2.LatLng? _deliveryLocation; // Store coordinates for distance calculation
   PaymentMethod? _selectedPaymentMethod;
   StreamSubscription? _paymentSettingsSubscription;
 
@@ -542,12 +542,14 @@ class _CartScreenState extends State<CartScreen> {
                             alignment: Alignment.centerRight,
                             child: TextButton.icon(
                               onPressed: () async {
-                                final LatLng? picked = await showDialog<LatLng>(
-                                  context: context,
-                                  builder: (context) => LocationPickerDialog(
-                                    initialLocation: _deliveryLocation,
-                                  ),
-                                );
+                                final ll2.LatLng? picked =
+                                    await showDialog<ll2.LatLng>(
+                                      context: context,
+                                      builder: (context) =>
+                                          LocationPickerDialog(
+                                            initialLocation: _deliveryLocation,
+                                          ),
+                                    );
                                 if (picked != null) {
                                   setState(() {
                                     _deliveryLocation = picked;

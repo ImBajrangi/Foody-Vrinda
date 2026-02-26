@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:flutter_map/flutter_map.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'dart:ui' as ui;
@@ -1282,100 +1283,12 @@ class _DeliveryMapView extends StatefulWidget {
 
 class _DeliveryMapViewState extends State<_DeliveryMapView> {
   final OrderService _orderService = OrderService();
-  GoogleMapController? _mapController;
-  Set<Marker> _markers = {};
-
-  // Custom marker icons
-  BitmapDescriptor? _shopIcon;
-  BitmapDescriptor? _readyOrderIcon;
-  BitmapDescriptor? _enRouteOrderIcon;
-  BitmapDescriptor? _deliveryBoyIcon;
-
-  // Default to India center
-  static const LatLng _defaultLocation = LatLng(28.6139, 77.2090); // Delhi
+  final MapController _mapController = MapController();
+  List<Marker> _markers = [];
 
   @override
   void initState() {
     super.initState();
-    _createCustomMarkers();
-  }
-
-  /// Create custom colored circular markers
-  Future<void> _createCustomMarkers() async {
-    _shopIcon = await _createCircleMarkerIcon(Colors.blue, Icons.store, 48);
-    _readyOrderIcon = await _createCircleMarkerIcon(
-      Colors.green,
-      Icons.location_on,
-      40,
-    );
-    _enRouteOrderIcon = await _createCircleMarkerIcon(
-      Colors.orange,
-      Icons.delivery_dining,
-      40,
-    );
-    _deliveryBoyIcon = await _createCircleMarkerIcon(
-      Colors.purple,
-      Icons.person_pin,
-      44,
-    );
-    if (mounted) setState(() {});
-  }
-
-  /// Generate a custom circular marker icon with an inner icon
-  Future<BitmapDescriptor> _createCircleMarkerIcon(
-    Color color,
-    IconData iconData,
-    double size,
-  ) async {
-    final pictureRecorder = ui.PictureRecorder();
-    final canvas = Canvas(pictureRecorder);
-    final paint = Paint()..color = color;
-    final shadowPaint = Paint()
-      ..color = Colors.black.withValues(alpha: 0.3)
-      ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 4);
-
-    final center = Offset(size / 2, size / 2);
-    final radius = size / 2 - 4;
-
-    // Draw shadow
-    canvas.drawCircle(center + const Offset(2, 2), radius, shadowPaint);
-    // Draw main circle
-    canvas.drawCircle(center, radius, paint);
-    // Draw white border
-    canvas.drawCircle(
-      center,
-      radius,
-      Paint()
-        ..color = Colors.white
-        ..style = PaintingStyle.stroke
-        ..strokeWidth = 3,
-    );
-
-    // Draw icon in center
-    final iconPainter = TextPainter(textDirection: ui.TextDirection.ltr);
-    iconPainter.text = TextSpan(
-      text: String.fromCharCode(iconData.codePoint),
-      style: TextStyle(
-        fontSize: size * 0.45,
-        fontFamily: iconData.fontFamily,
-        package: iconData.fontPackage,
-        color: Colors.white,
-      ),
-    );
-    iconPainter.layout();
-    iconPainter.paint(
-      canvas,
-      Offset(
-        center.dx - iconPainter.width / 2,
-        center.dy - iconPainter.height / 2,
-      ),
-    );
-
-    final picture = pictureRecorder.endRecording();
-    final image = await picture.toImage(size.toInt(), size.toInt());
-    final bytes = await image.toByteData(format: ui.ImageByteFormat.png);
-
-    return BitmapDescriptor.bytes(bytes!.buffer.asUint8List());
   }
 
   @override
@@ -1406,19 +1319,21 @@ class _DeliveryMapViewState extends State<_DeliveryMapView> {
 
           return Stack(
             children: [
-              GoogleMap(
-                initialCameraPosition: const CameraPosition(
-                  target: _defaultLocation,
-                  zoom: 12,
+              FlutterMap(
+                mapController: _mapController,
+                options: const MapOptions(
+                  initialCenter: LatLng(28.6139, 77.2090),
+                  initialZoom: 12,
                 ),
-                onMapCreated: (controller) {
-                  _mapController = controller;
-                },
-                markers: _markers,
-                myLocationEnabled: true,
-                myLocationButtonEnabled: false,
-                zoomControlsEnabled: true,
-                mapToolbarEnabled: false,
+                children: [
+                  TileLayer(
+                    urlTemplate:
+                        'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
+                    subdomains: const ['a', 'b', 'c', 'd'],
+                    userAgentPackageName: 'com.foody.vrinda.app',
+                  ),
+                  MarkerLayer(markers: _markers),
+                ],
               ),
               // Legend
               Positioned(
@@ -1504,70 +1419,84 @@ class _DeliveryMapViewState extends State<_DeliveryMapView> {
   }
 
   void _updateMarkers(List<OrderModel> orders) {
-    final Set<Marker> newMarkers = {};
+    final List<Marker> newMarkers = [];
+    final shopLocation = const LatLng(28.6139, 77.2090);
 
-    // Add shop marker (blue store icon)
-    if (_shopIcon != null) {
-      newMarkers.add(
-        Marker(
-          markerId: const MarkerId('shop'),
-          position: _defaultLocation,
-          icon: _shopIcon!,
-          infoWindow: const InfoWindow(title: 'Shop Location'),
+    // Add shop marker
+    newMarkers.add(
+      Marker(
+        point: shopLocation,
+        width: 50,
+        height: 50,
+        child: Container(
+          decoration: BoxDecoration(
+            color: AppTheme.primaryBlue,
+            shape: BoxShape.circle,
+            border: Border.all(color: Colors.white, width: 2),
+            boxShadow: [
+              BoxShadow(
+                color: AppTheme.primaryBlue.withValues(alpha: 0.3),
+                blurRadius: 8,
+                spreadRadius: 2,
+              ),
+            ],
+          ),
+          child: const Icon(Icons.store_rounded, color: Colors.white, size: 28),
         ),
-      );
-    }
+      ),
+    );
 
     // Add order destination markers
     for (var i = 0; i < orders.length; i++) {
       final order = orders[i];
       final isReady = order.status == OrderStatus.readyForPickup;
-
-      // Use custom icons if available, otherwise fall back to default
-      BitmapDescriptor icon;
-      if (isReady && _readyOrderIcon != null) {
-        icon = _readyOrderIcon!;
-      } else if (!isReady && _enRouteOrderIcon != null) {
-        icon = _enRouteOrderIcon!;
-      } else {
-        icon = BitmapDescriptor.defaultMarkerWithHue(
-          isReady ? BitmapDescriptor.hueGreen : BitmapDescriptor.hueOrange,
-        );
-      }
+      final color = isReady ? Colors.green : Colors.orange;
+      final icon = isReady ? Icons.location_on : Icons.delivery_dining;
 
       final hasLocation =
           order.customerLatitude != null && order.customerLongitude != null;
 
-      // Use actual coordinates if available, otherwise fall back to offset
       final position = hasLocation
           ? LatLng(order.customerLatitude!, order.customerLongitude!)
           : LatLng(
-              _defaultLocation.latitude + (i * 0.01) - 0.02,
-              _defaultLocation.longitude + (i * 0.008) - 0.01,
+              shopLocation.latitude + (i * 0.01) - 0.02,
+              shopLocation.longitude + (i * 0.008) - 0.01,
             );
 
       newMarkers.add(
         Marker(
-          markerId: MarkerId(order.id),
-          position: position,
-          icon: icon,
-          infoWindow: InfoWindow(
-            title: order.customerName,
-            snippet: '${order.formattedTotal} - ${order.deliveryAddress}',
+          point: position,
+          width: 45,
+          height: 45,
+          child: GestureDetector(
+            onTap: () => _showOrderDetails(order),
+            child: Container(
+              decoration: BoxDecoration(
+                color: color,
+                shape: BoxShape.circle,
+                border: Border.all(color: Colors.white, width: 2),
+                boxShadow: [
+                  BoxShadow(
+                    color: color.withValues(alpha: 0.3),
+                    blurRadius: 8,
+                    spreadRadius: 1,
+                  ),
+                ],
+              ),
+              child: Icon(icon, color: Colors.white, size: 22),
+            ),
           ),
-          onTap: () => _showOrderDetails(order),
         ),
       );
     }
 
-    // Only update if markers changed - use addPostFrameCallback to avoid setState during build
-    if (_markers.length != newMarkers.length || _shopIcon != null) {
+    if (_markers.length != newMarkers.length) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         if (mounted) {
           setState(() {
             _markers = newMarkers;
           });
-          if (_markers.isNotEmpty && _mapController != null) {
+          if (_markers.isNotEmpty) {
             _fitMarkers();
           }
         }
@@ -1576,32 +1505,12 @@ class _DeliveryMapViewState extends State<_DeliveryMapView> {
   }
 
   void _fitMarkers() {
-    if (_markers.isEmpty || _mapController == null) return;
-
-    double minLat = _markers.first.position.latitude;
-    double maxLat = _markers.first.position.latitude;
-    double minLng = _markers.first.position.longitude;
-    double maxLng = _markers.first.position.longitude;
-
-    for (var marker in _markers) {
-      if (marker.position.latitude < minLat) minLat = marker.position.latitude;
-      if (marker.position.latitude > maxLat) maxLat = marker.position.latitude;
-      if (marker.position.longitude < minLng) {
-        minLng = marker.position.longitude;
-      }
-      if (marker.position.longitude > maxLng) {
-        maxLng = marker.position.longitude;
-      }
-    }
-
-    _mapController!.animateCamera(
-      CameraUpdate.newLatLngBounds(
-        LatLngBounds(
-          southwest: LatLng(minLat, minLng),
-          northeast: LatLng(maxLat, maxLng),
-        ),
-        50.0,
-      ),
+    if (_markers.isEmpty) return;
+    final bounds = LatLngBounds.fromPoints(
+      _markers.map((m) => m.point).toList(),
+    );
+    _mapController.fitCamera(
+      CameraFit.bounds(bounds: bounds, padding: const EdgeInsets.all(50)),
     );
   }
 
@@ -1754,11 +1663,7 @@ class _DeliveryMapViewState extends State<_DeliveryMapView> {
       }
 
       final position = await Geolocator.getCurrentPosition();
-      if (_mapController != null) {
-        _mapController!.animateCamera(
-          CameraUpdate.newLatLng(LatLng(position.latitude, position.longitude)),
-        );
-      }
+      _mapController.move(LatLng(position.latitude, position.longitude), 15);
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(

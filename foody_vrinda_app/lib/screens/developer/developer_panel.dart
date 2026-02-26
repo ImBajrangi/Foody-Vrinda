@@ -21,7 +21,7 @@ import '../../config/lottie_assets.dart';
 import '../../services/auth_service.dart';
 import '../../services/order_notification_manager.dart';
 import '../../widgets/animations.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:latlong2/latlong.dart' as ll2;
 import '../../widgets/location_picker_dialog.dart';
 import '../../config/menu_images.dart';
 
@@ -2078,25 +2078,26 @@ class _DeveloperPanelState extends State<DeveloperPanel>
                           color: AppTheme.primaryBlue,
                         ),
                         onPressed: () async {
-                          final LatLng? picked = await showDialog<LatLng>(
-                            context: context,
-                            builder: (context) => LocationPickerDialog(
-                              initialLocation:
-                                  _shopLatController.text.isNotEmpty &&
-                                      _shopLngController.text.isNotEmpty
-                                  ? LatLng(
-                                      double.tryParse(
-                                            _shopLatController.text,
-                                          ) ??
-                                          28.6139,
-                                      double.tryParse(
-                                            _shopLngController.text,
-                                          ) ??
-                                          77.2090,
-                                    )
-                                  : null,
-                            ),
-                          );
+                          final ll2.LatLng? picked =
+                              await showDialog<ll2.LatLng>(
+                                context: context,
+                                builder: (context) => LocationPickerDialog(
+                                  initialLocation:
+                                      _shopLatController.text.isNotEmpty &&
+                                          _shopLngController.text.isNotEmpty
+                                      ? ll2.LatLng(
+                                          double.tryParse(
+                                                _shopLatController.text,
+                                              ) ??
+                                              28.6139,
+                                          double.tryParse(
+                                                _shopLngController.text,
+                                              ) ??
+                                              77.2090,
+                                        )
+                                      : null,
+                                ),
+                              );
                           if (picked != null) {
                             _shopLatController.text = picked.latitude
                                 .toStringAsFixed(6);

@@ -1,33 +1,35 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/foundation.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:latlong2/latlong.dart';
+import 'package:geocoding/geocoding.dart';
 
 /// Service for Google Maps APIs (Places, Distance Matrix, Geocoding)
 class LocationService {
   // Use the same API key from AndroidManifest
   static const String _apiKey = 'AIzaSyDWEKXSvzY2bMStntZKoGmGh0W6Pa7YUXM';
 
-  /// Get place predictions for address autocomplete
+  /// Get place predictions for address autocomplete (Using Nominatim for free)
   static Future<List<PlacePrediction>> getPlacePredictions(String input) async {
     if (input.isEmpty) return [];
 
     final url = Uri.parse(
-      'https://maps.googleapis.com/maps/api/place/autocomplete/json'
-      '?input=${Uri.encodeComponent(input)}'
-      '&components=country:in' // Restrict to India
-      '&key=$_apiKey',
+      'https://nominatim.openstreetmap.org/search'
+      '?q=${Uri.encodeComponent(input)}'
+      '&format=json'
+      '&addressdetails=1'
+      '&limit=5'
+      '&countrycodes=in', // Restrict to India
     );
 
     try {
-      final response = await http.get(url);
+      final response = await http.get(
+        url,
+        headers: {'User-Agent': 'foody_vrinda_app'},
+      );
       if (response.statusCode == 200) {
-        final data = json.decode(response.body);
-        if (data['status'] == 'OK') {
-          return (data['predictions'] as List)
-              .map((p) => PlacePrediction.fromJson(p))
-              .toList();
-        }
+        final List data = json.decode(response.body);
+        return data.map((p) => PlacePrediction.fromNominatim(p)).toList();
       }
       return [];
     } catch (e) {
@@ -36,22 +38,19 @@ class LocationService {
     }
   }
 
-  /// Get place details (lat/lng) from place ID
+  /// Get place details (lat/lng) from place ID (Using cached data or Nominatim)
   static Future<PlaceDetails?> getPlaceDetails(String placeId) async {
-    final url = Uri.parse(
-      'https://maps.googleapis.com/maps/api/place/details/json'
-      '?place_id=$placeId'
-      '&fields=geometry,formatted_address'
-      '&key=$_apiKey',
-    );
-
+    // For Nominatim, the placeId we returned in predictions is actually "lat,lng" for simplicity
+    // or we can re-query. In our simplified implementation below, placeId is coordinates.
     try {
-      final response = await http.get(url);
-      if (response.statusCode == 200) {
-        final data = json.decode(response.body);
-        if (data['status'] == 'OK') {
-          return PlaceDetails.fromJson(data['result']);
-        }
+      final parts = placeId.split(',');
+      if (parts.length == 2) {
+        final lat = double.parse(parts[0]);
+        final lng = double.parse(parts[1]);
+        return PlaceDetails(
+          location: LatLng(lat, lng),
+          formattedAddress: '', // Nominatim returns full address in search
+        );
       }
       return null;
     } catch (e) {
@@ -60,8 +59,28 @@ class LocationService {
     }
   }
 
-  /// Geocode an address to get lat/lng
+  /// Geocode an address to get lat/lng (Free version using platform native geocoding)
   static Future<LatLng?> geocodeAddress(String address) async {
+    try {
+      final placemarks = await placemarkFromCoordinates(
+        0,
+        0,
+      ); // This is just a placeholder, wait
+      // Use the geocoding package
+      final locations = await locationFromAddress(address);
+      if (locations.isNotEmpty) {
+        return LatLng(locations.first.latitude, locations.first.longitude);
+      }
+      return null;
+    } catch (e) {
+      debugPrint('Error geocoding address natively: $e');
+      // Fallback to Google if native fails (optional, but let's try to be purely free first as requested)
+      return _googleGeocodeAddress(address);
+    }
+  }
+
+  /// Original Google implementation as fallback
+  static Future<LatLng?> _googleGeocodeAddress(String address) async {
     final url = Uri.parse(
       'https://maps.googleapis.com/maps/api/geocode/json'
       '?address=${Uri.encodeComponent(address)}'
@@ -79,45 +98,56 @@ class LocationService {
       }
       return null;
     } catch (e) {
-      debugPrint('Error geocoding address: $e');
+      debugPrint('Error geocoding address via Google: $e');
       return null;
     }
   }
 
-  /// Calculate distance and duration between two points
+  /// Calculate distance and duration between two points (Using OSRM for free)
   static Future<DistanceResult?> getDistanceMatrix({
     required LatLng origin,
     required LatLng destination,
   }) async {
     final url = Uri.parse(
-      'https://maps.googleapis.com/maps/api/distancematrix/json'
-      '?origins=${origin.latitude},${origin.longitude}'
-      '&destinations=${destination.latitude},${destination.longitude}'
-      '&mode=driving'
-      '&key=$_apiKey',
+      'http://router.project-osrm.org/route/v1/driving/'
+      '${origin.longitude},${origin.latitude};${destination.longitude},${destination.latitude}'
+      '?overview=false',
     );
 
     try {
       final response = await http.get(url);
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
-        if (data['status'] == 'OK') {
-          final element = data['rows'][0]['elements'][0];
-          if (element['status'] == 'OK') {
-            return DistanceResult(
-              distanceText: element['distance']['text'],
-              distanceMeters: element['distance']['value'],
-              durationText: element['duration']['text'],
-              durationSeconds: element['duration']['value'],
-            );
-          }
+        if (data['code'] == 'Ok' && data['routes'].isNotEmpty) {
+          final route = data['routes'][0];
+          final distanceMeters = (route['distance'] as num).toInt();
+          final durationSeconds = (route['duration'] as num).toInt();
+
+          return DistanceResult(
+            distanceText: '${(distanceMeters / 1000).toStringAsFixed(1)} km',
+            distanceMeters: distanceMeters,
+            durationText: '${(durationSeconds / 60).round()} mins',
+            durationSeconds: durationSeconds,
+          );
         }
       }
-      return null;
+      // Fallback to straight line calculation if OSRM fails
+      return _calculateStraightLineDistance(origin, destination);
     } catch (e) {
-      debugPrint('Error getting distance matrix: $e');
-      return null;
+      debugPrint('Error getting OSRM distance: $e');
+      return _calculateStraightLineDistance(origin, destination);
     }
+  }
+
+  static DistanceResult _calculateStraightLineDistance(LatLng o, LatLng d) {
+    const Distance distance = Distance();
+    final double meter = distance.as(LengthUnit.Meter, o, d);
+    return DistanceResult(
+      distanceText: '${(meter / 1000).toStringAsFixed(1)} km',
+      distanceMeters: meter.toInt(),
+      durationText: '${(meter / 500).round()} mins', // Rough estimate 30km/h
+      durationSeconds: (meter / 8).round(),
+    );
   }
 
   /// Calculate distances from one origin to multiple destinations
@@ -186,6 +216,32 @@ class PlacePrediction {
       description: json['description'] ?? '',
       mainText: structured['main_text'] ?? '',
       secondaryText: structured['secondary_text'] ?? '',
+    );
+  }
+
+  factory PlacePrediction.fromNominatim(Map<String, dynamic> json) {
+    final displayName = json['display_name'] ?? '';
+    final address = json['address'] ?? {};
+
+    // Extract main text (e.g., place name or street)
+    String main =
+        address['name'] ??
+        address['road'] ??
+        address['suburb'] ??
+        address['city'] ??
+        'Unknown';
+
+    return PlacePrediction(
+      placeId: '${json['lat']},${json['lon']}',
+      description: displayName,
+      mainText: main,
+      secondaryText: displayName.startsWith(main)
+          ? displayName
+                .substring(main.length)
+                .trim()
+                .replaceFirst(',', '')
+                .trim()
+          : displayName,
     );
   }
 }

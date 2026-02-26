@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:flutter_map/flutter_map.dart';
+import 'package:latlong2/latlong.dart' as ll2;
 import '../../config/theme.dart';
 import '../../models/order_model.dart';
 import '../../models/shop_model.dart';
@@ -644,7 +645,7 @@ class _OrderTrackingScreenState extends State<OrderTrackingScreen> {
   }
 
   Widget _buildDeliveryMap(OrderModel order) {
-    final LatLng position = LatLng(
+    final ll2.LatLng position = ll2.LatLng(
       order.customerLatitude!,
       order.customerLongitude!,
     );
@@ -688,22 +689,50 @@ class _OrderTrackingScreenState extends State<OrderTrackingScreen> {
               borderRadius: const BorderRadius.vertical(
                 bottom: Radius.circular(24),
               ),
-              child: GoogleMap(
-                initialCameraPosition: CameraPosition(
-                  target: position,
-                  zoom: 15,
-                ),
-                markers: {
-                  Marker(
-                    markerId: const MarkerId('destination'),
-                    position: position,
-                    infoWindow: const InfoWindow(title: 'Delivery Pin'),
+              child: FlutterMap(
+                options: MapOptions(
+                  initialCenter: position,
+                  initialZoom: 15,
+                  interactionOptions: const InteractionOptions(
+                    flags: InteractiveFlag.none, // Lite mode equivalent
                   ),
-                },
-                liteModeEnabled: true, // Better for list views
-                myLocationEnabled: false,
-                zoomControlsEnabled: false,
-                mapToolbarEnabled: true,
+                ),
+                children: [
+                  TileLayer(
+                    urlTemplate:
+                        'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
+                    subdomains: const ['a', 'b', 'c', 'd'],
+                    userAgentPackageName: 'com.foody.vrinda.app',
+                  ),
+                  MarkerLayer(
+                    markers: [
+                      Marker(
+                        point: position,
+                        width: 50,
+                        height: 50,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: AppTheme.error,
+                            shape: BoxShape.circle,
+                            border: Border.all(color: Colors.white, width: 2),
+                            boxShadow: [
+                              BoxShadow(
+                                color: AppTheme.error.withValues(alpha: 0.3),
+                                blurRadius: 10,
+                                spreadRadius: 2,
+                              ),
+                            ],
+                          ),
+                          child: const Icon(
+                            Icons.location_on_rounded,
+                            color: Colors.white,
+                            size: 28,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
           ),

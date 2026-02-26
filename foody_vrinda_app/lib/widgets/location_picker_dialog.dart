@@ -1,5 +1,7 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:flutter_map/flutter_map.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
 import '../config/theme.dart';
@@ -16,7 +18,7 @@ class LocationPickerDialog extends StatefulWidget {
 }
 
 class _LocationPickerDialogState extends State<LocationPickerDialog> {
-  GoogleMapController? _mapController;
+  final MapController _mapController = MapController();
   LatLng _centerLocation = const LatLng(28.6139, 77.2090); // Default Delhi
   String _addressDisplay = 'Move the map to select location';
   bool _isLoading = true;
@@ -111,11 +113,6 @@ class _LocationPickerDialogState extends State<LocationPickerDialog> {
     }
   }
 
-  /// Called continuously while map is being dragged
-  void _onCameraMove(CameraPosition position) {
-    _centerLocation = position.target;
-  }
-
   /// Called when map camera stops (user releases drag)
   void _onCameraIdle() {
     if (_isMoving) {
@@ -134,7 +131,7 @@ class _LocationPickerDialogState extends State<LocationPickerDialog> {
         ),
       );
       final newLocation = LatLng(position.latitude, position.longitude);
-      _mapController?.animateCamera(CameraUpdate.newLatLng(newLocation));
+      _mapController.move(newLocation, 16);
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -164,25 +161,33 @@ class _LocationPickerDialogState extends State<LocationPickerDialog> {
                     ? _buildLoadingState()
                     : Stack(
                         children: [
-                          // Google Map
-                          GoogleMap(
-                            initialCameraPosition: CameraPosition(
-                              target: _centerLocation,
-                              zoom: 16,
+                          // OpenStreetMap using flutter_map
+                          FlutterMap(
+                            mapController: _mapController,
+                            options: MapOptions(
+                              initialCenter: _centerLocation,
+                              initialZoom: 16,
+                              onPositionChanged: (position, hasGesture) {
+                                if (hasGesture) {
+                                  _centerLocation = position.center;
+                                }
+                              },
+                              onMapEvent: (event) {
+                                if (event is MapEventMoveStart) {
+                                  _onCameraMoveStarted();
+                                } else if (event is MapEventMoveEnd) {
+                                  _onCameraIdle();
+                                }
+                              },
                             ),
-                            onMapCreated: (controller) {
-                              _mapController = controller;
-                            },
-                            onCameraMoveStarted: _onCameraMoveStarted,
-                            onCameraMove: _onCameraMove,
-                            onCameraIdle: _onCameraIdle,
-                            myLocationEnabled: true,
-                            myLocationButtonEnabled: false,
-                            zoomControlsEnabled: false,
-                            mapToolbarEnabled: false,
-                            compassEnabled: false,
-                            // Lite mode for faster initial render
-                            liteModeEnabled: false,
+                            children: [
+                              TileLayer(
+                                urlTemplate:
+                                    'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
+                                subdomains: const ['a', 'b', 'c', 'd'],
+                                userAgentPackageName: 'com.foody.vrinda.app',
+                              ),
+                            ],
                           ),
 
                           // Fixed Center Pin (Uber-style)
@@ -319,46 +324,57 @@ class _LocationPickerDialogState extends State<LocationPickerDialog> {
       mainAxisSize: MainAxisSize.min,
       children: [
         // Pin with shadow
-        AnimatedContainer(
-          duration: const Duration(milliseconds: 150),
-          transform: Matrix4.translationValues(0, _isMoving ? -8 : 0, 0),
+        TweenAnimationBuilder<double>(
+          duration: const Duration(milliseconds: 200),
+          tween: Tween<double>(begin: 0, end: _isMoving ? -12 : 0),
+          curve: Curves.easeOutBack,
+          builder: (context, translateY, child) {
+            return Transform.translate(
+              offset: Offset(0, translateY),
+              child: child,
+            );
+          },
           child: Container(
-            width: 48,
-            height: 48,
+            width: 54,
+            height: 54,
             decoration: BoxDecoration(
-              gradient: LinearGradient(
+              gradient: const LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                colors: [
-                  AppTheme.primaryOrange,
-                  AppTheme.primaryOrange.withValues(alpha: 0.9),
-                ],
+                colors: [AppTheme.primaryOrange, Color(0xFFFF8C00)],
               ),
               shape: BoxShape.circle,
               boxShadow: [
                 BoxShadow(
                   color: AppTheme.primaryOrange.withValues(alpha: 0.4),
                   blurRadius: _isMoving ? 16 : 8,
-                  spreadRadius: _isMoving ? 2 : 0,
-                  offset: Offset(0, _isMoving ? 8 : 4),
+                  spreadRadius: _isMoving ? 3 : 1,
+                  offset: Offset(0, _isMoving ? 10 : 4),
                 ),
               ],
             ),
             child: const Icon(
               Icons.location_on_rounded,
               color: Colors.white,
-              size: 28,
+              size: 32,
             ),
           ),
         ),
         // Shadow dot on ground
         AnimatedContainer(
-          duration: const Duration(milliseconds: 150),
-          width: _isMoving ? 12 : 8,
-          height: _isMoving ? 6 : 4,
+          duration: const Duration(milliseconds: 200),
+          width: _isMoving ? 14 : 10,
+          height: _isMoving ? 4 : 5,
           margin: const EdgeInsets.only(top: 4),
           decoration: BoxDecoration(
-            color: Colors.black.withValues(alpha: _isMoving ? 0.15 : 0.25),
+            color: Colors.black.withValues(alpha: _isMoving ? 0.1 : 0.2),
+            boxShadow: [
+              if (!_isMoving)
+                BoxShadow(
+                  color: Colors.black.withValues(alpha: 0.1),
+                  blurRadius: 2,
+                ),
+            ],
             borderRadius: BorderRadius.circular(10),
           ),
         ),
@@ -367,31 +383,38 @@ class _LocationPickerDialogState extends State<LocationPickerDialog> {
   }
 
   Widget _buildLocationFAB() {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        shape: BoxShape.circle,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.15),
-            blurRadius: 12,
-            offset: const Offset(0, 4),
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(28),
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.white.withValues(alpha: 0.8),
+            shape: BoxShape.circle,
+            border: Border.all(color: Colors.white.withValues(alpha: 0.3)),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withValues(alpha: 0.1),
+                blurRadius: 10,
+                offset: const Offset(0, 2),
+              ),
+            ],
           ),
-        ],
-      ),
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          onTap: _goToCurrentLocation,
-          borderRadius: BorderRadius.circular(28),
-          child: Container(
-            width: 52,
-            height: 52,
-            decoration: const BoxDecoration(shape: BoxShape.circle),
-            child: const Icon(
-              Icons.my_location_rounded,
-              color: AppTheme.primaryBlue,
-              size: 24,
+          child: Material(
+            color: Colors.transparent,
+            child: InkWell(
+              onTap: _goToCurrentLocation,
+              borderRadius: BorderRadius.circular(28),
+              child: Container(
+                width: 56,
+                height: 56,
+                decoration: const BoxDecoration(shape: BoxShape.circle),
+                child: const Icon(
+                  Icons.my_location_rounded,
+                  color: AppTheme.primaryBlue,
+                  size: 26,
+                ),
+              ),
             ),
           ),
         ),
@@ -400,64 +423,71 @@ class _LocationPickerDialogState extends State<LocationPickerDialog> {
   }
 
   Widget _buildAddressCard() {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.1),
-            blurRadius: 12,
-            offset: const Offset(0, 4),
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(16),
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+          decoration: BoxDecoration(
+            color: Colors.white.withValues(alpha: 0.8),
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(color: Colors.white.withValues(alpha: 0.2)),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withValues(alpha: 0.05),
+                blurRadius: 12,
+                offset: const Offset(0, 4),
+              ),
+            ],
           ),
-        ],
-      ),
-      child: Row(
-        children: [
-          Container(
-            width: 36,
-            height: 36,
-            decoration: BoxDecoration(
-              color: AppTheme.primaryOrange.withValues(alpha: 0.1),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: const Icon(
-              Icons.pin_drop_rounded,
-              color: AppTheme.primaryOrange,
-              size: 20,
-            ),
-          ),
-          const SizedBox(width: 12),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  'Selected Location',
-                  style: TextStyle(
-                    fontSize: 11,
-                    color: AppTheme.textTertiary,
-                    fontWeight: FontWeight.w500,
-                  ),
+          child: Row(
+            children: [
+              Container(
+                width: 36,
+                height: 36,
+                decoration: BoxDecoration(
+                  color: AppTheme.primaryOrange.withValues(alpha: 0.1),
+                  borderRadius: BorderRadius.circular(10),
                 ),
-                const SizedBox(height: 2),
-                Text(
-                  _isMoving ? 'Selecting...' : _addressDisplay,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    fontSize: 13,
-                    fontWeight: FontWeight.w600,
-                    color: _isMoving
-                        ? AppTheme.textTertiary
-                        : AppTheme.textPrimary,
-                  ),
+                child: const Icon(
+                  Icons.pin_drop_rounded,
+                  color: AppTheme.primaryOrange,
+                  size: 20,
                 ),
-              ],
-            ),
+              ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      'Selected Location',
+                      style: TextStyle(
+                        fontSize: 11,
+                        color: AppTheme.textSecondary,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    const SizedBox(height: 2),
+                    Text(
+                      _isMoving ? 'Selecting...' : _addressDisplay,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w700,
+                        color: _isMoving
+                            ? AppTheme.textTertiary
+                            : AppTheme.textPrimary,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
