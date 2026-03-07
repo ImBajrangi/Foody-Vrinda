@@ -1,6 +1,6 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:foody_vrinda_v3/models/user_model.dart';
-import 'package:foody_vrinda_v3/config/notification_sound_config.dart';
+import '../models/user_model.dart';
+import '../config/notification_sound_config.dart';
 import 'package:flutter/foundation.dart';
 
 /// Service for managing local OS-level notifications with custom sounds
@@ -44,7 +44,9 @@ class NotificationService {
   }
 
   void _onNotificationTap(NotificationResponse response) {
-    debugPrint('NotificationService: Notification tapped - ${response.payload}');
+    debugPrint(
+      'NotificationService: Notification tapped - ${response.payload}',
+    );
     // Can be used to navigate to specific screen based on payload
   }
 

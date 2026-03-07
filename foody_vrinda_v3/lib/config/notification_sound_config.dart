@@ -1,4 +1,4 @@
-import 'package:foody_vrinda_v3/models/user_model.dart';
+import '../models/user_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// Configuration for notification sounds based on user roles
@@ -96,8 +96,9 @@ class NotificationSoundConfig {
       case UserRole.developer:
         return 'Developer';
       case UserRole.customer:
-        return 'Customer';
+        break;
     }
+    return 'Customer';
   }
 
   /// Get human-readable notification type
