@@ -4,6 +4,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import '../../config/app_theme.dart';
 import '../../widgets/premium_widgets.dart';
 import '../restaurant/restaurant_screen.dart';
+import '../favorites/favorites_screen.dart';
+import '../cart/cart_screen.dart';
+import '../profile/profile_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -15,6 +18,82 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _currentNavIndex = 0;
 
+  final List<Widget> _screens = [
+    const _HomeContent(),
+    const FavoritesScreen(),
+    const CartScreen(),
+    const ProfileScreen(),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: AppTheme.backgroundLight,
+      body: IndexedStack(index: _currentNavIndex, children: _screens),
+      bottomNavigationBar: _buildBottomNav(),
+    );
+  }
+
+  Widget _buildBottomNav() {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.05),
+            blurRadius: 20,
+            offset: const Offset(0, -5),
+          ),
+        ],
+      ),
+      child: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              _buildNavItem(Icons.home_rounded, 'Home', 0),
+              _buildNavItem(Icons.favorite_rounded, 'Favorites', 1),
+              _buildNavItem(Icons.shopping_bag_rounded, 'Cart', 2),
+              _buildNavItem(Icons.person_rounded, 'Profile', 3),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildNavItem(IconData icon, String label, int index) {
+    final active = _currentNavIndex == index;
+    return GestureDetector(
+      onTap: () => setState(() => _currentNavIndex = index),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(icon, color: active ? AppTheme.primary : AppTheme.textSecondary),
+          const SizedBox(height: 4),
+          Text(
+            label,
+            style: TextStyle(
+              fontSize: 10,
+              fontWeight: active ? FontWeight.w800 : FontWeight.w500,
+              color: active ? AppTheme.primary : AppTheme.textSecondary,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _HomeContent extends StatefulWidget {
+  const _HomeContent();
+
+  @override
+  State<_HomeContent> createState() => _HomeContentState();
+}
+
+class _HomeContentState extends State<_HomeContent> {
   final _categories = [
     {'icon': Icons.local_pizza, 'label': 'Pizza'},
     {'icon': Icons.lunch_dining, 'label': 'Burger'},
@@ -47,38 +126,34 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppTheme.backgroundLight,
-      body: CustomScrollView(
-        slivers: [
-          _buildSliverHeader(),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _buildPromoBanner(),
-                  const SizedBox(height: 24),
-                  _buildSectionHeader('Categories', () {}),
-                  const SizedBox(height: 16),
-                  _buildCategories(),
-                  const SizedBox(height: 32),
-                  _buildSectionHeader('Trending Dishes', () {}),
-                  const SizedBox(height: 16),
-                  _buildTrendingDishes(),
-                  const SizedBox(height: 32),
-                  _buildSectionHeader('Nearby Kitchens', () {}),
-                  const SizedBox(height: 16),
-                  _buildKitchenList(),
-                  const SizedBox(height: 100),
-                ],
-              ),
+    return CustomScrollView(
+      slivers: [
+        _buildSliverHeader(),
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _buildPromoBanner(),
+                const SizedBox(height: 24),
+                _buildSectionHeader('Categories', () {}),
+                const SizedBox(height: 16),
+                _buildCategories(),
+                const SizedBox(height: 32),
+                _buildSectionHeader('Trending Dishes', () {}),
+                const SizedBox(height: 16),
+                _buildTrendingDishes(),
+                const SizedBox(height: 32),
+                _buildSectionHeader('Nearby Kitchens', () {}),
+                const SizedBox(height: 16),
+                _buildKitchenList(),
+                const SizedBox(height: 100),
+              ],
             ),
           ),
-        ],
-      ),
-      bottomNavigationBar: _buildBottomNav(),
+        ),
+      ],
     );
   }
 
@@ -161,7 +236,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget _buildPromoBanner() {
     return Container(
       width: double.infinity,
-      height: 160,
+      height: 180,
       decoration: BoxDecoration(
         gradient: const LinearGradient(
           colors: [AppTheme.primary, AppTheme.accentGold],
@@ -182,48 +257,53 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(24.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 10,
-                    vertical: 4,
-                  ),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: const Text(
-                    'FLAT 50% OFF',
-                    style: TextStyle(
-                      color: AppTheme.primary,
-                      fontWeight: FontWeight.w800,
-                      fontSize: 12,
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+            child: FittedBox(
+              fit: BoxFit.scaleDown,
+              alignment: Alignment.centerLeft,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 10,
+                      vertical: 4,
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: const Text(
+                      'FLAT 50% OFF',
+                      style: TextStyle(
+                        color: AppTheme.primary,
+                        fontWeight: FontWeight.w800,
+                        fontSize: 12,
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(height: 12),
-                Text(
-                  'Savor the flavor\nof Vrinda Specials',
-                  style: GoogleFonts.plusJakartaSans(
-                    fontSize: 22,
-                    fontWeight: FontWeight.w800,
-                    color: Colors.white,
-                    height: 1.2,
+                  const SizedBox(height: 12),
+                  Text(
+                    'Savor the flavor\nof Vrinda Specials',
+                    style: GoogleFonts.plusJakartaSans(
+                      fontSize: 22,
+                      fontWeight: FontWeight.w800,
+                      color: Colors.white,
+                      height: 1.2,
+                    ),
                   ),
-                ),
-                const SizedBox(height: 12),
-                const Text(
-                  'Use code: VRINDA50',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w600,
+                  const SizedBox(height: 12),
+                  const Text(
+                    'Use code: VRINDA50',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ],
@@ -260,7 +340,10 @@ class _HomeScreenState extends State<HomeScreen> {
         itemBuilder: (context, i) => CategoryChip(
           label: _categories[i]['label'] as String,
           icon: _categories[i]['icon'] as IconData,
-          onTap: () {},
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => const RestaurantScreen()),
+          ),
         ),
       ),
     );
@@ -276,6 +359,10 @@ class _HomeScreenState extends State<HomeScreen> {
         itemBuilder: (context, i) {
           final dish = _trendingDishes[i];
           return PremiumCard(
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const RestaurantScreen()),
+            ),
             radius: AppTheme.radiusL,
             child: SizedBox(
               width: 180,
@@ -451,57 +538,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         );
       },
-    );
-  }
-
-  Widget _buildBottomNav() {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.05),
-            blurRadius: 20,
-            offset: const Offset(0, -5),
-          ),
-        ],
-      ),
-      child: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              _buildNavItem(Icons.home_rounded, 'Home', 0),
-              _buildNavItem(Icons.favorite_rounded, 'Favorites', 1),
-              _buildNavItem(Icons.shopping_bag_rounded, 'Cart', 2),
-              _buildNavItem(Icons.person_rounded, 'Profile', 3),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildNavItem(IconData icon, String label, int index) {
-    final active = _currentNavIndex == index;
-    return GestureDetector(
-      onTap: () => setState(() => _currentNavIndex = index),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(icon, color: active ? AppTheme.primary : AppTheme.textSecondary),
-          const SizedBox(height: 4),
-          Text(
-            label,
-            style: TextStyle(
-              fontSize: 10,
-              fontWeight: active ? FontWeight.w800 : FontWeight.w500,
-              color: active ? AppTheme.primary : AppTheme.textSecondary,
-            ),
-          ),
-        ],
-      ),
     );
   }
 }

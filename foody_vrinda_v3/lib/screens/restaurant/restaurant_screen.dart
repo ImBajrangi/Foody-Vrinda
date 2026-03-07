@@ -189,24 +189,26 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
   }
 
   Widget _buildInfoBar() {
-    return Container(
-      padding: const EdgeInsets.all(20),
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.vertical(
-          top: Radius.circular(AppTheme.radiusXL),
+    return Transform.translate(
+      offset: const Offset(0, -24),
+      child: Container(
+        padding: const EdgeInsets.all(20),
+        decoration: const BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.vertical(
+            top: Radius.circular(AppTheme.radiusXL),
+          ),
         ),
-      ),
-      margin: const EdgeInsets.only(top: -24),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          _infoItem('4.5', Icons.star, '200+ ratings', Colors.amber),
-          _divider(),
-          _infoItem('25-30', Icons.timer_outlined, 'mins', AppTheme.primary),
-          _divider(),
-          _infoItem('₹250', Icons.wallet_outlined, 'for two', Colors.green),
-        ],
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            _infoItem('4.5', Icons.star, '200+ ratings', Colors.amber),
+            _divider(),
+            _infoItem('25-30', Icons.timer_outlined, 'mins', AppTheme.primary),
+            _divider(),
+            _infoItem('₹250', Icons.wallet_outlined, 'for two', Colors.green),
+          ],
+        ),
       ),
     );
   }

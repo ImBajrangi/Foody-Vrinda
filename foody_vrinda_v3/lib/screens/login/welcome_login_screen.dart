@@ -66,7 +66,9 @@ class WelcomeLoginScreen extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: AppTheme.backgroundLight,
                       borderRadius: BorderRadius.circular(AppTheme.radiusM),
-                      border: Border.all(color: Colors.grey.withValues(alpha: 0.2)),
+                      border: Border.all(
+                        color: Colors.grey.withValues(alpha: 0.2),
+                      ),
                     ),
                     child: Row(
                       children: [
@@ -126,9 +128,11 @@ class WelcomeLoginScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 24),
 
-                  // Google Sign In
                   PremiumCard(
-                    onTap: () {},
+                    onTap: () => Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (_) => const HomeScreen()),
+                    ),
                     padding: const EdgeInsets.symmetric(vertical: 12),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,

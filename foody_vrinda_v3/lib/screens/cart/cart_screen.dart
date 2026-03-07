@@ -34,10 +34,12 @@ class _CartScreenState extends State<CartScreen> {
       backgroundColor: AppTheme.backgroundLight,
       appBar: AppBar(
         title: const Text('Checkout'),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () => Navigator.pop(context),
-        ),
+        leading: Navigator.canPop(context)
+            ? IconButton(
+                icon: const Icon(Icons.arrow_back),
+                onPressed: () => Navigator.pop(context),
+              )
+            : null,
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
