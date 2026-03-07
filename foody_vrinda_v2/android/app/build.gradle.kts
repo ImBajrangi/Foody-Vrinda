@@ -17,7 +17,7 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_17.toString()
+        jvmTarget = "17"
     }
 
     defaultConfig {
@@ -25,8 +25,8 @@ android {
         applicationId = "com.foodyvrinda.foody_vrinda_v2"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
-        minSdk = 21 // Required for coreLibraryDesugaring
-        targetSdk = flutter.targetSdk
+        minSdk = flutter.minSdkVersion // Required for coreLibraryDesugaring
+        targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
     }

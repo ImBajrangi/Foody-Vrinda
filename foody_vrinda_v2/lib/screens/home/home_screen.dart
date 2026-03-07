@@ -4,6 +4,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import '../../config/app_theme.dart';
 import '../../widgets/industrial_widgets.dart';
 import '../restaurant/restaurant_screen.dart';
+import '../favorites/favorites_screen.dart';
+import '../cart/cart_screen.dart';
+import '../profile/profile_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -14,6 +17,82 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _currentNavIndex = 0;
+
+  final List<Widget> _screens = [
+    const _HomeContent(),
+    const FavoritesScreen(),
+    const CartScreen(),
+    const ProfileScreen(),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: AppTheme.background,
+      body: IndexedStack(index: _currentNavIndex, children: _screens),
+      bottomNavigationBar: _buildBottomNav(),
+    );
+  }
+
+  Widget _buildBottomNav() {
+    return Container(
+      decoration: BoxDecoration(
+        color: const Color(0xFF181111).withValues(alpha: 0.95),
+        border: const Border(top: BorderSide(color: AppTheme.borderDark)),
+      ),
+      child: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              _navItem(Icons.home, 'FEED', 0),
+              _navItem(Icons.favorite_border, 'LIKES', 1),
+              _navItem(Icons.shopping_bag_outlined, 'CART', 2),
+              _navItem(Icons.person_outline, 'USER', 3),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _navItem(IconData icon, String label, int index) {
+    final isActive = _currentNavIndex == index;
+    return GestureDetector(
+      onTap: () => setState(() => _currentNavIndex = index),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(
+            icon,
+            size: 24,
+            color: isActive ? AppTheme.primary : AppTheme.textSecondary,
+          ),
+          const SizedBox(height: 4),
+          Text(
+            label,
+            style: GoogleFonts.jetBrainsMono(
+              fontSize: 10,
+              fontWeight: FontWeight.w500,
+              color: isActive ? AppTheme.primary : AppTheme.textSecondary,
+              letterSpacing: 1,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _HomeContent extends StatefulWidget {
+  const _HomeContent();
+
+  @override
+  State<_HomeContent> createState() => _HomeContentState();
+}
+
+class _HomeContentState extends State<_HomeContent> {
   final _scrollController = ScrollController();
 
   final _categories = [
@@ -92,29 +171,23 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppTheme.background,
-      body: Column(
-        children: [
-          // Search Header
-          _buildHeader(),
-          // Content
-          Expanded(
-            child: ListView(
-              controller: _scrollController,
-              padding: EdgeInsets.zero,
-              children: [
-                _buildCategories(),
-                _buildHeroCarousel(),
-                _buildMarqueeTicker(),
-                _buildRestaurantFeed(),
-                const SizedBox(height: 100),
-              ],
-            ),
+    return Column(
+      children: [
+        _buildHeader(),
+        Expanded(
+          child: ListView(
+            controller: _scrollController,
+            padding: EdgeInsets.zero,
+            children: [
+              _buildCategories(),
+              _buildHeroCarousel(),
+              _buildMarqueeTicker(),
+              _buildRestaurantFeed(),
+              const SizedBox(height: 100),
+            ],
           ),
-        ],
-      ),
-      bottomNavigationBar: _buildBottomNav(),
+        ),
+      ],
     );
   }
 
@@ -331,7 +404,7 @@ class _HomeScreenState extends State<HomeScreen> {
       child: ClipRect(
         child: _MarqueeWidget(
           child: Text(
-            '⚡ 50% OFF BURGERS • FREE DELIVERY • SUSHI BOGO • RUSH HOUR MODE ACTIVE ⚡ 50% OFF BURGERS • FREE DELIVERY • SUSHI BOGO • RUSH HOUR MODE ACTIVE ⚡ ',
+            '⚡ 50% OFF BURGERS • FREE DELIVERY • SUSHI BOGO • RUSH HOUR MODE ACTIVE ⚡ ',
             style: GoogleFonts.jetBrainsMono(
               fontSize: 11,
               fontWeight: FontWeight.w700,
@@ -353,13 +426,16 @@ class _HomeScreenState extends State<HomeScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                'Incoming Feeds',
-                style: GoogleFonts.inter(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w900,
-                  color: Colors.white,
-                  letterSpacing: -0.3,
+              Expanded(
+                child: Text(
+                  'Incoming Feeds',
+                  style: GoogleFonts.inter(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w900,
+                    color: Colors.white,
+                    letterSpacing: -0.3,
+                  ),
+                  overflow: TextOverflow.ellipsis,
                 ),
               ),
               Container(
@@ -373,10 +449,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
           const SizedBox(height: 16),
-          ...List.generate(
-            _restaurants.length,
-            (i) => _buildRestaurantCard(_restaurants[i]),
-          ),
+          ..._restaurants.map((res) => _buildRestaurantCard(res)),
         ],
       ),
     );
@@ -399,7 +472,6 @@ class _HomeScreenState extends State<HomeScreen> {
         clipBehavior: Clip.antiAlias,
         child: Row(
           children: [
-            // Image
             SizedBox(
               width: 120,
               child: Stack(
@@ -439,7 +511,6 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             Container(width: 1, color: AppTheme.borderDark),
-            // Content
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(12),
@@ -468,41 +539,22 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ],
                     ),
-                    Container(
-                      padding: const EdgeInsets.only(top: 8),
-                      decoration: const BoxDecoration(
-                        border: Border(
-                          top: BorderSide(
-                            color: AppTheme.borderDark,
-                            style: BorderStyle.solid,
-                          ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            const Icon(
+                              Icons.schedule,
+                              size: 14,
+                              color: AppTheme.textSecondary,
+                            ),
+                            const SizedBox(width: 4),
+                            MonoLabel(restaurant['time'] as String),
+                          ],
                         ),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.schedule,
-                                size: 14,
-                                color: AppTheme.textSecondary,
-                              ),
-                              const SizedBox(width: 4),
-                              MonoLabel(restaurant['time'] as String),
-                              const SizedBox(width: 12),
-                              Icon(
-                                Icons.near_me,
-                                size: 14,
-                                color: AppTheme.textSecondary,
-                              ),
-                              const SizedBox(width: 4),
-                              MonoLabel(restaurant['distance'] as String),
-                            ],
-                          ),
-                          MatchScoreBadge(score: restaurant['match'] as int),
-                        ],
-                      ),
+                        MatchScoreBadge(score: restaurant['match'] as int),
+                      ],
                     ),
                   ],
                 ),
@@ -513,59 +565,8 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
-
-  Widget _buildBottomNav() {
-    return Container(
-      decoration: BoxDecoration(
-        color: const Color(0xFF181111).withValues(alpha: 0.95),
-        border: const Border(top: BorderSide(color: AppTheme.borderDark)),
-      ),
-      child: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              _navItem(Icons.home, 'FEED', 0),
-              _navItem(Icons.notifications_outlined, 'ALERTS', 1),
-              _navItem(Icons.bolt, 'TURBO', 2),
-              _navItem(Icons.person_outline, 'PROFILE', 3),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _navItem(IconData icon, String label, int index) {
-    final isActive = _currentNavIndex == index;
-    return GestureDetector(
-      onTap: () => setState(() => _currentNavIndex = index),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(
-            icon,
-            size: 24,
-            color: isActive ? AppTheme.primary : AppTheme.textSecondary,
-          ),
-          const SizedBox(height: 4),
-          Text(
-            label,
-            style: GoogleFonts.jetBrainsMono(
-              fontSize: 10,
-              fontWeight: FontWeight.w500,
-              color: isActive ? AppTheme.primary : AppTheme.textSecondary,
-              letterSpacing: 1,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
 }
 
-// Simple marquee animation widget
 class _MarqueeWidget extends StatefulWidget {
   final Widget child;
   const _MarqueeWidget({required this.child});
@@ -598,11 +599,15 @@ class _MarqueeWidgetState extends State<_MarqueeWidget>
     return AnimatedBuilder(
       animation: _controller,
       builder: (context, child) {
-        return FractionalTranslation(
-          translation: Offset(-_controller.value, 0),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [widget.child, widget.child],
+        return OverflowBox(
+          maxWidth: double.infinity,
+          alignment: Alignment.centerLeft,
+          child: FractionalTranslation(
+            translation: Offset(-_controller.value, 0),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [widget.child, widget.child],
+            ),
           ),
         );
       },

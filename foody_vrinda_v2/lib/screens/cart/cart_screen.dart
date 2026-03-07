@@ -56,24 +56,25 @@ class CartScreen extends StatelessWidget {
                       color: Colors.white,
                     ),
                   ),
-                  GestureDetector(
-                    onTap: () => Navigator.pop(context),
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 16,
-                        vertical: 10,
-                      ),
-                      decoration: BoxDecoration(
-                        color: AppTheme.surface,
-                        borderRadius: BorderRadius.circular(4),
-                        border: Border.all(color: AppTheme.borderDark),
-                      ),
-                      child: const MonoLabel(
-                        'CANCEL',
-                        color: AppTheme.textSecondary,
+                  if (Navigator.canPop(context))
+                    GestureDetector(
+                      onTap: () => Navigator.pop(context),
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 10,
+                        ),
+                        decoration: BoxDecoration(
+                          color: AppTheme.surface,
+                          borderRadius: BorderRadius.circular(4),
+                          border: Border.all(color: AppTheme.borderDark),
+                        ),
+                        child: const MonoLabel(
+                          'CANCEL',
+                          color: AppTheme.textSecondary,
+                        ),
                       ),
                     ),
-                  ),
                 ],
               ),
             ),
