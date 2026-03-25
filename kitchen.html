@@ -32,6 +32,34 @@
       "@context": "https://schema.org",
       "@graph": [
         {
+          "@type": "WebSite",
+          "@id": "https://vrindopnishad.in/Projects/Cloud-Kitchen/kitchen.html#website",
+          "name": "Foody Vrinda",
+          "url": "https://vrindopnishad.in/Projects/Cloud-Kitchen/kitchen.html",
+          "publisher": {
+            "@type": "Organization",
+            "@id": "https://vrindopnishad.in/#organization"
+          },
+          "description": "Authentic Satvik Cloud Kitchen delivering pure vegetarian meals prepared with devotion.",
+          "hasPart": [
+            {
+              "@type": "WebPage",
+              "name": "Menu",
+              "url": "https://vrindopnishad.in/Projects/Cloud-Kitchen/kitchen.html#menu"
+            },
+            {
+              "@type": "WebPage",
+              "name": "Order Now",
+              "url": "https://vrindopnishad.in/Projects/Cloud-Kitchen/kitchen.html#order"
+            },
+            {
+              "@type": "WebPage",
+              "name": "Track Order",
+              "url": "https://vrindopnishad.in/Projects/Cloud-Kitchen/kitchen.html#track"
+            }
+          ]
+        },
+        {
           "@type": "FoodEstablishment",
           "name": "Foody Vrinda",
           "url": "https://vrindopnishad.in/Projects/Cloud-Kitchen/kitchen.html",
@@ -40,7 +68,66 @@
           "parentOrganization": {
             "@type": "Organization",
             "@id": "https://vrindopnishad.in/#organization"
+          },
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Vrindavan",
+            "addressRegion": "UP",
+            "addressCountry": "IN"
           }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://vrindopnishad.in/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Projects",
+              "item": "https://vrindopnishad.in/#projects"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Foody Vrinda",
+              "item": "https://vrindopnishad.in/Projects/Cloud-Kitchen/kitchen.html"
+            }
+          ]
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "name": "Foody Vrinda Navigation",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Menu",
+              "url": "https://vrindopnishad.in/Projects/Cloud-Kitchen/kitchen.html#menu"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Order",
+              "url": "https://vrindopnishad.in/Projects/Cloud-Kitchen/kitchen.html#order"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Kitchen Dashboard",
+              "url": "https://vrindopnishad.in/Projects/Cloud-Kitchen/kitchen.html#kitchen"
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "name": "About",
+              "url": "https://vrindopnishad.in/Vrindopnishad%20Web/about%20code/main/about.html"
+            }
+          ]
         },
         {
           "@type": "Organization",
