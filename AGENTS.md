@@ -37,4 +37,5 @@ A 5-tier fail-safe hierarchy ensures developers and system administrators are ne
 - **Tier 4 (URL Override)**: Access Developer mode anytime by navigating with the URL parameter `?dev_override=108`.
 - **Tier 5 (1-Click Recovery Tool)**: "Restore Master Dev Accounts" button in the Developer panel instantly resets seed administrative records in Supabase and local cache.
 
+Grand Admin users still appear in the user list (for visibility), but you manage the role assignment directly via Supabase tables as requested. The stats card and filter tab are gone from the UI.
 
