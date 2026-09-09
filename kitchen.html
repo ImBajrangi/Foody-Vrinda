@@ -160,26 +160,13 @@
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" crossorigin="anonymous"></script>
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-    <link rel="manifest" href="/site.webmanifest">
+    <link rel="manifest" href="./manifest.json">
     <meta name="theme-color" content="#0071e3">
-    <!-- Favicon Configuration - Absolute URLs for Google Search Reliability -->
+    <!-- Favicon Configuration -->
     <link rel="icon" href="https://vrindopnishad.in/favicon.ico?v=3" sizes="48x48">
     <link rel="icon" href="https://vrindopnishad.in/favicon.svg?v=3" type="image/svg+xml">
     <link rel="apple-touch-icon" sizes="180x180" href="https://vrindopnishad.in/apple-touch-icon.png?v=3">
-    
-    <!-- Light Theme Favicon (Dark Pixels) -->
-    <link rel="icon" href="https://vrindopnishad.in/favicon-light-theme.ico?v=3" sizes="48x48" media="(prefers-color-scheme: light)">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://vrindopnishad.in/favicon-32x32-light-theme.png?v=3" media="(prefers-color-scheme: light)">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://vrindopnishad.in/favicon-16x16-light-theme.png?v=3" media="(prefers-color-scheme: light)">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://vrindopnishad.in/apple-touch-icon-light-theme.png?v=3" media="(prefers-color-scheme: light)">
-    
-    <!-- Dark Theme Favicon (Light Pixels) -->
-    <link rel="icon" href="https://vrindopnishad.in/favicon-dark-theme.ico?v=3" sizes="48x48" media="(prefers-color-scheme: dark)">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://vrindopnishad.in/favicon-32x32-dark-theme.png?v=3" media="(prefers-color-scheme: dark)">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://vrindopnishad.in/favicon-16x16-dark-theme.png?v=3" media="(prefers-color-scheme: dark)">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://vrindopnishad.in/apple-touch-icon-dark-theme.png?v=3" media="(prefers-color-scheme: dark)">
-    
-    <link rel="manifest" href="https://vrindopnishad.in/site.webmanifest?v=3">
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Firebase Import Map for ES Modules -->
@@ -188,7 +175,9 @@
         "imports": {
           "firebase/app": "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js",
           "firebase/auth": "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js",
-          "firebase/analytics": "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js"
+          "firebase/analytics": "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js",
+          "firebase/database": "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js",
+          "firebase/firestore": "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js"
         }
       }
     </script>
@@ -724,8 +713,11 @@
         }
     </style>
     <!-- Google Maps JS SDK -->
+    <script>
+        window.initMap = function () { };
+    </script>
     <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbFR_K70QZEhfKNfKfsddE0ad-vXo0Eto&libraries=places"></script>
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbFR_K70QZEhfKNfKfsddE0ad-vXo0Eto&libraries=places&callback=initMap"></script>
 </head>
 
 <body class="text-gray-900">
@@ -741,8 +733,9 @@
                 <div class="flex items-center gap-3 w-full sm:w-auto flex-grow sm:flex-grow-0">
                     <div
                         class="w-10 h-10 bg-black rounded-xl flex items-center justify-center overflow-hidden flex-shrink-0">
-                        <img src="https://imbajrangi.github.io/Company/Vrindopnishad%20Web/class/logo/foodyVrinda-logo.png"
-                            alt="FoodyVrindaLogo" class="w-full h-full object-contain p-1">
+                        <img src="./public/foodyVrinda-logo.png" alt="FoodyVrindaLogo"
+                            class="w-full h-full object-contain p-1"
+                            onerror="this.src='https://imbajrangi.github.io/Company/Vrindopnishad%20Web/class/logo/foodyVrinda-logo.png'">
                     </div>
                     <div>
                         <h1 class="text-xl sm:text-2xl font-semibold text-gray-900 truncate">Foody Vrinda</h1>
@@ -2901,9 +2894,12 @@
             await loadAllShops();
 
             // Initial check to see if a user is already authenticated (e.g., from a previous session)
-            const unsubscribe = onAuthStateChanged(auth, async (user) => {
+            let initialUnsubscribe;
+            initialUnsubscribe = onAuthStateChanged(auth, async (user) => {
                 await setupUser(user);
-                unsubscribe(); // Stop the initial listener
+                if (typeof initialUnsubscribe === 'function') {
+                    initialUnsubscribe(); // Stop the initial listener
+                }
 
                 // Set up a permanent listener for real-time auth changes
                 onAuthStateChanged(auth, async (user) => {

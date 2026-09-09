@@ -1,0 +1,14 @@
+# Foody Vrinda - Rules
+
+# Recommended UI Overlap Prevention Rules
+1. **Floating Banner Offset Standard**: Toast notifications and floating banners MUST be positioned at top or offset properly on mobile screens to never occlude interactive buttons or bottom drawers.
+2. **Compact Dynamic Island Toast Standard**: Toast notifications MUST follow the Apple Dynamic Island morphing capsule standard (`border-radius: 9999px`, morphing scale entrance & exit animations, swipe-up gesture dismiss) from Vrinda Tours.
+
+# Recommended Mobile Ergonomics Rules
+1. **Horizontal Button Row Standard**: Action rows on mobile PDP/modals must maintain horizontal row layout (`flex items-center gap-3`) with single-line button text (`truncate` / `whitespace-nowrap`) to prevent vertical text wrapping on narrow screens.
+2. **Horizontal Chip Strip Standard**: Filter categories must use smooth horizontal scrolling with `no-scrollbar` and responsive touch targets.
+
+# Recommended Luxury Design System Rules
+1. **Obsidian Palette**: Dark canvas (`#1E1B1C`), Neon Lime (`#E0FF33`), Soft Mint (`#CEF3E7`), Soft Peach (`#FFF2E6`), and Warm Ivory (`#FAF5EB`).
+2. **Modern Organic Cards**: Edge-to-edge organic curved cards with drop-shadow cutout food images.
+3. **Build Verification**: Always run `npm run build` after making modifications to ensure 0 compilation errors.
