@@ -39,3 +39,9 @@ A 5-tier fail-safe hierarchy ensures developers and system administrators are ne
 
 Grand Admin users still appear in the user list (for visibility), but you manage the role assignment directly via Supabase tables as requested. The stats card and filter tab are gone from the UI.
 
+Rule — Shared Database Contract:
+"When updating database schemas, tables, or model payloads, always update both foody_vrinda_v3 (web) and foody_vrinda_app (Flutter) simultaneously to maintain 100% schema parity."
+
+Rule — Cache-First SWR Pattern:
+"All cloud data services must implement stale-while-revalidate (SWR): render synchronously from local cache first for zero perceived latency, then fetch in the background and update UI via events without full page reloads."
+
