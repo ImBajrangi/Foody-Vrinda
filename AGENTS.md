@@ -45,3 +45,6 @@ Rule — Shared Database Contract:
 Rule — Cache-First SWR Pattern:
 "All cloud data services must implement stale-while-revalidate (SWR): render synchronously from local cache first for zero perceived latency, then fetch in the background and update UI via events without full page reloads."
 
+Rule [Auto-Theme Contrast Guard]: Whenever new components or views are created, always ensure CSS variables/utility classes support both Light & Dark modes without hardcoding un-swappable hex colors.
+Rule [Egress-Free Performance Check]: All cache invalidations and UI re-renders must debounce network traffic and maintain 60fps responsiveness on low-tier mobile devices.
+
