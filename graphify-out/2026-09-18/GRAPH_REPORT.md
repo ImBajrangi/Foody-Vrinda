@@ -1,7 +1,7 @@
 # Graph Report - Foody-Vrinda  (2026-09-18)
 
 ## Corpus Check
-- 158 files · ~230,500 words
+- 158 files · ~229,173 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -311,8 +311,8 @@ Cohesion: 0.09
 Nodes (23): AuthProvider, build, _handleEmailSubmit, _handleGoogleSignIn, _handlePhoneSubmit, initState, _saveProfileEdits, build (+15 more)
 
 ### Community 38 - "delivery_alarm_service.dart"
-Cohesion: 0.10
-Nodes (20): AudioPlayer, ChangeNotifier, acknowledgeAll, acknowledgeOrder, _audioPlayer, DeliveryAlarmService, dispose, initialize (+12 more)
+Cohesion: 0.11
+Nodes (19): ChangeNotifier, acknowledgeAll, acknowledgeOrder, _audioPlayer, DeliveryAlarmService, dispose, initialize, _instance (+11 more)
 
 ### Community 39 - "app_config.dart"
 Cohesion: 0.09
@@ -344,7 +344,7 @@ Nodes (17): Color?, AppButton, backgroundColor, build, DangerButton, _getButtonC
 
 ### Community 47 - "kitchen_alarm_service.dart"
 Cohesion: 0.18
-Nodes (19): dart:async, acknowledgeAll, acknowledgeOrder, _alarmSoundFile, _audioPlayer, dispose, initialize, _instance (+11 more)
+Nodes (20): AudioPlayer, dart:async, acknowledgeAll, acknowledgeOrder, _alarmSoundFile, _audioPlayer, dispose, initialize (+12 more)
 
 ### Community 48 - "search_service.dart"
 Cohesion: 0.10
