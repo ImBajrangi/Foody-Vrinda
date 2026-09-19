@@ -1,0 +1,12 @@
+{
+  "name": "foody-vrinda-workspace",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "npm --prefix foody_vrinda_v3 run dev",
+    "build": "npm --prefix foody_vrinda_v3 run build",
+    "android": "npm --prefix foody_vrinda_v3 run android",
+    "sync": "npm --prefix foody_vrinda_v3 run sync",
+    "android:open": "npm --prefix foody_vrinda_v3 run android:open"
+  }
+}
