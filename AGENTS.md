@@ -47,4 +47,5 @@ Rule — Cache-First SWR Pattern:
 
 Rule [Auto-Theme Contrast Guard]: Whenever new components or views are created, always ensure CSS variables/utility classes support both Light & Dark modes without hardcoding un-swappable hex colors.
 Rule [Egress-Free Performance Check]: All cache invalidations and UI re-renders must debounce network traffic and maintain 60fps responsiveness on low-tier mobile devices.
+Rule [Native Bottom Sheet Invariant]: "Interactive bottom sheets and swipe-down drawers must never use CSS keyframe animations with fill-mode: both/forwards or :not(.sheet-dragging) selectors. Dismissal transitions must interpolate continuously from the user's release position (translate3d(0, ${finalDiff}px, 0)) to 105% with cubic-bezier(0.32, 0.72, 0, 1) without premature React re-renders or origin resets."
 
