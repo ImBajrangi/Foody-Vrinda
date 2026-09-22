@@ -1,11 +1,11 @@
 # Graph Report - Foody-Vrinda  (2026-09-22)
 
 ## Corpus Check
-- 140 files · ~232,048 words
+- 140 files · ~231,287 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2251 nodes · 3823 edges · 122 communities (91 shown, 31 thin omitted)
+- 2248 nodes · 3813 edges · 119 communities (89 shown, 30 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 5 edges (avg confidence: 0.64)
 - Token cost: 0 input · 0 output
 
@@ -76,7 +76,6 @@
 - cart_item_model.dart
 - foody_cache_service.dart
 - static const String
-- AuthContext.jsx
 - Foody Vrinda - Cloud Kitchen Mobile App
 - 🔔 Custom Notification Sounds - Implementation Summary
 - sw.js
@@ -118,13 +117,11 @@
 - StarRating.jsx
 - package:shared_preferences_web/shared_preferences_web.dart
 - package:url_launcher_web/url_launcher_web.dart
-- UnifiedSearchModal
 - CustomerView.jsx
 - time_period_selector.dart
-- test-database-sync.js
-- OwnerView.jsx
 - supabase.js
-- _LoginScreenState
+- OwnerView.jsx
+- DeveloperView.jsx
 - RealtimeMultiplexer
 - StatefulWidget
 - firebase.js
@@ -150,18 +147,18 @@
 - `React + Vite Entry Point` --conceptually_related_to--> `Foody Vrinda - Authentic Satvik Cloud Kitchen`  [INFERRED]
   foody_vrinda_v3/index.html → README.md
 - `build` --references--> `AuthProvider`  [EXTRACTED]
+  foody_vrinda_app/lib/screens/dashboard/dashboard_view.dart → foody_vrinda_app/lib/providers/auth_provider.dart
+- `build` --references--> `AuthProvider`  [EXTRACTED]
   foody_vrinda_app/lib/screens/kitchen/kitchen_view.dart → foody_vrinda_app/lib/providers/auth_provider.dart
 - `_initNotificationListener` --references--> `AuthProvider`  [EXTRACTED]
   foody_vrinda_app/lib/screens/kitchen/kitchen_view.dart → foody_vrinda_app/lib/providers/auth_provider.dart
 - `Kitchen Entry Point` --references--> `Firebase BaaS`  [EXTRACTED]
   kitchen.html → README.md
-- `Kitchen Entry Point` --references--> `Razorpay SDK`  [EXTRACTED]
-  kitchen.html → README.md
 
 ## Import Cycles
 - None detected.
 
-## Communities (122 total, 31 thin omitted)
+## Communities (119 total, 30 thin omitted)
 
 ### Community 0 - "developer_panel.dart"
 Cohesion: 0.01
@@ -177,7 +174,7 @@ Nodes (20): _audioPlayer, availableSounds, build, _buildRoleCard, _buildTestButt
 
 ### Community 3 - "hit_soochi_service.dart"
 Cohesion: 0.08
-Nodes (47): bool?, _baseUrl, boostReason, category, confidence, configure, cta, description (+39 more)
+Nodes (46): bool?, _baseUrl, boostReason, category, confidence, configure, cta, description (+38 more)
 
 ### Community 4 - "lottie_assets.dart"
 Cohesion: 0.04
@@ -224,12 +221,12 @@ Cohesion: 0.09
 Nodes (34): FlutterLocalNotificationsPlugin, completeOrderWorkflow, createOrderWithNotifications, initializeNotifications, _notificationService, NotificationUsageExample, notifyCustomerOfOrderStatus, notifyDeliveryStaffOfReadyOrder (+26 more)
 
 ### Community 15 - "dashboard_view.dart"
-Cohesion: 0.07
-Nodes (30): _acknowledgeReturn, amount, _buildCashManagement, _buildChartsRow, _buildHeader, _buildKPICards, _buildOrderHistory, _buildOrderStatusCard (+22 more)
+Cohesion: 0.06
+Nodes (32): _acknowledgeReturn, amount, build, _buildCashManagement, _buildChartsRow, _buildHeader, _buildKPICards, _buildOrderHistory (+24 more)
 
 ### Community 16 - "kitchen_view.dart"
-Cohesion: 0.07
-Nodes (28): _alarmService, _bellAnimation, _bellController, build, _buildAlarmBanner, _buildHeader, createState, dispose (+20 more)
+Cohesion: 0.06
+Nodes (36): ../config/theme.dart, _alarmService, _bellAnimation, _bellController, build, _buildAlarmBanner, _buildHeader, createState (+28 more)
 
 ### Community 17 - "animations.dart"
 Cohesion: 0.06
@@ -241,7 +238,7 @@ Nodes (35): AuthService, AuthStatus get, AuthStatus, _clearCachedUserData, clear
 
 ### Community 19 - "order_service.dart"
 Cohesion: 0.10
-Nodes (33): collectCash, createOrder, deleteCashTransaction, deleteOrder, getAllOrders, getCashTransactions, getCompletedOrders, getDeliveryOrders (+25 more)
+Nodes (32): collectCash, createOrder, deleteCashTransaction, deleteOrder, getAllOrders, getCashTransactions, getCompletedOrders, getDeliveryOrders (+24 more)
 
 ### Community 20 - "cards.dart"
 Cohesion: 0.06
@@ -256,8 +253,8 @@ Cohesion: 0.07
 Nodes (27): _apiKey, _calculateStraightLineDistance, description, distanceMeters, DistanceResult, distanceText, durationSeconds, durationText (+19 more)
 
 ### Community 23 - "App.jsx"
-Cohesion: 0.08
-Nodes (27): App(), AuthModal(), DESK_CONFIG, CompleteProfileModal(), ErrorBoundary, Header(), NotificationPanel(), OrderHistoryDrawer() (+19 more)
+Cohesion: 0.09
+Nodes (23): App(), AuthModal(), DESK_CONFIG, ErrorBoundary, Header(), OrderHistoryDrawer(), RewardsModal(), SocialLinksBar() (+15 more)
 
 ### Community 24 - "auth_service.dart"
 Cohesion: 0.17
@@ -265,27 +262,27 @@ Nodes (11): ../../config/app_config.dart, AuthService, getAllUsers, getUserData,
 
 ### Community 25 - "location_picker_dialog.dart"
 Cohesion: 0.07
-Nodes (27): _addressDisplay, build, _buildAddressCard, _buildCenterPin, _buildFooter, _buildHeader, _buildLoadingState, _buildLocationFAB (+19 more)
+Nodes (27): dart:ui, _addressDisplay, build, _buildAddressCard, _buildCenterPin, _buildFooter, _buildHeader, _buildLoadingState (+19 more)
 
 ### Community 26 - "search_screen.dart"
 Cohesion: 0.07
-Nodes (29): FocusNode, build, _buildBody, _buildCategoryChip, _buildEmptyState, _buildNoResults, _buildPopularShopsList, _buildPopularShopTile (+21 more)
+Nodes (30): ../../config/telegram_page_route.dart, FocusNode, build, _buildBody, _buildCategoryChip, _buildEmptyState, _buildNoResults, _buildPopularShopsList (+22 more)
 
 ### Community 27 - "cart_provider.dart"
-Cohesion: 0.10
-Nodes (25): addItem, CartProvider, clear, clearAndSetShop, decrementItem, formattedTotal, getItemQuantity, hasItem (+17 more)
+Cohesion: 0.09
+Nodes (26): addItem, CartProvider, clear, clearAndSetShop, decrementItem, formattedTotal, getItemQuantity, hasItem (+18 more)
 
 ### Community 28 - "address_autocomplete_field.dart"
-Cohesion: 0.07
-Nodes (27): dart:ui, _inputDecoration, AddressAutocompleteField, _AddressAutocompleteFieldState, build, controller, createState, _debounce (+19 more)
+Cohesion: 0.08
+Nodes (26): _inputDecoration, AddressAutocompleteField, _AddressAutocompleteFieldState, build, controller, createState, _debounce, decoration (+18 more)
 
 ### Community 29 - "StatelessWidget"
 Cohesion: 0.09
-Nodes (23): _CashSummaryCard, _CompletedOrderTile, _KPICard, _AllTimeCard, _CashSummaryCard, _LocationButton, _RecentDeliveryTile, _StatItem (+15 more)
+Nodes (23): _CashSummaryCard, _KPICard, _AllTimeCard, _CashSummaryCard, _LocationButton, _RecentDeliveryTile, _StatItem, _AnalyticsCard (+15 more)
 
 ### Community 30 - "order_tracking_screen.dart"
-Cohesion: 0.09
-Nodes (23): ../../config/telegram_page_route.dart, isInline, OrderHistoryScreen, build, _buildDeliveryMap, _buildInfoRow, _buildSimpleCard, _calculateETA (+15 more)
+Cohesion: 0.12
+Nodes (16): build, _buildDeliveryMap, _buildInfoRow, _buildSimpleCard, _calculateETA, _callShop, createState, initState (+8 more)
 
 ### Community 31 - "String?"
 Cohesion: 0.09
@@ -301,7 +298,7 @@ Nodes (22): delivery_alarm_service.dart, _currentShopId, _currentUserId, _curren
 
 ### Community 34 - "login_screen.dart"
 Cohesion: 0.05
-Nodes (42): _addressEditController, _buildAlertBanner, _buildAuthenticatedProfileView, _buildHeaderRow, _buildInputField, _buildMethodTab, _buildPasswordField, _buildRoleChip (+34 more)
+Nodes (44): _addressEditController, _buildAlertBanner, _buildAuthenticatedProfileView, _buildHeaderRow, _buildInputField, _buildMethodTab, _buildPasswordField, _buildRoleChip (+36 more)
 
 ### Community 35 - "review_service.dart"
 Cohesion: 0.29
@@ -312,12 +309,12 @@ Cohesion: 0.10
 Nodes (20): ../cart/cart_screen.dart, ../../config/design_system.dart, _buildCategoryTabBar, _buildInfoPanel, _buildReviewTile, createState, _formatDate, MenuScreen (+12 more)
 
 ### Community 37 - "AuthProvider"
-Cohesion: 0.08
-Nodes (25): AuthProvider, build, _handleEmailSubmit, _handleGoogleSignIn, _handlePhoneSubmit, initState, _saveProfileEdits, build (+17 more)
+Cohesion: 0.09
+Nodes (24): AuthProvider, build, _handleEmailSubmit, _handleGoogleSignIn, _handlePhoneSubmit, initState, _saveProfileEdits, _loadStats (+16 more)
 
 ### Community 38 - "delivery_alarm_service.dart"
-Cohesion: 0.11
-Nodes (19): ChangeNotifier, acknowledgeAll, acknowledgeOrder, _audioPlayer, DeliveryAlarmService, dispose, initialize, _instance (+11 more)
+Cohesion: 0.10
+Nodes (20): AudioPlayer, ChangeNotifier, acknowledgeAll, acknowledgeOrder, _audioPlayer, DeliveryAlarmService, dispose, initialize (+12 more)
 
 ### Community 39 - "app_config.dart"
 Cohesion: 0.09
@@ -333,7 +330,7 @@ Nodes (18): OrderModel, build, currentStatus, _getColor, _getIcon, icon, isCompl
 
 ### Community 43 - "inputs.dart"
 Cohesion: 0.11
-Nodes (18): AppDropdown, AppInputField, build, controller, enabled, hintText, items, keyboardType (+10 more)
+Nodes (17): AppDropdown, AppInputField, build, controller, enabled, hintText, items, keyboardType (+9 more)
 
 ### Community 44 - "notification_model.dart"
 Cohesion: 0.12
@@ -349,15 +346,15 @@ Nodes (17): Color?, AppButton, backgroundColor, build, DangerButton, _getButtonC
 
 ### Community 47 - "kitchen_alarm_service.dart"
 Cohesion: 0.18
-Nodes (20): AudioPlayer, dart:async, acknowledgeAll, acknowledgeOrder, _alarmSoundFile, _audioPlayer, dispose, initialize (+12 more)
+Nodes (19): dart:async, acknowledgeAll, acknowledgeOrder, _alarmSoundFile, _audioPlayer, dispose, initialize, _instance (+11 more)
 
 ### Community 48 - "search_service.dart"
 Cohesion: 0.10
 Nodes (32): ShopModel, HitSoochiService, original, RecommendationResponse, confidence, detectedIntent, enhancedSearch, EnhancedSearchResponse (+24 more)
 
 ### Community 50 - "pressable_scale.dart"
-Cohesion: 0.11
-Nodes (19): Animation, AnimationController, Duration, _animation, build, child, _controller, createState (+11 more)
+Cohesion: 0.10
+Nodes (20): Animation, AnimationController, Duration, _animation, build, child, _controller, createState (+12 more)
 
 ### Community 52 - "telegram_page_route.dart"
 Cohesion: 0.23
@@ -391,10 +388,6 @@ Nodes (22): dart:convert, foody_cache_service.dart, _cacheExpiry, cacheMenuItems
 Cohesion: 0.22
 Nodes (8): apiKey, appId, authDomain, FirebaseConfig, messagingSenderId, projectId, storageBucket, static const String
 
-### Community 61 - "AuthContext.jsx"
-Cohesion: 0.33
-Nodes (7): AuthContext, AUTHORIZED_ADMIN_EMAILS, AUTHORIZED_DEV_EMAILS, isAdminUser(), isDeveloperUser(), nativeNotify, getLiveUserRoleAndProfile()
-
 ### Community 62 - "Foody Vrinda - Cloud Kitchen Mobile App"
 Cohesion: 0.10
 Nodes (19): Firebase BaaS, Flutter Pubspec Configuration, Build Commands, Customer Features, Features, Firebase Configuration, Foody Vrinda - Cloud Kitchen Mobile App, for emulator (+11 more)
@@ -417,7 +410,7 @@ Nodes (16): 💻 Code Snippets, ⚡ Common Issues & Fixes, 🔔 Custom Notificat
 
 ### Community 72 - "notification_settings_screen.dart"
 Cohesion: 0.12
-Nodes (17): class, ../../config/notification_sound_config.dart, ../config/theme.dart, _audioPlayer, _availableSounds, build, _buildSoundTile, createState (+9 more)
+Nodes (16): class, ../../config/notification_sound_config.dart, _audioPlayer, _availableSounds, build, _buildSoundTile, createState, dispose (+8 more)
 
 ### Community 73 - "notification_sound_config.dart"
 Cohesion: 0.12
@@ -463,33 +456,29 @@ Nodes (8): [Developer Panel], Implementation Plan - Multi-Shop Delivery Assignme
 Cohesion: 0.25
 Nodes (7): 1. UI/UX Design System & Palette, 2. Dynamic Island Toast Notifications (From Vrinda Tours Standard), 3. Mobile Ergonomics & Overlap Prevention (From Chitra Vrinda Standard), 4. Performance, Image & Caching Standards, 5. Build & Verification Standard, 6. Emergency Master Access & Lockout Prevention System, Foody Vrinda - Project Rules & Guidelines
 
-### Community 106 - "UnifiedSearchModal"
-Cohesion: 0.29
-Nodes (3): UnifiedSearchModal(), HitSoochiService, LOCAL_SATVIK_ONTOLOGY
-
 ### Community 107 - "CustomerView.jsx"
-Cohesion: 0.17
-Nodes (18): ActiveOrderCapsule(), ActiveOrderTrackingModal(), MapPicker(), QUANTITIES, QuantityPickerSheet(), BouncingLoader(), StyledWrapper, useBackHandler() (+10 more)
+Cohesion: 0.11
+Nodes (23): ActiveOrderCapsule(), ActiveOrderTrackingModal(), CompleteProfileModal(), MapPicker(), NotificationPanel(), BouncingLoader(), StyledWrapper, useNotifications() (+15 more)
 
 ### Community 108 - "time_period_selector.dart"
 Cohesion: 0.13
 Nodes (14): build, isSelected, onChanged, onTap, period, selectedPeriods, showHeader, _TimePeriodCard (+6 more)
 
-### Community 109 - "test-database-sync.js"
-Cohesion: 0.19
-Nodes (13): COLORS, runAdversarialTestSuite(), section(), COLORS, pass(), runTestSuite(), section(), ALLOWED_ORDER_TRANSITIONS (+5 more)
+### Community 109 - "supabase.js"
+Cohesion: 0.08
+Nodes (43): COLORS, runAdversarialTestSuite(), section(), COLORS, pass(), runTestSuite(), section(), QUANTITIES (+35 more)
 
 ### Community 110 - "OwnerView.jsx"
-Cohesion: 0.16
-Nodes (28): ActiveAlarmBanner(), DynamicToast(), NativeTimePicker(), SearchableDropdown(), useAuth(), DEFAULT_SEEDS, NotificationContext, NotificationProvider() (+20 more)
+Cohesion: 0.17
+Nodes (27): ActiveAlarmBanner(), DynamicToast(), NativeTimePicker(), SearchableDropdown(), DEFAULT_SEEDS, NotificationContext, NotificationProvider(), getAudioContext() (+19 more)
 
-### Community 111 - "supabase.js"
-Cohesion: 0.11
-Nodes (55): AuthProvider(), broadcastAlarmEvent(), CACHE_TTL_MS, calculateDistanceKm(), COMPLETE_FOODY_DATABASE_SCHEMA_SQL, createCloudMenuItem(), createCloudOffer(), createCloudShop() (+47 more)
+### Community 111 - "DeveloperView.jsx"
+Cohesion: 0.18
+Nodes (36): AuthContext, AUTHORIZED_ADMIN_EMAILS, AUTHORIZED_DEV_EMAILS, AuthProvider(), isAdminUser(), isDeveloperUser(), broadcastAlarmEvent(), createCloudOffer() (+28 more)
 
 ### Community 113 - "RealtimeMultiplexer"
-Cohesion: 0.22
-Nodes (5): getCachedItem(), getCloudRoles(), RealtimeMultiplexer, subscribeCloudOffers(), subscribeCloudShops()
+Cohesion: 0.27
+Nodes (3): RealtimeMultiplexer, subscribeCloudOffers(), subscribeCloudShops()
 
 ### Community 114 - "StatefulWidget"
 Cohesion: 0.13
@@ -514,12 +503,12 @@ Nodes (3): OrderStatus, OrderStatusExtension, OrderStatus
 ## Knowledge Gaps
 - **1308 isolated node(s):** `AppConfig`, `developerEmail`, `developerPassword`, `defaultShopImage`, `defaultFoodImage` (+1303 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **31 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **30 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `AuthProvider` connect `AuthProvider` to `developer_panel.dart`, `login_screen.dart`, `user_preferences_provider.dart`, `home_screen.dart`, `delivery_alarm_service.dart`, `cart_screen.dart`, `delivery_dashboard_view.dart`, `delivery_view.dart`, `dashboard_view.dart`, `_LoginScreenState`, `kitchen_view.dart`, `auth_provider.dart`, `StatefulWidget`, `telegram_page_route.dart`, `cart_provider.dart`, `order_tracking_screen.dart`?**
+- **Why does `AuthProvider` connect `AuthProvider` to `developer_panel.dart`, `login_screen.dart`, `user_preferences_provider.dart`, `home_screen.dart`, `delivery_alarm_service.dart`, `cart_screen.dart`, `delivery_dashboard_view.dart`, `delivery_view.dart`, `dashboard_view.dart`, `kitchen_view.dart`, `auth_provider.dart`, `StatefulWidget`, `telegram_page_route.dart`, `cart_provider.dart`, `StatelessWidget`?**
   _High betweenness centrality (0.019) - this node is a cross-community bridge._
 - **Why does `SupabaseService` connect `auth_service.dart` to `order_notification_manager.dart`, `review_service.dart`, `shop_service.dart`, `supabase_service.dart`, `search_service.dart`, `auth_provider.dart`, `order_service.dart`?**
   _High betweenness centrality (0.007) - this node is a cross-community bridge._

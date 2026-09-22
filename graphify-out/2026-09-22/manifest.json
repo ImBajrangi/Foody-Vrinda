@@ -320,8 +320,8 @@
     "semantic_hash": ""
   },
   "foody_vrinda_v3/src/components/AuthModal.jsx": {
-    "mtime": 1790086216.5600536,
-    "ast_hash": "f4f64b3d9b6fa5c42256c5e0aec48acf",
+    "mtime": 1790083242.4912572,
+    "ast_hash": "154503ddae9caf1299799b6531ff53b1",
     "semantic_hash": ""
   },
   "foody_vrinda_v3/src/components/Header.jsx": {
@@ -410,8 +410,8 @@
     "semantic_hash": ""
   },
   "foody_vrinda_v3/src/context/AuthContext.jsx": {
-    "mtime": 1790089302.4679403,
-    "ast_hash": "41a8414c2da720aa1d34fae91e775d88",
+    "mtime": 1789918744.2353122,
+    "ast_hash": "b755f18cf997ea00560c99862ed5655e",
     "semantic_hash": ""
   },
   "foody_vrinda_v3/src/context/CartContext.jsx": {
@@ -420,8 +420,8 @@
     "semantic_hash": ""
   },
   "foody_vrinda_v3/src/context/NotificationContext.jsx": {
-    "mtime": 1790089322.6532605,
-    "ast_hash": "37dc8bb3870c5f40b10562514edf7f9d",
+    "mtime": 1790080023.981453,
+    "ast_hash": "9e9fe733a997d577f50f13f2e53cc300",
     "semantic_hash": ""
   },
   "foody_vrinda_v3/src/firebase.js": {
@@ -430,8 +430,8 @@
     "semantic_hash": ""
   },
   "foody_vrinda_v3/src/hooks/useAudioAlarm.js": {
-    "mtime": 1790086420.0766072,
-    "ast_hash": "a5cad01c0881187ae5beaf9c72e07bc3",
+    "mtime": 1788974356.032445,
+    "ast_hash": "27880036c718eb7c9923561788db7480",
     "semantic_hash": ""
   },
   "foody_vrinda_v3/src/hooks/useFastNotify.js": {
@@ -445,13 +445,13 @@
     "semantic_hash": ""
   },
   "foody_vrinda_v3/src/supabase.js": {
-    "mtime": 1790087218.9368565,
-    "ast_hash": "3c5bbeabb206830a13af58168045fc51",
+    "mtime": 1790083109.7709785,
+    "ast_hash": "232702595714f6880050807fa756d353",
     "semantic_hash": ""
   },
   "foody_vrinda_v3/src/views/CustomerView.jsx": {
-    "mtime": 1790086117.3368754,
-    "ast_hash": "f494182c85c483be4b279862270b0f05",
+    "mtime": 1790084502.6128082,
+    "ast_hash": "37e728354318738feda8902d995ad748",
     "semantic_hash": ""
   },
   "foody_vrinda_v3/src/views/DeveloperView.jsx": {
@@ -710,8 +710,8 @@
     "semantic_hash": ""
   },
   "foody_vrinda_v3/src/services/nativeNotificationService.js": {
-    "mtime": 1790089312.0368757,
-    "ast_hash": "ca02187fc6f45c4194499de897d22b2d",
+    "mtime": 1790078552.5433552,
+    "ast_hash": "58292fc301b30c36e545b11e274dd4e9",
     "semantic_hash": ""
   },
   "foody_vrinda_v3/AGENTS.md": {
