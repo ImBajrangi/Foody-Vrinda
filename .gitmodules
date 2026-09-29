@@ -3,7 +3,7 @@
 	url = https://github.com/ImBajrangi/foody_vrinda_v2.git
 [submodule "foody_vrinda_v3"]
 	path = foody_vrinda_v3
-	url = https://github.com/ImBajrangi/foody_vrinda_v3.git
+	url = https://github.com/ImBajrangi/foody_vrinda_app_v4.git
 [submodule "foody_vrinda_app"]
 	path = foody_vrinda_app
 	url = https://github.com/ImBajrangi/foody_vrinda_app.git
