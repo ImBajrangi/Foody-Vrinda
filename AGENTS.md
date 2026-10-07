@@ -49,3 +49,58 @@ Rule [Auto-Theme Contrast Guard]: Whenever new components or views are created, 
 Rule [Egress-Free Performance Check]: All cache invalidations and UI re-renders must debounce network traffic and maintain 60fps responsiveness on low-tier mobile devices.
 Rule [Native Bottom Sheet Invariant]: "Interactive bottom sheets and swipe-down drawers must never use CSS keyframe animations with fill-mode: both/forwards or :not(.sheet-dragging) selectors. Dismissal transitions must interpolate continuously from the user's release position (translate3d(0, ${finalDiff}px, 0)) to 105% with cubic-bezier(0.32, 0.72, 0, 1) without premature React re-renders or origin resets."
 
+## Multi-Environment & Production Safety
+
+### Environment Isolation
+
+- Alpha/Dev, Beta/Staging, and Production MUST use separate Supabase projects.
+- Production customer, order, payment, address, and restaurant data MUST NOT be copied into Alpha or Beta in raw form.
+- Beta may use synthetic or sanitized/anonymized production-like data only.
+
+### Production Database Rules
+
+NEVER directly perform:
+- DROP
+- TRUNCATE
+- DELETE without an explicit WHERE clause
+- destructive UPDATE without an explicit WHERE clause
+- mock/test seed insertion
+- ad-hoc schema modifications
+
+against the Production database.
+
+### Migration Rules
+
+- Every schema change MUST be implemented as a version-controlled migration.
+- Every migration MUST be tested on Alpha first.
+- Every production-bound migration MUST pass Beta/Staging validation.
+- Production migrations MUST be backward-compatible whenever possible.
+- Prefer Expand → Migrate → Contract for breaking schema changes.
+
+### Deployment Rules
+
+feature/* → Alpha/Dev
+beta → Beta/Staging
+main → Production
+
+Production deployment requires:
+1. Migration validation
+2. Application tests
+3. Security/RLS validation
+4. Beta/UAT approval
+5. Backup/recovery readiness
+
+### Credentials
+
+- Environment credentials MUST never be committed to Git.
+- Production service-role credentials MUST never be exposed to frontend code.
+- Each environment MUST use its own Supabase credentials.
+
+### Production Data
+
+Production data MUST be treated as immutable business data.
+Testing MUST use synthetic/test accounts and test shops.
+
+### Disaster Recovery & Rollback Standard
+
+All disaster recovery procedures and rollback drills MUST strictly follow the reproducible runbook at `foody_vrinda_v3/ProductDetails/DISASTER_RECOVERY_RUNBOOK.md`. A DR drill is certified successful only when an independent authorized engineer can reproduce the full restore, schema verification, and critical smoke flows with logged RTO and RPO metrics without touching production infrastructure.
