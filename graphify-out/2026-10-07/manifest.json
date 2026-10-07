@@ -500,7 +500,7 @@
     "semantic_hash": ""
   },
   "AGENTS.md": {
-    "mtime": 1791094499.2154105,
+    "mtime": 1791366449.9178245,
     "ast_hash": "0cfcc5e9fb89ebfbbed77b0514599665",
     "semantic_hash": ""
   },
@@ -855,8 +855,8 @@
     "semantic_hash": ""
   },
   "foody_vrinda_v3/src/services/appUpdateService.js": {
-    "mtime": 1790765589.5181923,
-    "ast_hash": "e6b809456c6a22a3455915b539a436b2",
+    "mtime": 1791367548.0776913,
+    "ast_hash": "8dffea0f9a564f9f5e4f0a8e367cfacf",
     "semantic_hash": ""
   },
   "foody_vrinda_v3/supabase/functions/order-push-notification/index.ts": {
@@ -1037,6 +1037,11 @@
   "foody_vrinda_v3/src/utils/deliveryReportUtils.js": {
     "mtime": 1791363264.8093536,
     "ast_hash": "e932353c5a68c6bb8d678b883a3c7fbf",
+    "semantic_hash": ""
+  },
+  "foody_vrinda_v3/scripts/release-apk.mjs": {
+    "mtime": 1791366801.2927403,
+    "ast_hash": "f8e35002de57a49e7b1bd6e5289decb6",
     "semantic_hash": ""
   }
 }

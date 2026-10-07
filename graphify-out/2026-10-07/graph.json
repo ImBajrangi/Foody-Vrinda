@@ -612,8 +612,8 @@
       "source_location": null,
       "_origin": "ast",
       "id": "dart_ui",
-      "community": 25,
-      "community_name": "location_picker_dialog.dart",
+      "community": 28,
+      "community_name": "address_autocomplete_field.dart",
       "norm_label": "dart:ui"
     },
     {
@@ -645,8 +645,8 @@
       "source_location": null,
       "_origin": "ast",
       "id": "package_flutter_animate_flutter_animate_dart",
-      "community": 20,
-      "community_name": "cards.dart",
+      "community": 36,
+      "community_name": "menu_screen.dart",
       "norm_label": "package:flutter_animate/flutter_animate.dart"
     },
     {
@@ -1756,8 +1756,8 @@
       "source_location": null,
       "_origin": "ast",
       "id": "widget",
-      "community": 43,
-      "community_name": "inputs.dart",
+      "community": 135,
+      "community_name": "pressable_scale.dart",
       "norm_label": "widget"
     },
     {
@@ -2636,8 +2636,8 @@
       "source_location": null,
       "_origin": "ast",
       "id": "animationcontroller",
-      "community": 32,
-      "community_name": "main.dart",
+      "community": 135,
+      "community_name": "pressable_scale.dart",
       "norm_label": "animationcontroller"
     },
     {
@@ -2669,8 +2669,8 @@
       "source_location": null,
       "_origin": "ast",
       "id": "animation",
-      "community": 32,
-      "community_name": "main.dart",
+      "community": 135,
+      "community_name": "pressable_scale.dart",
       "norm_label": "animation"
     },
     {
@@ -2779,8 +2779,8 @@
       "source_location": null,
       "_origin": "ast",
       "id": "package_flutter_services_dart",
-      "community": 32,
-      "community_name": "main.dart",
+      "community": 46,
+      "community_name": "buttons.dart",
       "norm_label": "package:flutter/services.dart"
     },
     {
@@ -2790,8 +2790,8 @@
       "source_location": null,
       "_origin": "ast",
       "id": "package_provider_provider_dart",
-      "community": 16,
-      "community_name": "kitchen_view.dart",
+      "community": 30,
+      "community_name": "order_tracking_screen.dart",
       "norm_label": "package:provider/provider.dart"
     },
     {
@@ -2812,8 +2812,8 @@
       "source_location": null,
       "_origin": "ast",
       "id": "providers_auth_provider_dart",
-      "community": 16,
-      "community_name": "kitchen_view.dart",
+      "community": 30,
+      "community_name": "order_tracking_screen.dart",
       "norm_label": "../../providers/auth_provider.dart"
     },
     {
@@ -2823,8 +2823,8 @@
       "source_location": null,
       "_origin": "ast",
       "id": "providers_cart_provider_dart",
-      "community": 36,
-      "community_name": "menu_screen.dart",
+      "community": 32,
+      "community_name": "main.dart",
       "norm_label": "../../providers/cart_provider.dart"
     },
     {
@@ -4528,8 +4528,8 @@
       "source_location": null,
       "_origin": "ast",
       "id": "int_get",
-      "community": 38,
-      "community_name": "delivery_alarm_service.dart",
+      "community": 47,
+      "community_name": "kitchen_alarm_service.dart",
       "norm_label": "int get"
     },
     {
@@ -6145,8 +6145,8 @@
       "source_location": null,
       "_origin": "ast",
       "id": "models_cart_item_model_dart",
-      "community": 27,
-      "community_name": "cart_provider.dart",
+      "community": 19,
+      "community_name": "order_service.dart",
       "norm_label": "../models/cart_item_model.dart"
     },
     {
@@ -7443,8 +7443,8 @@
       "source_location": null,
       "_origin": "ast",
       "id": "widgets_animations_dart",
-      "community": 16,
-      "community_name": "kitchen_view.dart",
+      "community": 30,
+      "community_name": "order_tracking_screen.dart",
       "norm_label": "../../widgets/animations.dart"
     },
     {
@@ -7454,8 +7454,8 @@
       "source_location": null,
       "_origin": "ast",
       "id": "services_order_service_dart",
-      "community": 16,
-      "community_name": "kitchen_view.dart",
+      "community": 30,
+      "community_name": "order_tracking_screen.dart",
       "norm_label": "../../services/order_service.dart"
     },
     {
@@ -7520,8 +7520,8 @@
       "source_location": null,
       "_origin": "ast",
       "id": "package_latlong2_latlong_dart",
-      "community": 28,
-      "community_name": "address_autocomplete_field.dart",
+      "community": 25,
+      "community_name": "location_picker_dialog.dart",
       "norm_label": "package:latlong2/latlong.dart"
     },
     {
@@ -7553,8 +7553,8 @@
       "source_location": null,
       "_origin": "ast",
       "id": "config_telegram_page_route_dart",
-      "community": 16,
-      "community_name": "kitchen_view.dart",
+      "community": 30,
+      "community_name": "order_tracking_screen.dart",
       "norm_label": "../../config/telegram_page_route.dart"
     },
     {
@@ -7564,8 +7564,8 @@
       "source_location": null,
       "_origin": "ast",
       "id": "models_order_model_dart",
-      "community": 41,
-      "community_name": "order_widgets.dart",
+      "community": 30,
+      "community_name": "order_tracking_screen.dart",
       "norm_label": "../models/order_model.dart"
     },
     {
@@ -7597,8 +7597,8 @@
       "source_location": null,
       "_origin": "ast",
       "id": "foody_vrinda_app_lib_screens_dashboard_dashboard_view_dashboardview",
-      "community": 136,
-      "community_name": "StatefulWidget",
+      "community": 15,
+      "community_name": "dashboard_view.dart",
       "norm_label": "dashboardview"
     },
     {
@@ -7608,8 +7608,8 @@
       "source_location": null,
       "_origin": "ast",
       "id": "foody_vrinda_app_lib_screens_dashboard_dashboard_view_dashboardviewstate",
-      "community": 136,
-      "community_name": "StatefulWidget",
+      "community": 15,
+      "community_name": "dashboard_view.dart",
       "norm_label": "_dashboardviewstate"
     },
     {
@@ -7619,8 +7619,8 @@
       "source_location": null,
       "_origin": "ast",
       "id": "foody_vrinda_app_lib_screens_dashboard_dashboard_view_kpicard",
-      "community": 15,
-      "community_name": "dashboard_view.dart",
+      "community": 29,
+      "community_name": "StatelessWidget",
       "norm_label": "_kpicard"
     },
     {
@@ -7652,8 +7652,8 @@
       "source_location": null,
       "_origin": "ast",
       "id": "foody_vrinda_app_lib_screens_dashboard_dashboard_view_cashsummarycard",
-      "community": 15,
-      "community_name": "dashboard_view.dart",
+      "community": 29,
+      "community_name": "StatelessWidget",
       "norm_label": "_cashsummarycard"
     },
     {
@@ -7751,8 +7751,8 @@
       "source_location": null,
       "_origin": "ast",
       "id": "icondata",
-      "community": 46,
-      "community_name": "buttons.dart",
+      "community": 43,
+      "community_name": "inputs.dart",
       "norm_label": "icondata"
     },
     {
@@ -8136,8 +8136,8 @@
       "source_location": null,
       "_origin": "ast",
       "id": "foody_vrinda_app_lib_screens_delivery_delivery_dashboard_view_deliverymapview",
-      "community": 136,
-      "community_name": "StatefulWidget",
+      "community": 37,
+      "community_name": "AuthProvider",
       "norm_label": "_deliverymapview"
     },
     {
@@ -8147,8 +8147,8 @@
       "source_location": null,
       "_origin": "ast",
       "id": "foody_vrinda_app_lib_screens_delivery_delivery_dashboard_view_deliverymapviewstate",
-      "community": 136,
-      "community_name": "StatefulWidget",
+      "community": 37,
+      "community_name": "AuthProvider",
       "norm_label": "_deliverymapviewstate"
     },
     {
@@ -9115,8 +9115,8 @@
       "source_location": null,
       "_origin": "ast",
       "id": "widgets_order_widgets_dart",
-      "community": 16,
-      "community_name": "kitchen_view.dart",
+      "community": 30,
+      "community_name": "order_tracking_screen.dart",
       "norm_label": "../../widgets/order_widgets.dart"
     },
     {
@@ -11392,8 +11392,8 @@
       "source_location": null,
       "_origin": "ast",
       "id": "package_audioplayers_audioplayers_dart",
-      "community": 47,
-      "community_name": "kitchen_alarm_service.dart",
+      "community": 38,
+      "community_name": "delivery_alarm_service.dart",
       "norm_label": "package:audioplayers/audioplayers.dart"
     },
     {
@@ -11667,8 +11667,8 @@
       "source_location": null,
       "_origin": "ast",
       "id": "foody_vrinda_app_lib_screens_home_home_screen_buildcustomerhometab",
-      "community": 52,
-      "community_name": "telegram_page_route.dart",
+      "community": 106,
+      "community_name": "user_preferences_provider.dart",
       "norm_label": "_buildcustomerhometab"
     },
     {
@@ -11909,8 +11909,8 @@
       "source_location": null,
       "_origin": "ast",
       "id": "foody_vrinda_app_lib_screens_home_home_screen_buildprofiletab",
-      "community": 106,
-      "community_name": "user_preferences_provider.dart",
+      "community": 52,
+      "community_name": "telegram_page_route.dart",
       "norm_label": "_buildprofiletab"
     },
     {
@@ -12393,8 +12393,8 @@
       "source_location": null,
       "_origin": "ast",
       "id": "foody_vrinda_app_lib_screens_kitchen_kitchen_view_build",
-      "community": 37,
-      "community_name": "AuthProvider",
+      "community": 16,
+      "community_name": "kitchen_view.dart",
       "norm_label": "build"
     },
     {
@@ -12635,8 +12635,8 @@
       "source_location": null,
       "_origin": "ast",
       "id": "foody_vrinda_app_lib_screens_order_order_history_screen",
-      "community": 16,
-      "community_name": "kitchen_view.dart",
+      "community": 30,
+      "community_name": "order_tracking_screen.dart",
       "norm_label": "order_history_screen.dart"
     },
     {
@@ -12646,8 +12646,8 @@
       "source_location": null,
       "_origin": "ast",
       "id": "foody_vrinda_app_lib_screens_order_order_history_screen_orderhistoryscreen",
-      "community": 16,
-      "community_name": "kitchen_view.dart",
+      "community": 30,
+      "community_name": "order_tracking_screen.dart",
       "norm_label": "orderhistoryscreen"
     },
     {
@@ -12657,8 +12657,8 @@
       "source_location": null,
       "_origin": "ast",
       "id": "foody_vrinda_app_lib_screens_order_order_history_screen_isinline",
-      "community": 16,
-      "community_name": "kitchen_view.dart",
+      "community": 30,
+      "community_name": "order_tracking_screen.dart",
       "norm_label": "isinline"
     },
     {
@@ -12701,8 +12701,8 @@
       "source_location": null,
       "_origin": "ast",
       "id": "foody_vrinda_app_lib_screens_order_order_tracking_screen_ordertrackingscreen",
-      "community": 30,
-      "community_name": "order_tracking_screen.dart",
+      "community": 136,
+      "community_name": "StatefulWidget",
       "norm_label": "ordertrackingscreen"
     },
     {
@@ -12712,8 +12712,8 @@
       "source_location": null,
       "_origin": "ast",
       "id": "foody_vrinda_app_lib_screens_order_order_tracking_screen_ordertrackingscreenstate",
-      "community": 30,
-      "community_name": "order_tracking_screen.dart",
+      "community": 136,
+      "community_name": "StatefulWidget",
       "norm_label": "_ordertrackingscreenstate"
     },
     {
@@ -13251,8 +13251,8 @@
       "source_location": null,
       "_origin": "ast",
       "id": "foody_vrinda_app_lib_screens_settings_notification_settings_screen_selectedsound",
-      "community": 2,
-      "community_name": "notification_sound_settings.dart",
+      "community": 72,
+      "community_name": "notification_settings_screen.dart",
       "norm_label": "_selectedsound"
     },
     {
@@ -14692,8 +14692,8 @@
       "source_location": null,
       "_origin": "ast",
       "id": "foody_vrinda_app_lib_services_kitchen_alarm_service_unacknowledgedorders",
-      "community": 47,
-      "community_name": "kitchen_alarm_service.dart",
+      "community": 38,
+      "community_name": "delivery_alarm_service.dart",
       "norm_label": "unacknowledgedorders"
     },
     {
@@ -17893,8 +17893,8 @@
       "source_location": null,
       "_origin": "ast",
       "id": "foody_vrinda_app_lib_widgets_animations_animation",
-      "community": 32,
-      "community_name": "main.dart",
+      "community": 135,
+      "community_name": "pressable_scale.dart",
       "norm_label": "_animation"
     },
     {
@@ -19136,8 +19136,8 @@
       "source_location": null,
       "_origin": "ast",
       "id": "foody_vrinda_app_lib_widgets_pressable_scale",
-      "community": 32,
-      "community_name": "main.dart",
+      "community": 135,
+      "community_name": "pressable_scale.dart",
       "norm_label": "pressable_scale.dart"
     },
     {
@@ -19169,8 +19169,8 @@
       "source_location": null,
       "_origin": "ast",
       "id": "foody_vrinda_app_lib_widgets_pressable_scale_child",
-      "community": 32,
-      "community_name": "main.dart",
+      "community": 135,
+      "community_name": "pressable_scale.dart",
       "norm_label": "child"
     },
     {
@@ -19180,8 +19180,8 @@
       "source_location": null,
       "_origin": "ast",
       "id": "foody_vrinda_app_lib_widgets_pressable_scale_ontap",
-      "community": 32,
-      "community_name": "main.dart",
+      "community": 135,
+      "community_name": "pressable_scale.dart",
       "norm_label": "ontap"
     },
     {
@@ -19191,8 +19191,8 @@
       "source_location": null,
       "_origin": "ast",
       "id": "foody_vrinda_app_lib_widgets_pressable_scale_scaledownto",
-      "community": 32,
-      "community_name": "main.dart",
+      "community": 135,
+      "community_name": "pressable_scale.dart",
       "norm_label": "scaledownto"
     },
     {
@@ -19202,8 +19202,8 @@
       "source_location": null,
       "_origin": "ast",
       "id": "foody_vrinda_app_lib_widgets_pressable_scale_duration",
-      "community": 32,
-      "community_name": "main.dart",
+      "community": 135,
+      "community_name": "pressable_scale.dart",
       "norm_label": "duration"
     },
     {
@@ -19213,8 +19213,8 @@
       "source_location": null,
       "_origin": "ast",
       "id": "duration",
-      "community": 32,
-      "community_name": "main.dart",
+      "community": 135,
+      "community_name": "pressable_scale.dart",
       "norm_label": "duration"
     },
     {
@@ -19224,8 +19224,8 @@
       "source_location": null,
       "_origin": "ast",
       "id": "foody_vrinda_app_lib_widgets_pressable_scale_controller",
-      "community": 32,
-      "community_name": "main.dart",
+      "community": 135,
+      "community_name": "pressable_scale.dart",
       "norm_label": "_controller"
     },
     {
@@ -19235,8 +19235,8 @@
       "source_location": null,
       "_origin": "ast",
       "id": "foody_vrinda_app_lib_widgets_pressable_scale_scaleanimation",
-      "community": 32,
-      "community_name": "main.dart",
+      "community": 135,
+      "community_name": "pressable_scale.dart",
       "norm_label": "_scaleanimation"
     },
     {
@@ -19246,8 +19246,8 @@
       "source_location": null,
       "_origin": "ast",
       "id": "foody_vrinda_app_lib_widgets_pressable_scale_createstate",
-      "community": 32,
-      "community_name": "main.dart",
+      "community": 135,
+      "community_name": "pressable_scale.dart",
       "norm_label": "createstate"
     },
     {
@@ -19257,8 +19257,8 @@
       "source_location": null,
       "_origin": "ast",
       "id": "foody_vrinda_app_lib_widgets_pressable_scale_initstate",
-      "community": 32,
-      "community_name": "main.dart",
+      "community": 135,
+      "community_name": "pressable_scale.dart",
       "norm_label": "initstate"
     },
     {
@@ -19268,8 +19268,8 @@
       "source_location": null,
       "_origin": "ast",
       "id": "foody_vrinda_app_lib_widgets_pressable_scale_dispose",
-      "community": 32,
-      "community_name": "main.dart",
+      "community": 135,
+      "community_name": "pressable_scale.dart",
       "norm_label": "dispose"
     },
     {
@@ -19279,8 +19279,8 @@
       "source_location": null,
       "_origin": "ast",
       "id": "foody_vrinda_app_lib_widgets_pressable_scale_ontapdown",
-      "community": 32,
-      "community_name": "main.dart",
+      "community": 135,
+      "community_name": "pressable_scale.dart",
       "norm_label": "_ontapdown"
     },
     {
@@ -19290,8 +19290,8 @@
       "source_location": null,
       "_origin": "ast",
       "id": "foody_vrinda_app_lib_widgets_pressable_scale_ontapup",
-      "community": 32,
-      "community_name": "main.dart",
+      "community": 135,
+      "community_name": "pressable_scale.dart",
       "norm_label": "_ontapup"
     },
     {
@@ -19301,8 +19301,8 @@
       "source_location": null,
       "_origin": "ast",
       "id": "foody_vrinda_app_lib_widgets_pressable_scale_ontapcancel",
-      "community": 32,
-      "community_name": "main.dart",
+      "community": 135,
+      "community_name": "pressable_scale.dart",
       "norm_label": "_ontapcancel"
     },
     {
@@ -19312,8 +19312,8 @@
       "source_location": null,
       "_origin": "ast",
       "id": "foody_vrinda_app_lib_widgets_pressable_scale_build",
-      "community": 32,
-      "community_name": "main.dart",
+      "community": 135,
+      "community_name": "pressable_scale.dart",
       "norm_label": "build"
     },
     {
@@ -19723,6 +19723,153 @@
       "community": 138,
       "community_name": "lint-migrations.js",
       "norm_label": "lintsqlfile()"
+    },
+    {
+      "label": "release-apk.mjs",
+      "file_type": "code",
+      "source_file": "foody_vrinda_v3/scripts/release-apk.mjs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "foody_vrinda_v3_scripts_release_apk",
+      "community": 144,
+      "community_name": "release-apk.mjs",
+      "norm_label": "release-apk.mjs"
+    },
+    {
+      "label": "__filename",
+      "file_type": "code",
+      "source_file": "foody_vrinda_v3/scripts/release-apk.mjs",
+      "source_location": "L20",
+      "_origin": "ast",
+      "id": "foody_vrinda_v3_scripts_release_apk_filename",
+      "community": 144,
+      "community_name": "release-apk.mjs",
+      "norm_label": "__filename"
+    },
+    {
+      "label": "__dirname",
+      "file_type": "code",
+      "source_file": "foody_vrinda_v3/scripts/release-apk.mjs",
+      "source_location": "L21",
+      "_origin": "ast",
+      "id": "foody_vrinda_v3_scripts_release_apk_dirname",
+      "community": 144,
+      "community_name": "release-apk.mjs",
+      "norm_label": "__dirname"
+    },
+    {
+      "label": "ROOT_DIR",
+      "file_type": "code",
+      "source_file": "foody_vrinda_v3/scripts/release-apk.mjs",
+      "source_location": "L22",
+      "_origin": "ast",
+      "id": "foody_vrinda_v3_scripts_release_apk_root_dir",
+      "community": 144,
+      "community_name": "release-apk.mjs",
+      "norm_label": "root_dir"
+    },
+    {
+      "label": "ANDROID_DIR",
+      "file_type": "code",
+      "source_file": "foody_vrinda_v3/scripts/release-apk.mjs",
+      "source_location": "L23",
+      "_origin": "ast",
+      "id": "foody_vrinda_v3_scripts_release_apk_android_dir",
+      "community": 144,
+      "community_name": "release-apk.mjs",
+      "norm_label": "android_dir"
+    },
+    {
+      "label": "BUILD_GRADLE_PATH",
+      "file_type": "code",
+      "source_file": "foody_vrinda_v3/scripts/release-apk.mjs",
+      "source_location": "L24",
+      "_origin": "ast",
+      "id": "foody_vrinda_v3_scripts_release_apk_build_gradle_path",
+      "community": 144,
+      "community_name": "release-apk.mjs",
+      "norm_label": "build_gradle_path"
+    },
+    {
+      "label": "UPDATE_SERVICE_PATH",
+      "file_type": "code",
+      "source_file": "foody_vrinda_v3/scripts/release-apk.mjs",
+      "source_location": "L25",
+      "_origin": "ast",
+      "id": "foody_vrinda_v3_scripts_release_apk_update_service_path",
+      "community": 144,
+      "community_name": "release-apk.mjs",
+      "norm_label": "update_service_path"
+    },
+    {
+      "label": "BUILT_APK_PATH",
+      "file_type": "code",
+      "source_file": "foody_vrinda_v3/scripts/release-apk.mjs",
+      "source_location": "L26",
+      "_origin": "ast",
+      "id": "foody_vrinda_v3_scripts_release_apk_built_apk_path",
+      "community": 144,
+      "community_name": "release-apk.mjs",
+      "norm_label": "built_apk_path"
+    },
+    {
+      "label": "LATEST_APK_PATH",
+      "file_type": "code",
+      "source_file": "foody_vrinda_v3/scripts/release-apk.mjs",
+      "source_location": "L27",
+      "_origin": "ast",
+      "id": "foody_vrinda_v3_scripts_release_apk_latest_apk_path",
+      "community": 144,
+      "community_name": "release-apk.mjs",
+      "norm_label": "latest_apk_path"
+    },
+    {
+      "label": "log()",
+      "file_type": "code",
+      "source_file": "foody_vrinda_v3/scripts/release-apk.mjs",
+      "source_location": "L31",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "foody_vrinda_v3_scripts_release_apk_log",
+      "community": 144,
+      "community_name": "release-apk.mjs",
+      "norm_label": "log()"
+    },
+    {
+      "label": "run()",
+      "file_type": "code",
+      "source_file": "foody_vrinda_v3/scripts/release-apk.mjs",
+      "source_location": "L35",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "foody_vrinda_v3_scripts_release_apk_run",
+      "community": 144,
+      "community_name": "release-apk.mjs",
+      "norm_label": "run()"
+    },
+    {
+      "label": "getGitHubToken()",
+      "file_type": "code",
+      "source_file": "foody_vrinda_v3/scripts/release-apk.mjs",
+      "source_location": "L39",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "foody_vrinda_v3_scripts_release_apk_getgithubtoken",
+      "community": 144,
+      "community_name": "release-apk.mjs",
+      "norm_label": "getgithubtoken()"
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "foody_vrinda_v3/scripts/release-apk.mjs",
+      "source_location": "L51",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "foody_vrinda_v3_scripts_release_apk_main",
+      "community": 144,
+      "community_name": "release-apk.mjs",
+      "norm_label": "main()"
     },
     {
       "label": "run-android.js",
@@ -20818,8 +20965,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_app_app",
-      "community": 50,
-      "community_name": "App.jsx",
+      "community": 145,
+      "community_name": "App",
       "norm_label": "app()"
     },
     {
@@ -20852,7 +20999,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_components_activeordertrackingmodal",
-      "community": 130,
+      "community": 146,
       "community_name": "useBottomSheetDrag",
       "norm_label": "activeordertrackingmodal.jsx"
     },
@@ -20864,7 +21011,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_components_activeordertrackingmodal_activeordertrackingmodal",
-      "community": 130,
+      "community": 146,
       "community_name": "useBottomSheetDrag",
       "norm_label": "activeordertrackingmodal()"
     },
@@ -20932,8 +21079,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_components_completeprofilemodal",
-      "community": 107,
-      "community_name": "CustomerView.jsx",
+      "community": 147,
+      "community_name": "CompleteProfileModal.jsx",
       "norm_label": "completeprofilemodal.jsx"
     },
     {
@@ -20944,8 +21091,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_components_completeprofilemodal_completeprofilemodal",
-      "community": 107,
-      "community_name": "CustomerView.jsx",
+      "community": 147,
+      "community_name": "CompleteProfileModal.jsx",
       "norm_label": "completeprofilemodal()"
     },
     {
@@ -21154,7 +21301,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_components_notificationpanel",
-      "community": 130,
+      "community": 146,
       "community_name": "useBottomSheetDrag",
       "norm_label": "notificationpanel.jsx"
     },
@@ -21166,7 +21313,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_components_notificationpanel_notificationpanel",
-      "community": 130,
+      "community": 146,
       "community_name": "useBottomSheetDrag",
       "norm_label": "notificationpanel()"
     },
@@ -21178,7 +21325,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_components_orderhistorydrawer",
       "community": 130,
-      "community_name": "useBottomSheetDrag",
+      "community_name": "OrderHistoryDrawer.jsx",
       "norm_label": "orderhistorydrawer.jsx"
     },
     {
@@ -21189,8 +21336,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_components_orderhistorydrawer_orderhistorydrawer",
-      "community": 130,
-      "community_name": "useBottomSheetDrag",
+      "community": 107,
+      "community_name": "CustomerView.jsx",
       "norm_label": "orderhistorydrawer()"
     },
     {
@@ -21235,7 +21382,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_components_reviewmodal",
       "community": 130,
-      "community_name": "useBottomSheetDrag",
+      "community_name": "OrderHistoryDrawer.jsx",
       "norm_label": "reviewmodal.jsx"
     },
     {
@@ -21246,7 +21393,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_components_reviewmodal_chef_tags",
       "community": 130,
-      "community_name": "useBottomSheetDrag",
+      "community_name": "OrderHistoryDrawer.jsx",
       "norm_label": "chef_tags"
     },
     {
@@ -21257,7 +21404,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_components_reviewmodal_rider_tags",
       "community": 130,
-      "community_name": "useBottomSheetDrag",
+      "community_name": "OrderHistoryDrawer.jsx",
       "norm_label": "rider_tags"
     },
     {
@@ -21269,7 +21416,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_components_reviewmodal_reviewmodal",
       "community": 130,
-      "community_name": "useBottomSheetDrag",
+      "community_name": "OrderHistoryDrawer.jsx",
       "norm_label": "reviewmodal()"
     },
     {
@@ -21417,8 +21564,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_components_unifiedsearchmodal",
-      "community": 113,
-      "community_name": "test-database-sync.js",
+      "community": 140,
+      "community_name": "UnifiedSearchModal.jsx",
       "norm_label": "unifiedsearchmodal.jsx"
     },
     {
@@ -21428,8 +21575,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_components_unifiedsearchmodal_popular_categories",
-      "community": 113,
-      "community_name": "test-database-sync.js",
+      "community": 140,
+      "community_name": "UnifiedSearchModal.jsx",
       "norm_label": "popular_categories"
     },
     {
@@ -21440,8 +21587,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_components_unifiedsearchmodal_unifiedsearchmodal",
-      "community": 113,
-      "community_name": "test-database-sync.js",
+      "community": 140,
+      "community_name": "UnifiedSearchModal.jsx",
       "norm_label": "unifiedsearchmodal()"
     },
     {
@@ -21486,7 +21633,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_components_ui_activealarmbanner",
       "community": 44,
-      "community_name": "OwnerView.jsx",
+      "community_name": "TransportView.jsx",
       "norm_label": "activealarmbanner.jsx"
     },
     {
@@ -21498,7 +21645,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_components_ui_activealarmbanner_activealarmbanner",
       "community": 44,
-      "community_name": "OwnerView.jsx",
+      "community_name": "TransportView.jsx",
       "norm_label": "activealarmbanner()"
     },
     {
@@ -21576,8 +21723,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_components_ui_dynamictoast",
-      "community": 44,
-      "community_name": "OwnerView.jsx",
+      "community": 140,
+      "community_name": "UnifiedSearchModal.jsx",
       "norm_label": "dynamictoast.jsx"
     },
     {
@@ -21588,8 +21735,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_components_ui_dynamictoast_dynamictoast",
-      "community": 44,
-      "community_name": "OwnerView.jsx",
+      "community": 140,
+      "community_name": "UnifiedSearchModal.jsx",
       "norm_label": "dynamictoast()"
     },
     {
@@ -21633,8 +21780,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_components_ui_nativetimepicker",
-      "community": 44,
-      "community_name": "OwnerView.jsx",
+      "community": 133,
+      "community_name": "AuthContext.jsx",
       "norm_label": "nativetimepicker.jsx"
     },
     {
@@ -21645,8 +21792,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_components_ui_nativetimepicker_nativetimepicker",
-      "community": 44,
-      "community_name": "OwnerView.jsx",
+      "community": 133,
+      "community_name": "AuthContext.jsx",
       "norm_label": "nativetimepicker()"
     },
     {
@@ -21826,8 +21973,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_components_ui_searchabledropdown",
-      "community": 44,
-      "community_name": "OwnerView.jsx",
+      "community": 146,
+      "community_name": "useBottomSheetDrag",
       "norm_label": "searchabledropdown.jsx"
     },
     {
@@ -21838,8 +21985,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_components_ui_searchabledropdown_searchabledropdown",
-      "community": 44,
-      "community_name": "OwnerView.jsx",
+      "community": 146,
+      "community_name": "useBottomSheetDrag",
       "norm_label": "searchabledropdown()"
     },
     {
@@ -21919,7 +22066,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_constants_presetdishes",
       "community": 10,
-      "community_name": "createCloudMenuItem",
+      "community_name": "presetDishes.js",
       "norm_label": "presetdishes.js"
     },
     {
@@ -21930,7 +22077,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_constants_presetdishes_default_preset_dishes",
       "community": 10,
-      "community_name": "createCloudMenuItem",
+      "community_name": "presetDishes.js",
       "norm_label": "default_preset_dishes"
     },
     {
@@ -21941,7 +22088,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_constants_presetdishes_activepresetdishes",
       "community": 10,
-      "community_name": "createCloudMenuItem",
+      "community_name": "presetDishes.js",
       "norm_label": "activepresetdishes"
     },
     {
@@ -21951,8 +22098,8 @@
       "source_location": "L512",
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_constants_presetdishes_preset_dishes",
-      "community": 44,
-      "community_name": "OwnerView.jsx",
+      "community": 133,
+      "community_name": "AuthContext.jsx",
       "norm_label": "preset_dishes"
     },
     {
@@ -21963,7 +22110,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_constants_presetdishes_preset_categories",
       "community": 10,
-      "community_name": "createCloudMenuItem",
+      "community_name": "presetDishes.js",
       "norm_label": "preset_categories"
     },
     {
@@ -21975,7 +22122,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_constants_presetdishes_getpresetdishes",
       "community": 10,
-      "community_name": "createCloudMenuItem",
+      "community_name": "presetDishes.js",
       "norm_label": "getpresetdishes()"
     },
     {
@@ -21987,7 +22134,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_constants_presetdishes_loadpresetdishes",
       "community": 10,
-      "community_name": "createCloudMenuItem",
+      "community_name": "presetDishes.js",
       "norm_label": "loadpresetdishes()"
     },
     {
@@ -21999,7 +22146,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_constants_presetdishes_getpresetdishbyid",
       "community": 10,
-      "community_name": "createCloudMenuItem",
+      "community_name": "presetDishes.js",
       "norm_label": "getpresetdishbyid()"
     },
     {
@@ -22011,7 +22158,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_constants_presetdishes_findpresetbykeyword",
       "community": 10,
-      "community_name": "createCloudMenuItem",
+      "community_name": "presetDishes.js",
       "norm_label": "findpresetbykeyword()"
     },
     {
@@ -22055,7 +22202,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_context_authcontext",
       "community": 133,
-      "community_name": "DeveloperView.jsx",
+      "community_name": "AuthContext.jsx",
       "norm_label": "authcontext.jsx"
     },
     {
@@ -22066,7 +22213,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_context_authcontext_authcontext",
       "community": 133,
-      "community_name": "DeveloperView.jsx",
+      "community_name": "AuthContext.jsx",
       "norm_label": "authcontext"
     },
     {
@@ -22077,7 +22224,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_context_authcontext_authorized_dev_emails",
       "community": 133,
-      "community_name": "DeveloperView.jsx",
+      "community_name": "AuthContext.jsx",
       "norm_label": "authorized_dev_emails"
     },
     {
@@ -22088,7 +22235,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_context_authcontext_authorized_admin_emails",
       "community": 133,
-      "community_name": "DeveloperView.jsx",
+      "community_name": "AuthContext.jsx",
       "norm_label": "authorized_admin_emails"
     },
     {
@@ -22100,7 +22247,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_context_authcontext_isdeveloperuser",
       "community": 133,
-      "community_name": "DeveloperView.jsx",
+      "community_name": "AuthContext.jsx",
       "norm_label": "isdeveloperuser()"
     },
     {
@@ -22112,7 +22259,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_context_authcontext_isadminuser",
       "community": 133,
-      "community_name": "DeveloperView.jsx",
+      "community_name": "AuthContext.jsx",
       "norm_label": "isadminuser()"
     },
     {
@@ -22124,7 +22271,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_context_authcontext_authprovider",
       "community": 133,
-      "community_name": "DeveloperView.jsx",
+      "community_name": "AuthContext.jsx",
       "norm_label": "authprovider()"
     },
     {
@@ -22136,7 +22283,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_context_authcontext_useauth",
       "community": 44,
-      "community_name": "OwnerView.jsx",
+      "community_name": "TransportView.jsx",
       "norm_label": "useauth()"
     },
     {
@@ -22146,8 +22293,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_context_cartcontext",
-      "community": 111,
-      "community_name": "AuthModal.jsx",
+      "community": 130,
+      "community_name": "OrderHistoryDrawer.jsx",
       "norm_label": "cartcontext.jsx"
     },
     {
@@ -22157,8 +22304,8 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_context_cartcontext_cartcontext",
-      "community": 111,
-      "community_name": "AuthModal.jsx",
+      "community": 130,
+      "community_name": "OrderHistoryDrawer.jsx",
       "norm_label": "cartcontext"
     },
     {
@@ -22169,8 +22316,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_context_cartcontext_cartprovider",
-      "community": 111,
-      "community_name": "AuthModal.jsx",
+      "community": 130,
+      "community_name": "OrderHistoryDrawer.jsx",
       "norm_label": "cartprovider()"
     },
     {
@@ -22181,8 +22328,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_context_cartcontext_usecart",
-      "community": 111,
-      "community_name": "AuthModal.jsx",
+      "community": 107,
+      "community_name": "CustomerView.jsx",
       "norm_label": "usecart()"
     },
     {
@@ -22193,7 +22340,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_context_notificationcontext",
       "community": 44,
-      "community_name": "OwnerView.jsx",
+      "community_name": "TransportView.jsx",
       "norm_label": "notificationcontext.jsx"
     },
     {
@@ -22204,7 +22351,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_context_notificationcontext_notificationcontext",
       "community": 44,
-      "community_name": "OwnerView.jsx",
+      "community_name": "TransportView.jsx",
       "norm_label": "notificationcontext"
     },
     {
@@ -22215,7 +22362,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_context_notificationcontext_default_seeds",
       "community": 44,
-      "community_name": "OwnerView.jsx",
+      "community_name": "TransportView.jsx",
       "norm_label": "default_seeds"
     },
     {
@@ -22227,7 +22374,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_context_notificationcontext_notificationprovider",
       "community": 44,
-      "community_name": "OwnerView.jsx",
+      "community_name": "TransportView.jsx",
       "norm_label": "notificationprovider()"
     },
     {
@@ -22238,7 +22385,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_context_notificationcontext_usenotifications",
-      "community": 130,
+      "community": 146,
       "community_name": "useBottomSheetDrag",
       "norm_label": "usenotifications()"
     },
@@ -22250,7 +22397,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_context_themecontext",
       "community": 130,
-      "community_name": "useBottomSheetDrag",
+      "community_name": "OrderHistoryDrawer.jsx",
       "norm_label": "themecontext.jsx"
     },
     {
@@ -22261,7 +22408,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_context_themecontext_themecontext",
       "community": 130,
-      "community_name": "useBottomSheetDrag",
+      "community_name": "OrderHistoryDrawer.jsx",
       "norm_label": "themecontext"
     },
     {
@@ -22273,7 +22420,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_context_themecontext_themeprovider",
       "community": 130,
-      "community_name": "useBottomSheetDrag",
+      "community_name": "OrderHistoryDrawer.jsx",
       "norm_label": "themeprovider()"
     },
     {
@@ -22284,7 +22431,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_context_themecontext_usetheme",
-      "community": 130,
+      "community": 146,
       "community_name": "useBottomSheetDrag",
       "norm_label": "usetheme()"
     },
@@ -22340,7 +22487,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_hooks_useaudioalarm",
       "community": 44,
-      "community_name": "OwnerView.jsx",
+      "community_name": "TransportView.jsx",
       "norm_label": "useaudioalarm.js"
     },
     {
@@ -22352,7 +22499,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_hooks_useaudioalarm_getaudiocontext",
       "community": 44,
-      "community_name": "OwnerView.jsx",
+      "community_name": "TransportView.jsx",
       "norm_label": "getaudiocontext()"
     },
     {
@@ -22364,7 +22511,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_hooks_useaudioalarm_useaudioalarm",
       "community": 44,
-      "community_name": "OwnerView.jsx",
+      "community_name": "TransportView.jsx",
       "norm_label": "useaudioalarm()"
     },
     {
@@ -22374,8 +22521,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_hooks_usebackhandler",
-      "community": 50,
-      "community_name": "App.jsx",
+      "community": 145,
+      "community_name": "App",
       "norm_label": "usebackhandler.js"
     },
     {
@@ -22386,8 +22533,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_hooks_usebackhandler_usebackhandler",
-      "community": 50,
-      "community_name": "App.jsx",
+      "community": 145,
+      "community_name": "App",
       "norm_label": "usebackhandler()"
     },
     {
@@ -22397,7 +22544,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_hooks_usebottomsheetdrag",
-      "community": 130,
+      "community": 146,
       "community_name": "useBottomSheetDrag",
       "norm_label": "usebottomsheetdrag.js"
     },
@@ -22409,7 +22556,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_hooks_usebottomsheetdrag_usebottomsheetdrag",
-      "community": 130,
+      "community": 146,
       "community_name": "useBottomSheetDrag",
       "norm_label": "usebottomsheetdrag()"
     },
@@ -22421,7 +22568,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_hooks_usefastnotify",
       "community": 44,
-      "community_name": "OwnerView.jsx",
+      "community_name": "TransportView.jsx",
       "norm_label": "usefastnotify.js"
     },
     {
@@ -22433,7 +22580,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_hooks_usefastnotify_usefastnotify",
       "community": 44,
-      "community_name": "OwnerView.jsx",
+      "community_name": "TransportView.jsx",
       "norm_label": "usefastnotify()"
     },
     {
@@ -22466,8 +22613,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_main",
-      "community": 44,
-      "community_name": "OwnerView.jsx",
+      "community": 130,
+      "community_name": "OrderHistoryDrawer.jsx",
       "norm_label": "main.jsx"
     },
     {
@@ -22477,8 +22624,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_services_addressservice",
-      "community": 107,
-      "community_name": "CustomerView.jsx",
+      "community": 147,
+      "community_name": "CompleteProfileModal.jsx",
       "norm_label": "addressservice.js"
     },
     {
@@ -22489,8 +22636,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_services_addressservice_getlocalcache",
-      "community": 107,
-      "community_name": "CustomerView.jsx",
+      "community": 147,
+      "community_name": "CompleteProfileModal.jsx",
       "norm_label": "getlocalcache()"
     },
     {
@@ -22501,8 +22648,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_services_addressservice_setlocalcache",
-      "community": 107,
-      "community_name": "CustomerView.jsx",
+      "community": 147,
+      "community_name": "CompleteProfileModal.jsx",
       "norm_label": "setlocalcache()"
     },
     {
@@ -22513,8 +22660,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_services_addressservice_fetchaddresssuggestions",
-      "community": 107,
-      "community_name": "CustomerView.jsx",
+      "community": 147,
+      "community_name": "CompleteProfileModal.jsx",
       "norm_label": "fetchaddresssuggestions()"
     },
     {
@@ -22524,8 +22671,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_services_appupdateservice",
-      "community": 133,
-      "community_name": "DeveloperView.jsx",
+      "community": 140,
+      "community_name": "UnifiedSearchModal.jsx",
       "norm_label": "appupdateservice.js"
     },
     {
@@ -22535,8 +22682,8 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_services_appupdateservice_current_app_version",
-      "community": 133,
-      "community_name": "DeveloperView.jsx",
+      "community": 140,
+      "community_name": "UnifiedSearchModal.jsx",
       "norm_label": "current_app_version"
     },
     {
@@ -22580,7 +22727,7 @@
       "label": ".startUpdate()",
       "file_type": "code",
       "source_file": "foody_vrinda_v3/src/services/appUpdateService.js",
-      "source_location": "L81",
+      "source_location": "L127",
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_services_appupdateservice_appupdateservice_startupdate",
@@ -22592,7 +22739,7 @@
       "label": ".publishRelease()",
       "file_type": "code",
       "source_file": "foody_vrinda_v3/src/services/appUpdateService.js",
-      "source_location": "L102",
+      "source_location": "L148",
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_services_appupdateservice_appupdateservice_publishrelease",
@@ -22607,8 +22754,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_services_backhandlerservice",
-      "community": 50,
-      "community_name": "App.jsx",
+      "community": 145,
+      "community_name": "App",
       "norm_label": "backhandlerservice.js"
     },
     {
@@ -22618,8 +22765,8 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_services_backhandlerservice_backhandlers",
-      "community": 50,
-      "community_name": "App.jsx",
+      "community": 145,
+      "community_name": "App",
       "norm_label": "backhandlers"
     },
     {
@@ -22630,8 +22777,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_services_backhandlerservice_initkeyboardlisteners",
-      "community": 50,
-      "community_name": "App.jsx",
+      "community": 145,
+      "community_name": "App",
       "norm_label": "initkeyboardlisteners()"
     },
     {
@@ -22642,8 +22789,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_services_backhandlerservice_handlekeyboardorinputdismiss",
-      "community": 50,
-      "community_name": "App.jsx",
+      "community": 145,
+      "community_name": "App",
       "norm_label": "handlekeyboardorinputdismiss()"
     },
     {
@@ -22654,8 +22801,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_services_backhandlerservice_registerbackhandler",
-      "community": 50,
-      "community_name": "App.jsx",
+      "community": 145,
+      "community_name": "App",
       "norm_label": "registerbackhandler()"
     },
     {
@@ -22666,8 +22813,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_services_backhandlerservice_unregisterbackhandler",
-      "community": 50,
-      "community_name": "App.jsx",
+      "community": 145,
+      "community_name": "App",
       "norm_label": "unregisterbackhandler()"
     },
     {
@@ -22678,8 +22825,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_services_backhandlerservice_hasactivebackhandlers",
-      "community": 50,
-      "community_name": "App.jsx",
+      "community": 145,
+      "community_name": "App",
       "norm_label": "hasactivebackhandlers()"
     },
     {
@@ -22690,8 +22837,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_services_backhandlerservice_executetopbackhandler",
-      "community": 50,
-      "community_name": "App.jsx",
+      "community": 145,
+      "community_name": "App",
       "norm_label": "executetopbackhandler()"
     },
     {
@@ -22702,8 +22849,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_services_backhandlerservice_shouldallowappexit",
-      "community": 50,
-      "community_name": "App.jsx",
+      "community": 145,
+      "community_name": "App",
       "norm_label": "shouldallowappexit()"
     },
     {
@@ -22714,8 +22861,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_services_backhandlerservice_resetexitpresstimer",
-      "community": 50,
-      "community_name": "App.jsx",
+      "community": 145,
+      "community_name": "App",
       "norm_label": "resetexitpresstimer()"
     },
     {
@@ -22913,8 +23060,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_services_hitsoochiservice",
-      "community": 113,
-      "community_name": "test-database-sync.js",
+      "community": 140,
+      "community_name": "UnifiedSearchModal.jsx",
       "norm_label": "hitsoochiservice.js"
     },
     {
@@ -22924,8 +23071,8 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_services_hitsoochiservice_local_satvik_ontology",
-      "community": 113,
-      "community_name": "test-database-sync.js",
+      "community": 140,
+      "community_name": "UnifiedSearchModal.jsx",
       "norm_label": "local_satvik_ontology"
     },
     {
@@ -22937,8 +23084,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_services_hitsoochiservice_hitsoochiservice",
-      "community": 113,
-      "community_name": "test-database-sync.js",
+      "community": 140,
+      "community_name": "UnifiedSearchModal.jsx",
       "norm_label": "hitsoochiservice"
     },
     {
@@ -22949,8 +23096,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_services_hitsoochiservice_hitsoochiservice_getcuratedsuggestions",
-      "community": 113,
-      "community_name": "test-database-sync.js",
+      "community": 140,
+      "community_name": "UnifiedSearchModal.jsx",
       "norm_label": ".getcuratedsuggestions()"
     },
     {
@@ -22961,8 +23108,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_services_hitsoochiservice_hitsoochiservice_rankitems",
-      "community": 113,
-      "community_name": "test-database-sync.js",
+      "community": 140,
+      "community_name": "UnifiedSearchModal.jsx",
       "norm_label": ".rankitems()"
     },
     {
@@ -22973,8 +23120,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_services_hitsoochiservice_hitsoochiservice_optimizequery",
-      "community": 113,
-      "community_name": "test-database-sync.js",
+      "community": 140,
+      "community_name": "UnifiedSearchModal.jsx",
       "norm_label": ".optimizequery()"
     },
     {
@@ -22985,8 +23132,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_services_hitsoochiservice_hitsoochiservice_getsuggestions",
-      "community": 113,
-      "community_name": "test-database-sync.js",
+      "community": 140,
+      "community_name": "UnifiedSearchModal.jsx",
       "norm_label": ".getsuggestions()"
     },
     {
@@ -23470,8 +23617,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_supabase",
-      "community": 44,
-      "community_name": "OwnerView.jsx",
+      "community": 140,
+      "community_name": "UnifiedSearchModal.jsx",
       "norm_label": "supabase"
     },
     {
@@ -23494,7 +23641,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_istablemissing",
       "community": 10,
-      "community_name": "createCloudMenuItem",
+      "community_name": "presetDishes.js",
       "norm_label": "istablemissing()"
     },
     {
@@ -23505,8 +23652,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_marktablemissing",
-      "community": 10,
-      "community_name": "createCloudMenuItem",
+      "community": 113,
+      "community_name": "test-database-sync.js",
       "norm_label": "marktablemissing()"
     },
     {
@@ -23517,8 +23664,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_istableerror",
-      "community": 10,
-      "community_name": "createCloudMenuItem",
+      "community": 113,
+      "community_name": "test-database-sync.js",
       "norm_label": "istableerror()"
     },
     {
@@ -23541,7 +23688,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_istablewriteforbidden",
       "community": 133,
-      "community_name": "DeveloperView.jsx",
+      "community_name": "AuthContext.jsx",
       "norm_label": "istablewriteforbidden()"
     },
     {
@@ -23553,7 +23700,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_marktablewriteforbidden",
       "community": 133,
-      "community_name": "DeveloperView.jsx",
+      "community_name": "AuthContext.jsx",
       "norm_label": "marktablewriteforbidden()"
     },
     {
@@ -23577,7 +23724,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_isforbiddenerror",
       "community": 133,
-      "community_name": "DeveloperView.jsx",
+      "community_name": "AuthContext.jsx",
       "norm_label": "isforbiddenerror()"
     },
     {
@@ -23666,7 +23813,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_dispatchsafeevent",
-      "community": 133,
+      "community": 114,
       "community_name": "DeveloperView.jsx",
       "norm_label": "dispatchsafeevent()"
     },
@@ -23691,7 +23838,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_normalizeshop",
       "community": 114,
-      "community_name": "getCachedShops",
+      "community_name": "DeveloperView.jsx",
       "norm_label": "normalizeshop()"
     },
     {
@@ -23739,7 +23886,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_getdeletedshopids",
       "community": 114,
-      "community_name": "getCachedShops",
+      "community_name": "DeveloperView.jsx",
       "norm_label": "getdeletedshopids()"
     },
     {
@@ -23751,7 +23898,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_adddeletedshopid",
       "community": 114,
-      "community_name": "getCachedShops",
+      "community_name": "DeveloperView.jsx",
       "norm_label": "adddeletedshopid()"
     },
     {
@@ -23763,7 +23910,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_removedeletedshopid",
       "community": 114,
-      "community_name": "getCachedShops",
+      "community_name": "DeveloperView.jsx",
       "norm_label": "removedeletedshopid()"
     },
     {
@@ -23775,7 +23922,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_getcachedshops",
       "community": 114,
-      "community_name": "getCachedShops",
+      "community_name": "DeveloperView.jsx",
       "norm_label": "getcachedshops()"
     },
     {
@@ -23787,7 +23934,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_savecachedshops",
       "community": 114,
-      "community_name": "getCachedShops",
+      "community_name": "DeveloperView.jsx",
       "norm_label": "savecachedshops()"
     },
     {
@@ -23810,8 +23957,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_invalidatecache",
-      "community": 10,
-      "community_name": "createCloudMenuItem",
+      "community": 113,
+      "community_name": "test-database-sync.js",
       "norm_label": "invalidatecache()"
     },
     {
@@ -23823,7 +23970,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_getcloudshops",
       "community": 114,
-      "community_name": "getCachedShops",
+      "community_name": "DeveloperView.jsx",
       "norm_label": "getcloudshops()"
     },
     {
@@ -23917,8 +24064,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_updatecloudorderstatus",
-      "community": 44,
-      "community_name": "OwnerView.jsx",
+      "community": 113,
+      "community_name": "test-database-sync.js",
       "norm_label": "updatecloudorderstatus()"
     },
     {
@@ -23930,7 +24077,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_fetchavailabledeliveries",
       "community": 44,
-      "community_name": "OwnerView.jsx",
+      "community_name": "TransportView.jsx",
       "norm_label": "fetchavailabledeliveries()"
     },
     {
@@ -23942,7 +24089,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_claimdeliveryorder",
       "community": 44,
-      "community_name": "OwnerView.jsx",
+      "community_name": "TransportView.jsx",
       "norm_label": "claimdeliveryorder()"
     },
     {
@@ -24001,7 +24148,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_broadcastalarmevent",
-      "community": 133,
+      "community": 114,
       "community_name": "DeveloperView.jsx",
       "norm_label": "broadcastalarmevent()"
     },
@@ -24063,7 +24210,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_realtimemultiplexer_handleshopchangepayload",
       "community": 114,
-      "community_name": "getCachedShops",
+      "community_name": "DeveloperView.jsx",
       "norm_label": ".handleshopchangepayload()"
     },
     {
@@ -24074,7 +24221,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_realtimemultiplexer_handleofferchangepayload",
-      "community": 133,
+      "community": 114,
       "community_name": "DeveloperView.jsx",
       "norm_label": ".handleofferchangepayload()"
     },
@@ -24087,7 +24234,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_realtimemultiplexer_handlepresetchangepayload",
       "community": 10,
-      "community_name": "createCloudMenuItem",
+      "community_name": "presetDishes.js",
       "norm_label": ".handlepresetchangepayload()"
     },
     {
@@ -24206,7 +24353,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_subscribecloudorders",
       "community": 44,
-      "community_name": "OwnerView.jsx",
+      "community_name": "TransportView.jsx",
       "norm_label": "subscribecloudorders()"
     },
     {
@@ -24230,7 +24377,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_subscribecloudnotifications",
       "community": 44,
-      "community_name": "OwnerView.jsx",
+      "community_name": "TransportView.jsx",
       "norm_label": "subscribecloudnotifications()"
     },
     {
@@ -24278,7 +24425,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_createcloudnotification",
       "community": 44,
-      "community_name": "OwnerView.jsx",
+      "community_name": "TransportView.jsx",
       "norm_label": "createcloudnotification()"
     },
     {
@@ -24290,7 +24437,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_markcloudnotificationread",
       "community": 44,
-      "community_name": "OwnerView.jsx",
+      "community_name": "TransportView.jsx",
       "norm_label": "markcloudnotificationread()"
     },
     {
@@ -24312,7 +24459,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_getcachedoffers",
-      "community": 133,
+      "community": 114,
       "community_name": "DeveloperView.jsx",
       "norm_label": "getcachedoffers()"
     },
@@ -24324,7 +24471,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_savecachedoffers",
-      "community": 133,
+      "community": 114,
       "community_name": "DeveloperView.jsx",
       "norm_label": "savecachedoffers()"
     },
@@ -24336,7 +24483,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_getcloudoffers",
-      "community": 133,
+      "community": 114,
       "community_name": "DeveloperView.jsx",
       "norm_label": "getcloudoffers()"
     },
@@ -24348,7 +24495,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_createcloudoffer",
-      "community": 133,
+      "community": 114,
       "community_name": "DeveloperView.jsx",
       "norm_label": "createcloudoffer()"
     },
@@ -24360,7 +24507,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_updatecloudoffer",
-      "community": 133,
+      "community": 114,
       "community_name": "DeveloperView.jsx",
       "norm_label": "updatecloudoffer()"
     },
@@ -24372,7 +24519,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_deletecloudoffer",
-      "community": 133,
+      "community": 114,
       "community_name": "DeveloperView.jsx",
       "norm_label": "deletecloudoffer()"
     },
@@ -24385,7 +24532,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_getcachedpresets",
       "community": 10,
-      "community_name": "createCloudMenuItem",
+      "community_name": "presetDishes.js",
       "norm_label": "getcachedpresets()"
     },
     {
@@ -24397,7 +24544,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_savecachedpresets",
       "community": 10,
-      "community_name": "createCloudMenuItem",
+      "community_name": "presetDishes.js",
       "norm_label": "savecachedpresets()"
     },
     {
@@ -24409,7 +24556,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_getcloudpresets",
       "community": 10,
-      "community_name": "createCloudMenuItem",
+      "community_name": "presetDishes.js",
       "norm_label": "getcloudpresets()"
     },
     {
@@ -24421,7 +24568,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_createcloudpreset",
       "community": 10,
-      "community_name": "createCloudMenuItem",
+      "community_name": "presetDishes.js",
       "norm_label": "createcloudpreset()"
     },
     {
@@ -24433,7 +24580,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_updatecloudpreset",
       "community": 10,
-      "community_name": "createCloudMenuItem",
+      "community_name": "presetDishes.js",
       "norm_label": "updatecloudpreset()"
     },
     {
@@ -24445,7 +24592,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_deletecloudpreset",
       "community": 10,
-      "community_name": "createCloudMenuItem",
+      "community_name": "presetDishes.js",
       "norm_label": "deletecloudpreset()"
     },
     {
@@ -24457,7 +24604,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_subscribecloudpresets",
       "community": 10,
-      "community_name": "createCloudMenuItem",
+      "community_name": "presetDishes.js",
       "norm_label": "subscribecloudpresets()"
     },
     {
@@ -24468,8 +24615,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_createcloudmenuitem",
-      "community": 10,
-      "community_name": "createCloudMenuItem",
+      "community": 113,
+      "community_name": "test-database-sync.js",
       "norm_label": "createcloudmenuitem()"
     },
     {
@@ -24480,8 +24627,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_updatecloudmenuitem",
-      "community": 10,
-      "community_name": "createCloudMenuItem",
+      "community": 113,
+      "community_name": "test-database-sync.js",
       "norm_label": "updatecloudmenuitem()"
     },
     {
@@ -24492,8 +24639,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_deletecloudmenuitem",
-      "community": 10,
-      "community_name": "createCloudMenuItem",
+      "community": 113,
+      "community_name": "test-database-sync.js",
       "norm_label": "deletecloudmenuitem()"
     },
     {
@@ -24505,7 +24652,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_createcloudshop",
       "community": 114,
-      "community_name": "getCachedShops",
+      "community_name": "DeveloperView.jsx",
       "norm_label": "createcloudshop()"
     },
     {
@@ -24517,7 +24664,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_updatecloudshop",
       "community": 114,
-      "community_name": "getCachedShops",
+      "community_name": "DeveloperView.jsx",
       "norm_label": "updatecloudshop()"
     },
     {
@@ -24529,7 +24676,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_deletecloudshop",
       "community": 114,
-      "community_name": "getCachedShops",
+      "community_name": "DeveloperView.jsx",
       "norm_label": "deletecloudshop()"
     },
     {
@@ -24540,8 +24687,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_markcloudordercashcollected",
-      "community": 44,
-      "community_name": "OwnerView.jsx",
+      "community": 113,
+      "community_name": "test-database-sync.js",
       "norm_label": "markcloudordercashcollected()"
     },
     {
@@ -24564,7 +24711,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_getcachedusers",
       "community": 133,
-      "community_name": "DeveloperView.jsx",
+      "community_name": "AuthContext.jsx",
       "norm_label": "getcachedusers()"
     },
     {
@@ -24576,7 +24723,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_savecachedusers",
       "community": 133,
-      "community_name": "DeveloperView.jsx",
+      "community_name": "AuthContext.jsx",
       "norm_label": "savecachedusers()"
     },
     {
@@ -24634,7 +24781,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_getcloudusers",
       "community": 133,
-      "community_name": "DeveloperView.jsx",
+      "community_name": "AuthContext.jsx",
       "norm_label": "getcloudusers()"
     },
     {
@@ -24646,7 +24793,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_getliveuserroleandprofile",
       "community": 133,
-      "community_name": "DeveloperView.jsx",
+      "community_name": "AuthContext.jsx",
       "norm_label": "getliveuserroleandprofile()"
     },
     {
@@ -24658,7 +24805,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_recordloggedinuser",
       "community": 133,
-      "community_name": "DeveloperView.jsx",
+      "community_name": "AuthContext.jsx",
       "norm_label": "recordloggedinuser()"
     },
     {
@@ -24670,7 +24817,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_createclouduser",
       "community": 133,
-      "community_name": "DeveloperView.jsx",
+      "community_name": "AuthContext.jsx",
       "norm_label": "createclouduser()"
     },
     {
@@ -24682,7 +24829,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_updateclouduser",
       "community": 133,
-      "community_name": "DeveloperView.jsx",
+      "community_name": "AuthContext.jsx",
       "norm_label": "updateclouduser()"
     },
     {
@@ -24694,7 +24841,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_updateuseronlinestatus",
       "community": 44,
-      "community_name": "OwnerView.jsx",
+      "community_name": "TransportView.jsx",
       "norm_label": "updateuseronlinestatus()"
     },
     {
@@ -24705,7 +24852,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_adminblockuser",
-      "community": 133,
+      "community": 114,
       "community_name": "DeveloperView.jsx",
       "norm_label": "adminblockuser()"
     },
@@ -24717,7 +24864,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_adminunblockuser",
-      "community": 133,
+      "community": 114,
       "community_name": "DeveloperView.jsx",
       "norm_label": "adminunblockuser()"
     },
@@ -24729,7 +24876,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_adminrevokeuser",
-      "community": 133,
+      "community": 114,
       "community_name": "DeveloperView.jsx",
       "norm_label": "adminrevokeuser()"
     },
@@ -24741,7 +24888,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_adminforcesignout",
-      "community": 133,
+      "community": 114,
       "community_name": "DeveloperView.jsx",
       "norm_label": "adminforcesignout()"
     },
@@ -24766,7 +24913,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_deleteclouduser",
       "community": 133,
-      "community_name": "DeveloperView.jsx",
+      "community_name": "AuthContext.jsx",
       "norm_label": "deleteclouduser()"
     },
     {
@@ -24778,7 +24925,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_subscribecloudusers",
       "community": 133,
-      "community_name": "DeveloperView.jsx",
+      "community_name": "AuthContext.jsx",
       "norm_label": "subscribecloudusers()"
     },
     {
@@ -24813,8 +24960,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_sha256purejs",
-      "community": 113,
-      "community_name": "test-database-sync.js",
+      "community": 61,
+      "community_name": "supabase.js",
       "norm_label": "sha256purejs()"
     },
     {
@@ -24825,8 +24972,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_computesha256hex",
-      "community": 113,
-      "community_name": "test-database-sync.js",
+      "community": 61,
+      "community_name": "supabase.js",
       "norm_label": "computesha256hex()"
     },
     {
@@ -24849,8 +24996,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_getorderotp",
-      "community": 113,
-      "community_name": "test-database-sync.js",
+      "community": 44,
+      "community_name": "TransportView.jsx",
       "norm_label": "getorderotp()"
     },
     {
@@ -24861,8 +25008,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_verifyorderotp",
-      "community": 113,
-      "community_name": "test-database-sync.js",
+      "community": 44,
+      "community_name": "TransportView.jsx",
       "norm_label": "verifyorderotp()"
     },
     {
@@ -24874,7 +25021,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_getdailysarathicode",
       "community": 44,
-      "community_name": "OwnerView.jsx",
+      "community_name": "TransportView.jsx",
       "norm_label": "getdailysarathicode()"
     },
     {
@@ -24886,7 +25033,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_exportdeliveryauditreportcsv",
       "community": 44,
-      "community_name": "OwnerView.jsx",
+      "community_name": "TransportView.jsx",
       "norm_label": "exportdeliveryauditreportcsv()"
     },
     {
@@ -24909,8 +25056,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_checkdeliverygeofence",
-      "community": 61,
-      "community_name": "supabase.js",
+      "community": 44,
+      "community_name": "TransportView.jsx",
       "norm_label": "checkdeliverygeofence()"
     },
     {
@@ -24969,8 +25116,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_processofflineorderqueue",
-      "community": 61,
-      "community_name": "supabase.js",
+      "community": 113,
+      "community_name": "test-database-sync.js",
       "norm_label": "processofflineorderqueue()"
     },
     {
@@ -24981,8 +25128,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_getusertrustscore",
-      "community": 61,
-      "community_name": "supabase.js",
+      "community": 44,
+      "community_name": "TransportView.jsx",
       "norm_label": "getusertrustscore()"
     },
     {
@@ -25006,7 +25153,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_getridercashledger",
       "community": 44,
-      "community_name": "OwnerView.jsx",
+      "community_name": "TransportView.jsx",
       "norm_label": "getridercashledger()"
     },
     {
@@ -25040,8 +25187,8 @@
       "source_location": "L4919",
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_rider_max_cash_limit",
-      "community": 61,
-      "community_name": "supabase.js",
+      "community": 44,
+      "community_name": "TransportView.jsx",
       "norm_label": "rider_max_cash_limit"
     },
     {
@@ -25053,7 +25200,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_isridercashlimitexceeded",
       "community": 44,
-      "community_name": "OwnerView.jsx",
+      "community_name": "TransportView.jsx",
       "norm_label": "isridercashlimitexceeded()"
     },
     {
@@ -25077,7 +25224,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_generatewhatsappordersharelink",
       "community": 44,
-      "community_name": "OwnerView.jsx",
+      "community_name": "TransportView.jsx",
       "norm_label": "generatewhatsappordersharelink()"
     },
     {
@@ -25089,7 +25236,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_getnextwaterfallrider",
       "community": 44,
-      "community_name": "OwnerView.jsx",
+      "community_name": "TransportView.jsx",
       "norm_label": "getnextwaterfallrider()"
     },
     {
@@ -25112,7 +25259,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_getorderitemsummary",
       "community": 44,
-      "community_name": "OwnerView.jsx",
+      "community_name": "TransportView.jsx",
       "norm_label": "getorderitemsummary()"
     },
     {
@@ -25124,7 +25271,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_supabase_getordercustomername",
       "community": 44,
-      "community_name": "OwnerView.jsx",
+      "community_name": "TransportView.jsx",
       "norm_label": "getordercustomername()"
     },
     {
@@ -25205,7 +25352,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_utils_deliveryreportutils",
       "community": 44,
-      "community_name": "OwnerView.jsx",
+      "community_name": "TransportView.jsx",
       "norm_label": "deliveryreportutils.js"
     },
     {
@@ -25217,7 +25364,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_utils_deliveryreportutils_formatinr",
       "community": 44,
-      "community_name": "OwnerView.jsx",
+      "community_name": "TransportView.jsx",
       "norm_label": "formatinr()"
     },
     {
@@ -25229,7 +25376,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_utils_deliveryreportutils_printverifieddriverstatementpdf",
       "community": 44,
-      "community_name": "OwnerView.jsx",
+      "community_name": "TransportView.jsx",
       "norm_label": "printverifieddriverstatementpdf()"
     },
     {
@@ -25320,7 +25467,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_views_developerview",
-      "community": 133,
+      "community": 114,
       "community_name": "DeveloperView.jsx",
       "norm_label": "developerview.jsx"
     },
@@ -25332,7 +25479,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_views_developerview_developerview",
-      "community": 133,
+      "community": 114,
       "community_name": "DeveloperView.jsx",
       "norm_label": "developerview()"
     },
@@ -25344,7 +25491,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_views_kitchenview",
       "community": 44,
-      "community_name": "OwnerView.jsx",
+      "community_name": "TransportView.jsx",
       "norm_label": "kitchenview.jsx"
     },
     {
@@ -25356,7 +25503,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_views_kitchenview_kitchenview",
       "community": 44,
-      "community_name": "OwnerView.jsx",
+      "community_name": "TransportView.jsx",
       "norm_label": "kitchenview()"
     },
     {
@@ -25366,8 +25513,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_views_ownerview",
-      "community": 44,
-      "community_name": "OwnerView.jsx",
+      "community": 133,
+      "community_name": "AuthContext.jsx",
       "norm_label": "ownerview.jsx"
     },
     {
@@ -25378,8 +25525,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_views_ownerview_ownerview",
-      "community": 44,
-      "community_name": "OwnerView.jsx",
+      "community": 133,
+      "community_name": "AuthContext.jsx",
       "norm_label": "ownerview()"
     },
     {
@@ -25390,7 +25537,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_views_transportview",
       "community": 44,
-      "community_name": "OwnerView.jsx",
+      "community_name": "TransportView.jsx",
       "norm_label": "transportview.jsx"
     },
     {
@@ -25402,7 +25549,7 @@
       "_origin": "ast",
       "id": "foody_vrinda_v3_src_views_transportview_transportview",
       "community": 44,
-      "community_name": "OwnerView.jsx",
+      "community_name": "TransportView.jsx",
       "norm_label": "transportview()"
     },
     {
@@ -60383,6 +60530,187 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "foody_vrinda_v3/scripts/release-apk.mjs",
+      "source_location": "L23",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "foody_vrinda_v3_scripts_release_apk",
+      "target": "foody_vrinda_v3_scripts_release_apk_android_dir",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "foody_vrinda_v3/scripts/release-apk.mjs",
+      "source_location": "L24",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "foody_vrinda_v3_scripts_release_apk",
+      "target": "foody_vrinda_v3_scripts_release_apk_build_gradle_path",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "foody_vrinda_v3/scripts/release-apk.mjs",
+      "source_location": "L26",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "foody_vrinda_v3_scripts_release_apk",
+      "target": "foody_vrinda_v3_scripts_release_apk_built_apk_path",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "foody_vrinda_v3/scripts/release-apk.mjs",
+      "source_location": "L21",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "foody_vrinda_v3_scripts_release_apk",
+      "target": "foody_vrinda_v3_scripts_release_apk_dirname",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "foody_vrinda_v3/scripts/release-apk.mjs",
+      "source_location": "L20",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "foody_vrinda_v3_scripts_release_apk",
+      "target": "foody_vrinda_v3_scripts_release_apk_filename",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "foody_vrinda_v3/scripts/release-apk.mjs",
+      "source_location": "L39",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "foody_vrinda_v3_scripts_release_apk",
+      "target": "foody_vrinda_v3_scripts_release_apk_getgithubtoken",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "foody_vrinda_v3/scripts/release-apk.mjs",
+      "source_location": "L27",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "foody_vrinda_v3_scripts_release_apk",
+      "target": "foody_vrinda_v3_scripts_release_apk_latest_apk_path",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "foody_vrinda_v3/scripts/release-apk.mjs",
+      "source_location": "L31",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "foody_vrinda_v3_scripts_release_apk",
+      "target": "foody_vrinda_v3_scripts_release_apk_log",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "foody_vrinda_v3/scripts/release-apk.mjs",
+      "source_location": "L51",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "foody_vrinda_v3_scripts_release_apk",
+      "target": "foody_vrinda_v3_scripts_release_apk_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "foody_vrinda_v3/scripts/release-apk.mjs",
+      "source_location": "L22",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "foody_vrinda_v3_scripts_release_apk",
+      "target": "foody_vrinda_v3_scripts_release_apk_root_dir",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "foody_vrinda_v3/scripts/release-apk.mjs",
+      "source_location": "L35",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "foody_vrinda_v3_scripts_release_apk",
+      "target": "foody_vrinda_v3_scripts_release_apk_run",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "foody_vrinda_v3/scripts/release-apk.mjs",
+      "source_location": "L25",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "foody_vrinda_v3_scripts_release_apk",
+      "target": "foody_vrinda_v3_scripts_release_apk_update_service_path",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "foody_vrinda_v3/scripts/release-apk.mjs",
+      "source_location": "L52",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "foody_vrinda_v3_scripts_release_apk_main",
+      "target": "foody_vrinda_v3_scripts_release_apk_log",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "foody_vrinda_v3/scripts/release-apk.mjs",
+      "source_location": "L93",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "foody_vrinda_v3_scripts_release_apk_main",
+      "target": "foody_vrinda_v3_scripts_release_apk_run",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "foody_vrinda_v3/scripts/release-apk.mjs",
+      "source_location": "L126",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "foody_vrinda_v3_scripts_release_apk_main",
+      "target": "foody_vrinda_v3_scripts_release_apk_getgithubtoken",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "deferred": true,
+      "confidence": "EXTRACTED",
+      "source_file": "foody_vrinda_v3/scripts/release-apk.mjs",
+      "source_location": "L197",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "foody_vrinda_v3_scripts_release_apk_main",
+      "target": "foody_vrinda_v3_src_supabase",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "foody_vrinda_v3/scripts/run-android.js",
       "source_location": "L19",
       "weight": 1.0,
@@ -68388,7 +68716,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "foody_vrinda_v3/src/services/appUpdateService.js",
-      "source_location": "L139",
+      "source_location": "L185",
       "weight": 1.0,
       "_origin": "ast",
       "source": "foody_vrinda_v3_src_services_appupdateservice",
@@ -68480,7 +68808,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "foody_vrinda_v3/src/services/appUpdateService.js",
-      "source_location": "L102",
+      "source_location": "L148",
       "weight": 1.0,
       "_origin": "ast",
       "source": "foody_vrinda_v3_src_services_appupdateservice_appupdateservice",
@@ -68491,7 +68819,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "foody_vrinda_v3/src/services/appUpdateService.js",
-      "source_location": "L81",
+      "source_location": "L127",
       "weight": 1.0,
       "_origin": "ast",
       "source": "foody_vrinda_v3_src_services_appupdateservice_appupdateservice",
@@ -80442,5 +80770,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "fb44cb147f1a64c3ad727d31c07c960ace4ccc4d"
+  "built_at_commit": "d8fc5cd20d82c07f53df22aee94548c97c607f93"
 }
