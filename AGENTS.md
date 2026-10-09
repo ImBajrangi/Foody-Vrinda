@@ -2,7 +2,7 @@
 
 ## 1. UI/UX Design System & Palette
 - **Canvas & Surfaces**: Always maintain the Obsidian dark luxury aesthetic (`#1E1B1C`) with elevated cards (`#282526`) and recessed inputs (`#151314`).
-- **Accent Tokens**: Neon Chartreuse `#E0FF33` on interactive CTAs and active indicators.
+- **Accent Tokens**: Terracotta Rust `#CB785C` on interactive CTAs and active indicators.
 - **Organic Dish Cards**: Alternating Soft Mint (`#CEF3E7`) and Soft Peach (`#FFF2E6`) cards with borderless rounded containers (`rounded-[32px] sm:rounded-[42px]`).
 - **Product Detail Container**: Warm Ivory Cream (`#FAF5EB`) top section with high-res transparent food cutouts and floating pill badges.
 - **Typography**: `Outfit` for bold display headings, `Plus Jakarta Sans` for clean body typography.
@@ -48,6 +48,25 @@ Rule — Cache-First SWR Pattern:
 Rule [Auto-Theme Contrast Guard]: Whenever new components or views are created, always ensure CSS variables/utility classes support both Light & Dark modes without hardcoding un-swappable hex colors.
 Rule [Egress-Free Performance Check]: All cache invalidations and UI re-renders must debounce network traffic and maintain 60fps responsiveness on low-tier mobile devices.
 Rule [Native Bottom Sheet Invariant]: "Interactive bottom sheets and swipe-down drawers must never use CSS keyframe animations with fill-mode: both/forwards or :not(.sheet-dragging) selectors. Dismissal transitions must interpolate continuously from the user's release position (translate3d(0, ${finalDiff}px, 0)) to 105% with cubic-bezier(0.32, 0.72, 0, 1) without premature React re-renders or origin resets."
+
+Rule — Core Service Modularization Invariant:
+"For any mission-critical core module >1,000 LOC (such as supabase.js):
+1. Never modify downstream import paths during extraction.
+2. Preserve the existing public API through a stable facade.
+3. Create a Git isolation branch before modification.
+4. Preserve the original implementation as a temporary rollback snapshot.
+5. Extract one bounded domain at a time.
+6. After every extraction:
+   - npm run build
+   - lint/typecheck
+   - export parity check
+   - relevant tests
+7. Do not delete the monolith until:
+   - 100% public-export parity is verified
+   - application build passes
+   - runtime smoke tests pass
+   - no stale imports remain
+8. Remove the backup only after the refactor is proven stable."
 
 ## Multi-Environment & Production Safety
 
