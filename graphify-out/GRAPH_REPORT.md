@@ -1,7 +1,7 @@
 # Graph Report - Foody-Vrinda  (2026-10-10)
 
 ## Corpus Check
-- 209 files · ~369,044 words
+- 209 files · ~369,119 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `511f8f75`
+- Built from commit: `d5d3dfd8`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
