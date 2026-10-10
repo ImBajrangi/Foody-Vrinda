@@ -1,16 +1,16 @@
 # Graph Report - Foody-Vrinda  (2026-10-10)
 
 ## Corpus Check
-- 209 files · ~369,119 words
+- 209 files · ~369,196 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2890 nodes · 5092 edges · 151 communities (117 shown, 34 thin omitted)
+- 2890 nodes · 5095 edges · 151 communities (117 shown, 34 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 8 edges (avg confidence: 0.59)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `d5d3dfd8`
+- Built from commit: `117e7620`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 

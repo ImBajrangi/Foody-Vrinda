@@ -455,8 +455,8 @@
     "semantic_hash": ""
   },
   "foody_vrinda_v3/src/views/DeveloperView.jsx": {
-    "mtime": 1791647863.9168465,
-    "ast_hash": "fba00fb0c4c3e72f9644b8a4babc046c",
+    "mtime": 1791652118.1909928,
+    "ast_hash": "5635d8bc43e54a4e884dd5cc2f73a08c",
     "semantic_hash": ""
   },
   "foody_vrinda_v3/src/views/KitchenView.jsx": {
@@ -855,8 +855,8 @@
     "semantic_hash": ""
   },
   "foody_vrinda_v3/src/services/appUpdateService.js": {
-    "mtime": 1791367548.0776913,
-    "ast_hash": "8dffea0f9a564f9f5e4f0a8e367cfacf",
+    "mtime": 1791651974.1285,
+    "ast_hash": "d347b39e84e71523e923a0b8e64ee075",
     "semantic_hash": ""
   },
   "foody_vrinda_v3/supabase/functions/order-push-notification/index.ts": {
@@ -950,8 +950,8 @@
     "semantic_hash": ""
   },
   "foody_vrinda_v3/src/components/FVRewardsDashboard.jsx": {
-    "mtime": 1791650954.3533332,
-    "ast_hash": "8113dd690f060c28df33894d1d6262b0",
+    "mtime": 1791651787.01101,
+    "ast_hash": "850acd7cc61804a6d9f2a9114e9b1b9b",
     "semantic_hash": ""
   },
   "foody_vrinda_v3/src/services/fvWalletService.js": {
@@ -1040,8 +1040,8 @@
     "semantic_hash": ""
   },
   "foody_vrinda_v3/scripts/release-apk.mjs": {
-    "mtime": 1791366801.2927403,
-    "ast_hash": "f8e35002de57a49e7b1bd6e5289decb6",
+    "mtime": 1791651959.6136284,
+    "ast_hash": "d1c6a3d50b11da72749a637a34e3b22f",
     "semantic_hash": ""
   },
   "foody_vrinda_v3/scripts/verify-supabase-parity.js": {
