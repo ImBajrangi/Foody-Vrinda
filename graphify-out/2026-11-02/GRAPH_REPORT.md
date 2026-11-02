@@ -1,16 +1,16 @@
 # Graph Report - Foody-Vrinda  (2026-11-02)
 
 ## Corpus Check
-- 252 files · ~442,704 words
+- 252 files · ~443,484 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 3121 nodes · 5624 edges · 162 communities (129 shown, 33 thin omitted)
+- 3121 nodes · 5624 edges · 163 communities (130 shown, 33 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 12 edges (avg confidence: 0.63)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `a517412a`
+- Built from commit: `5fe70da4`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -44,7 +44,7 @@
 - search_screen.dart
 - cart_provider.dart
 - address_autocomplete_field.dart
-- package:flutter/material.dart
+- inputs.dart
 - OwnerView.jsx
 - menu_item_model.dart
 - main.dart
@@ -162,6 +162,7 @@
 - Foody Vrinda animations (React + Capacitor)
 - RollingCounter.tsx
 - ErrorBoundary
+- package:flutter/material.dart
 - firebase_config.dart
 - delivery_alarm_service.dart
 - test-combo-engine.mjs
@@ -199,7 +200,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (162 total, 33 thin omitted)
+## Communities (163 total, 33 thin omitted)
 
 ### Community 0 - "developer_panel.dart"
 Cohesion: 0.01
@@ -317,9 +318,9 @@ Nodes (28): addItem, CartProvider, clear, clearAndSetShop, decrementItem, format
 Cohesion: 0.07
 Nodes (27): _inputDecoration, AddressAutocompleteField, _AddressAutocompleteFieldState, build, controller, createState, _debounce, decoration (+19 more)
 
-### Community 29 - "package:flutter/material.dart"
-Cohesion: 0.07
-Nodes (26): EmojiToIcon, getIcon, getIconWidget, AppDropdown, AppInputField, build, controller, enabled (+18 more)
+### Community 29 - "inputs.dart"
+Cohesion: 0.11
+Nodes (18): AppDropdown, AppInputField, build, controller, enabled, hintText, items, keyboardType (+10 more)
 
 ### Community 30 - "OwnerView.jsx"
 Cohesion: 0.10
@@ -656,6 +657,10 @@ Nodes (6): 1. Copy, 2. Fonts (important in a Capacitor app: it must work offline
 ### Community 150 - "RollingCounter.tsx"
 Cohesion: 0.36
 Nodes (6): clamp(), Col, Counter(), RollingCounter, springOf(), stillness()
+
+### Community 152 - "package:flutter/material.dart"
+Cohesion: 0.20
+Nodes (8): EmojiToIcon, getIcon, getIconWidget, main, package:flutter/material.dart, package:flutter_test/flutter_test.dart, package:foody_vrinda/main.dart, package:iconsax/iconsax.dart
 
 ### Community 154 - "firebase_config.dart"
 Cohesion: 0.25
