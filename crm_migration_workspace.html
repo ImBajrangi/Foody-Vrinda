@@ -1,0 +1,2680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RelayCRM Studio — Field Mapping</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ==========================================================================
+       CENTRALIZED DESIGN TOKENS (§6 & §13.3 Responsive Tokens)
+       ========================================================================== */
+    :root {
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+      --text-xs: 11px;
+      --text-sm: 12px;
+      --text-md: 14px;
+      --text-lg: 16px;
+      --text-xl: 20px;
+      --text-page-title: 32px;
+
+      --weight-regular: 400;
+      --weight-medium: 500;
+      --weight-semibold: 600;
+      --weight-bold: 700;
+
+      --space-1: 4px;
+      --space-2: 8px;
+      --space-3: 12px;
+      --space-4: 16px;
+      --space-5: 20px;
+      --space-6: 24px;
+      --space-8: 32px;
+
+      --color-canvas: #f7f8f5;
+      --color-surface: #ffffff;
+      --color-surface-muted: #f1f3ef;
+      --color-surface-subtle: #fafbf9;
+      --color-text-primary: #202320;
+      --color-text-secondary: #69716b;
+      --color-text-muted: #929992;
+      --color-text-inverse: #ffffff;
+      
+      --color-border: #e1e6df;
+      --color-border-strong: #d3d9d1;
+
+      --color-primary: #171a18;
+      --color-accent: #d63383;
+      --color-accent-soft: #fce9f2;
+      
+      --color-success: #368b49;
+      --color-success-soft: #e8f5e7;
+      --color-warning: #a86d13;
+      --color-warning-soft: #fff3dc;
+      --color-danger: #c23b48;
+      --color-danger-soft: #fdebed;
+
+      --color-source: #f2f7f1;
+      --color-source-border: #d4e2d3;
+      --color-connector: #aeb6af;
+
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+      --radius-panel: 14px;
+      --radius-pill: 999px;
+
+      --border-width: 1px;
+      --focus-ring: 0 0 0 2px #3878d8;
+
+      --header-height: 64px;
+      --breadcrumb-height: 42px;
+      --content-max-width: 1600px;
+
+      /* Responsive Layout Tokens (§13.3) */
+      --page-padding-x: 32px;
+      --page-padding-y: 28px;
+      --sidebar-width: 306px;
+      --layout-gap: 24px;
+      --mapping-column-gap: 16px;
+      --mapping-row-min-height: 72px;
+      --control-height: 40px;
+
+      --transition-timing: 140ms ease-out;
+
+      /* Media Layer Tokens (§14.8) */
+      --media-frame: var(--color-surface);
+      --media-frame-border: var(--color-border);
+      --media-overlay: rgba(23, 26, 24, 0.08);
+      --media-caption: var(--color-text-primary);
+      --media-radius: var(--radius-lg);
+      --media-gap: var(--space-4);
+    }
+
+    @media (max-width: 1199px) {
+      :root {
+        --page-padding-x: 20px;
+        --page-padding-y: 24px;
+        --sidebar-width: 270px;
+        --layout-gap: 20px;
+        --mapping-column-gap: 12px;
+        --text-page-title: 28px;
+      }
+    }
+
+    @media (max-width: 899px) {
+      :root {
+        --page-padding-x: 16px;
+        --page-padding-y: 20px;
+        --layout-gap: 16px;
+        --text-page-title: 24px;
+      }
+    }
+
+    @media (max-width: 479px) {
+      :root {
+        --page-padding-x: 12px;
+        --page-padding-y: 16px;
+        --layout-gap: 12px;
+        --text-page-title: 22px;
+      }
+    }
+
+    /* Base Reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--color-canvas);
+      color: var(--color-text-primary);
+      font-size: var(--text-md);
+      line-height: 1.5;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    button, input, select {
+      font-family: inherit;
+      color: inherit;
+      font-size: inherit;
+    }
+
+    :focus-visible {
+      outline: 2px solid #3878d8;
+      outline-offset: 2px;
+    }
+
+    /* ==========================================================================
+       1. GLOBAL APPLICATION HEADER (§4)
+       ========================================================================== */
+    .app-header {
+      height: var(--header-height);
+      background-color: var(--color-surface);
+      border-bottom: 1px solid var(--color-border);
+      padding: 0 var(--page-padding-x);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      min-width: 0;
+    }
+
+    .menu-btn {
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      background: var(--color-surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-text-secondary);
+      cursor: pointer;
+      transition: background var(--transition-timing);
+      flex-shrink: 0;
+    }
+
+    .menu-btn:hover {
+      background: var(--color-surface-muted);
+      color: var(--color-text-primary);
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--color-text-primary);
+      user-select: none;
+      flex-shrink: 0;
+    }
+
+    .brand-mark {
+      width: 32px;
+      height: 32px;
+      background: var(--color-primary);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-text-inverse);
+      font-weight: var(--weight-bold);
+      font-size: 15px;
+    }
+
+    .brand-text {
+      font-size: 15px;
+      font-weight: var(--weight-bold);
+      letter-spacing: -0.3px;
+    }
+
+    .brand-subtext {
+      font-size: var(--text-sm);
+      color: var(--color-text-secondary);
+      font-weight: var(--weight-regular);
+      margin-left: 2px;
+    }
+
+    .primary-nav {
+      display: flex;
+      align-items: center;
+      gap: var(--space-1);
+      margin-left: var(--space-3);
+    }
+
+    @media (max-width: 950px) {
+      .primary-nav {
+        display: none;
+      }
+    }
+
+    .nav-item {
+      display: inline-flex;
+      align-items: center;
+      height: 40px;
+      padding: 0 14px;
+      font-size: var(--text-md);
+      font-weight: var(--weight-medium);
+      color: var(--color-text-secondary);
+      text-decoration: none;
+      border-radius: var(--radius-md);
+      transition: all var(--transition-timing);
+    }
+
+    .nav-item:hover {
+      color: var(--color-text-primary);
+      background: var(--color-surface-muted);
+    }
+
+    .nav-item.is-active {
+      color: var(--color-text-primary);
+      background: var(--color-surface-muted);
+      font-weight: var(--weight-semibold);
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      flex-shrink: 0;
+    }
+
+    .workspace-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      background: var(--color-success-soft);
+      color: var(--color-success);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      white-space: nowrap;
+    }
+
+    @media (max-width: 600px) {
+      .workspace-status span:last-child {
+        display: none;
+      }
+      .workspace-status {
+        padding: 6px;
+      }
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--color-success);
+      border-radius: 50%;
+    }
+
+    .header-icon-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-text-secondary);
+      cursor: pointer;
+      transition: background var(--transition-timing);
+    }
+
+    .header-icon-btn:hover {
+      background: var(--color-surface-muted);
+      color: var(--color-text-primary);
+    }
+
+    .user-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--color-surface-muted);
+      border: 1.5px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      flex-shrink: 0;
+      position: relative;
+      cursor: pointer;
+      transition: border-color var(--transition-timing);
+    }
+
+    .user-avatar:hover {
+      border-color: var(--color-primary);
+    }
+
+    .user-avatar-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ==========================================================================
+       2. BREADCRUMB ROW (§4)
+       ========================================================================== */
+    .breadcrumb-row {
+      height: var(--breadcrumb-height);
+      background: var(--color-surface);
+      border-bottom: 1px solid var(--color-border);
+      padding: 0 var(--page-padding-x);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: var(--text-sm);
+      gap: 12px;
+    }
+
+    .breadcrumb-path {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      color: var(--color-text-secondary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-width: 0;
+    }
+
+    .breadcrumb-path a {
+      color: var(--color-text-secondary);
+      text-decoration: none;
+    }
+
+    .breadcrumb-path a:hover {
+      color: var(--color-text-primary);
+    }
+
+    .breadcrumb-sep {
+      color: var(--color-text-muted);
+    }
+
+    .breadcrumb-current {
+      color: var(--color-text-primary);
+      font-weight: var(--weight-medium);
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .save-indicator {
+      color: var(--color-text-secondary);
+      font-size: var(--text-xs);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    .save-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--color-success);
+      border-radius: 50%;
+    }
+
+    /* ==========================================================================
+       3. WORKSPACE SHELL & ADAPTIVE SIDEBAR (§4 & §13.4)
+       ========================================================================== */
+    .app-shell {
+      display: grid;
+      grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+      min-height: calc(100vh - var(--header-height) - var(--breadcrumb-height));
+      position: relative;
+    }
+
+    .sidebar {
+      background: var(--color-surface);
+      border-right: 1px solid var(--color-border);
+      padding: var(--space-4);
+      width: var(--sidebar-width);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      overflow-y: auto;
+      z-index: 50;
+    }
+
+    .sidebar-drawer-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.35);
+      z-index: 85;
+      backdrop-filter: blur(2px);
+    }
+
+    .sidebar-drawer-overlay.is-active {
+      display: block;
+    }
+
+    .sidebar-head {
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .sidebar-title {
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      color: var(--color-text-primary);
+      letter-spacing: -0.2px;
+    }
+
+    .sidebar-search-box {
+      position: relative;
+      width: 100%;
+    }
+
+    .sidebar-search-box svg {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--color-text-muted);
+      pointer-events: none;
+    }
+
+    .sidebar-search-input {
+      height: 36px;
+      width: 100%;
+      background: var(--color-surface-subtle);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 0 12px 0 34px;
+      font-size: 13px;
+      color: var(--color-text-primary);
+      transition: border-color var(--transition-timing);
+    }
+
+    .sidebar-search-input:focus {
+      outline: none;
+      border-color: var(--color-text-primary);
+      background: var(--color-surface);
+    }
+
+    /* Entity Groups */
+    .entity-group {
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: var(--color-surface);
+      margin-bottom: var(--space-2);
+    }
+
+    .entity-group-header {
+      min-height: 48px;
+      padding: 0 var(--space-3);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      background: var(--color-surface);
+      border: none;
+      width: 100%;
+      text-align: left;
+      transition: background var(--transition-timing);
+    }
+
+    .entity-group-header:hover {
+      background: var(--color-surface-subtle);
+    }
+
+    .entity-group-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .entity-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-surface-muted);
+      color: var(--color-text-secondary);
+    }
+
+    .entity-name {
+      font-size: 13px;
+      font-weight: var(--weight-semibold);
+      color: var(--color-text-primary);
+    }
+
+    .entity-count {
+      font-size: var(--text-xs);
+      color: var(--color-text-secondary);
+    }
+
+    /* File Cards Grid (§13.6) */
+    .file-cards-grid {
+      padding: var(--space-2);
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      border-top: 1px solid var(--color-border);
+      background: var(--color-surface-subtle);
+    }
+
+    .file-cards-grid.is-collapsed {
+      display: none;
+    }
+
+    .file-card {
+      min-height: 100px;
+      min-width: 0;
+      padding: 10px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+      text-align: left;
+      transition: border-color var(--transition-timing);
+    }
+
+    .file-card:hover {
+      border-color: var(--color-border-strong);
+    }
+
+    .file-card.is-active {
+      border-color: var(--color-accent);
+      background: var(--color-accent-soft);
+    }
+
+    .file-card.is-ready {
+      border-color: var(--color-source-border);
+      background: var(--color-source);
+    }
+
+    .file-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 4px;
+    }
+
+    .file-badge {
+      font-size: 10px;
+      font-weight: var(--weight-semibold);
+      padding: 2px 5px;
+      background: var(--color-surface-muted);
+      border-radius: 4px;
+      color: var(--color-text-secondary);
+      text-transform: uppercase;
+    }
+
+    .file-status-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      font-weight: var(--weight-medium);
+    }
+
+    .dot-pink {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--color-accent);
+    }
+
+    .dot-green {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--color-success);
+    }
+
+    .file-name {
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      line-height: 1.4;
+      color: var(--color-text-primary);
+      overflow-wrap: anywhere;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      margin-bottom: 6px;
+    }
+
+    .file-meta {
+      font-size: var(--text-xs);
+      color: var(--color-text-secondary);
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .add-source-card {
+      min-height: 100px;
+      border: 1px dashed var(--color-border);
+      border-radius: var(--radius-md);
+      background: var(--color-surface);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      cursor: pointer;
+      color: var(--color-text-secondary);
+      transition: all var(--transition-timing);
+      text-align: center;
+      padding: 8px;
+    }
+
+    .add-source-card:hover {
+      border-color: var(--color-primary);
+      color: var(--color-text-primary);
+      background: var(--color-surface-subtle);
+    }
+
+    /* ==========================================================================
+       4. MAIN MAPPING CONTENT (§4 & §5)
+       ========================================================================== */
+    .main-workspace {
+      background: var(--color-canvas);
+      padding: var(--page-padding-y) var(--page-padding-x);
+      min-width: 0;
+      max-width: var(--content-max-width);
+      display: flex;
+      flex-direction: column;
+      gap: var(--layout-gap);
+    }
+
+    /* ==========================================================================
+       4. DECISION LAYER (§15.2 Composed header area, not multiple unrelated heavy cards)
+       ========================================================================== */
+    .decision-layer {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .decision-header-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+    .header-text-group {
+      max-width: 600px;
+      min-width: 0;
+    }
+
+    .title-h1 {
+      font-size: var(--text-page-title);
+      line-height: 1.15;
+      font-weight: var(--weight-bold);
+      letter-spacing: -0.8px;
+      margin-bottom: var(--space-2);
+      color: var(--color-text-primary);
+    }
+
+    .title-desc {
+      font-size: var(--text-md);
+      line-height: 1.55;
+      color: var(--color-text-secondary);
+    }
+
+    .page-actions-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      height: 42px;
+      padding: 0 var(--space-4);
+      border-radius: var(--radius-md);
+      font-size: 13px;
+      font-weight: var(--weight-semibold);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: background var(--transition-timing), border-color var(--transition-timing);
+      white-space: nowrap;
+    }
+
+    .btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .btn-neutral {
+      background: var(--color-surface);
+      border-color: var(--color-border);
+      color: var(--color-text-primary);
+    }
+
+    .btn-neutral:hover:not(:disabled) {
+      background: var(--color-surface-muted);
+      border-color: var(--color-border-strong);
+    }
+
+    .btn-automap {
+      background: var(--color-accent-soft);
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+    }
+
+    .btn-automap:hover:not(:disabled) {
+      background: #f7d5e6;
+    }
+
+    .btn-primary-dark {
+      background: var(--color-primary);
+      color: var(--color-text-inverse);
+      border-color: var(--color-primary);
+    }
+
+    .btn-primary-dark:hover:not(:disabled) {
+      background: #2b302c;
+      border-color: #2b302c;
+    }
+
+    /* Integrated Progress Summary Strip (§15.2 & §15.3: bar is the visual conclusion of metrics) */
+    .decision-progress-strip {
+      padding-top: 16px;
+      border-top: 1px solid var(--color-border);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .progress-stats-top {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+    }
+
+    .metrics-group-left {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    .metric-badge {
+      height: 30px;
+      padding: 0 10px;
+      border-radius: var(--radius-pill);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .badge-mapped {
+      background: var(--color-success-soft);
+      color: var(--color-success);
+    }
+
+    .badge-unmapped {
+      background: var(--color-surface-muted);
+      color: var(--color-text-secondary);
+    }
+
+    .badge-warning {
+      background: var(--color-warning-soft);
+      color: var(--color-warning);
+    }
+
+    .metric-total-text {
+      font-size: 13px;
+      color: var(--color-text-secondary);
+    }
+
+    .completion-rate-text {
+      font-size: 18px;
+      font-weight: var(--weight-bold);
+      color: var(--color-text-primary);
+    }
+
+    .progress-bar-slot {
+      height: 6px;
+      width: 100%;
+      border-radius: var(--radius-pill);
+      background: var(--color-surface-muted);
+      overflow: hidden;
+      display: flex;
+    }
+
+    .progress-bar-meter {
+      height: 100%;
+      background: var(--color-success);
+      border-radius: var(--radius-pill);
+      transition: width 260ms ease-out;
+    }
+
+    /* Source-to-Target Toolbar (§15.3: keep source/target identity close to filters without an extra enclosing card-inside-card) */
+    .context-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding: 2px 2px;
+    }
+
+    .context-entities-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .crm-chip {
+      height: 38px;
+      padding: 0 14px 0 8px;
+      background: var(--color-surface-subtle);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-pill);
+      font-size: 13px;
+      font-weight: var(--weight-semibold);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--color-text-primary);
+    }
+
+    .crm-avatar {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: var(--weight-bold);
+      color: var(--color-text-inverse);
+    }
+
+    .avatar-hubspot { background: #FF7A59; }
+    .avatar-salesforce { background: #00A1E0; }
+
+    .arrow-icon {
+      color: var(--color-text-muted);
+      display: flex;
+      align-items: center;
+    }
+
+    .filters-right {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+    }
+
+    .filter-chip {
+      height: 32px;
+      padding: 0 12px;
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+      color: var(--color-text-secondary);
+      cursor: pointer;
+      transition: all var(--transition-timing);
+    }
+
+    .filter-chip:hover {
+      border-color: var(--color-border-strong);
+      color: var(--color-text-primary);
+    }
+
+    .filter-chip.is-active {
+      background: var(--color-primary);
+      color: var(--color-text-inverse);
+      border-color: var(--color-primary);
+      font-weight: var(--weight-semibold);
+    }
+
+    /* ==========================================================================
+       5. MAPPING WORKSPACE — CONTROLLED HORIZONTAL & PAIRED MODES (§13.8)
+       ========================================================================== */
+    .mapping-workspace-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-panel);
+      padding: 20px;
+      position: relative;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* Responsive grid with minimum readable content width (§13.8) */
+    .mapping-grid {
+      display: grid;
+      grid-template-columns: minmax(220px, 1fr) 76px minmax(260px, 1.08fr) 84px;
+      column-gap: var(--mapping-column-gap);
+      align-items: center;
+      min-width: 680px;
+    }
+
+    .mapping-header-row {
+      height: 34px;
+      font-size: var(--text-xs);
+      font-weight: var(--weight-semibold);
+      color: var(--color-text-secondary);
+      border-bottom: 1px solid var(--color-border);
+      margin-bottom: 12px;
+      user-select: none;
+    }
+
+    .col-head-source { text-align: left; }
+    .col-head-connector { text-align: center; }
+    .col-head-target { text-align: left; }
+    .col-head-status { text-align: right; }
+
+    .mapping-rows-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-width: 680px;
+    }
+
+    .mapping-row-item {
+      position: relative;
+    }
+
+    /* Source Field Row */
+    .source-box {
+      min-height: var(--mapping-row-min-height);
+      padding: 12px 14px;
+      background: var(--color-source);
+      border: 1px solid var(--color-source-border);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .source-text-stack {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .source-title-line {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      min-width: 0;
+    }
+
+    .drag-icon {
+      color: var(--color-text-muted);
+      cursor: grab;
+      user-select: none;
+      flex-shrink: 0;
+    }
+
+    .source-field-name {
+      font-size: 13px;
+      font-weight: var(--weight-semibold);
+      line-height: 1.35;
+      color: var(--color-text-primary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .source-example-val {
+      font-size: var(--text-xs);
+      color: var(--color-text-secondary);
+      margin-top: 3px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding-left: 14px;
+    }
+
+    .type-pill {
+      font-size: 11px;
+      font-weight: var(--weight-medium);
+      padding: 3px 7px;
+      border-radius: 4px;
+      background: rgba(0, 0, 0, 0.04);
+      color: var(--color-text-secondary);
+      font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* Target Field Row */
+    .target-box {
+      min-height: var(--mapping-row-min-height);
+      padding: 12px 14px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      transition: all var(--transition-timing);
+      min-width: 0;
+    }
+
+    .target-box.is-selected {
+      border: 2px solid var(--color-accent);
+      background: var(--color-accent-soft);
+    }
+
+    .target-box.is-warning {
+      background: var(--color-warning-soft);
+      border-color: var(--color-warning);
+    }
+
+    .target-box.is-unmapped {
+      border-style: dashed;
+      background: var(--color-surface-subtle);
+    }
+
+    .target-text-stack {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .target-field-name {
+      font-size: 13px;
+      font-weight: var(--weight-semibold);
+      color: var(--color-text-primary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .req-mark {
+      color: var(--color-danger);
+      font-weight: var(--weight-bold);
+      margin-left: 2px;
+      flex-shrink: 0;
+    }
+
+    .target-meta-desc {
+      font-size: var(--text-xs);
+      color: var(--color-text-secondary);
+      margin-top: 3px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .warning-explanation {
+      font-size: 11px;
+      color: var(--color-warning);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 3px;
+      font-weight: var(--weight-medium);
+      line-height: 1.25;
+    }
+
+    .disconnect-action-btn {
+      height: 32px;
+      padding: 0 10px;
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      background: var(--color-surface);
+      color: var(--color-text-secondary);
+      cursor: pointer;
+      transition: all var(--transition-timing);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .disconnect-action-btn:hover {
+      background: var(--color-surface-muted);
+      color: var(--color-danger);
+      border-color: var(--color-danger-soft);
+    }
+
+    /* Middle Connector Column */
+    .connector-slot {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .connector-svg {
+      width: 100%;
+      height: 24px;
+      overflow: visible;
+    }
+
+    .vector-stroke {
+      stroke: var(--color-connector);
+      stroke-width: 2;
+      stroke-linecap: round;
+      fill: none;
+      transition: stroke var(--transition-timing);
+    }
+
+    .vector-stroke.stroke-mapped {
+      stroke: var(--color-success);
+    }
+
+    .vector-stroke.stroke-selected {
+      stroke: var(--color-accent);
+      stroke-width: 2.5;
+    }
+
+    .vector-stroke.stroke-warning {
+      stroke: var(--color-warning);
+      stroke-dasharray: 4, 3;
+    }
+
+    .anchor-node {
+      fill: var(--color-surface);
+      stroke: var(--color-connector);
+      stroke-width: 2;
+    }
+
+    .anchor-node.is-active {
+      stroke: var(--color-success);
+      fill: var(--color-success);
+    }
+
+    .anchor-node.is-warning {
+      stroke: var(--color-warning);
+      fill: var(--color-warning);
+    }
+
+    .anchor-node.is-selected {
+      stroke: var(--color-accent);
+      fill: var(--color-accent);
+    }
+
+    /* Status Column */
+    .status-slot {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      font-weight: var(--weight-semibold);
+      padding: 4px 8px;
+      border-radius: var(--radius-pill);
+      white-space: nowrap;
+    }
+
+    .pill-mapped {
+      background: var(--color-success-soft);
+      color: var(--color-success);
+    }
+
+    .pill-unmapped {
+      background: var(--color-surface-muted);
+      color: var(--color-text-secondary);
+    }
+
+    .pill-warning {
+      background: var(--color-warning-soft);
+      color: var(--color-warning);
+    }
+
+    /* Validation Banner */
+    .validation-callout {
+      display: none;
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      font-size: 13px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .validation-callout.is-visible {
+      display: flex;
+    }
+
+    .callout-success {
+      background: var(--color-success-soft);
+      border: 1px solid var(--color-success);
+      color: var(--color-success);
+    }
+
+    .callout-warning {
+      background: var(--color-warning-soft);
+      border: 1px solid var(--color-warning);
+      color: var(--color-warning);
+    }
+
+    .spinner-disc {
+      width: 14px;
+      height: 14px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top-color: white;
+      animation: spinRound 0.6s linear infinite;
+    }
+
+    @keyframes spinRound {
+      to { transform: rotate(360deg); }
+    }
+
+    .toast-pill {
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--color-primary);
+      color: var(--color-text-inverse);
+      padding: 9px 18px;
+      border-radius: var(--radius-pill);
+      font-size: 13px;
+      font-weight: var(--weight-medium);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    /* ==========================================================================
+       MEDIA LAYER & GRAPHIC ADAPTABILITY (§14)
+       ========================================================================== */
+    .assistant-card {
+      margin-top: auto;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      position: relative;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+      transition: all var(--transition-timing);
+    }
+
+    .assistant-card:hover {
+      border-color: var(--color-border-strong);
+    }
+
+    .assistant-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .assistant-character-box {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #eef2ff;
+      border: 1px solid #dbeafe;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .assistant-character-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.15);
+    }
+
+    .assistant-text {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      flex: 1;
+    }
+
+    .assistant-title {
+      font-size: 12px;
+      font-weight: var(--weight-semibold);
+      color: var(--color-text-primary);
+      line-height: 1.3;
+    }
+
+    .assistant-desc {
+      font-size: 11px;
+      color: var(--color-text-secondary);
+      line-height: 1.3;
+    }
+
+    .assistant-close-btn {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: none;
+      background: transparent;
+      color: var(--color-text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      transition: color var(--transition-timing);
+      flex-shrink: 0;
+    }
+
+    .assistant-close-btn:hover {
+      color: var(--color-text-primary);
+    }
+
+    .assistant-tip {
+      font-size: 11px;
+      line-height: 1.45;
+      color: var(--color-text-secondary);
+      background: var(--color-surface-subtle);
+      border-radius: var(--radius-sm);
+      padding: 8px 10px;
+      border: 1px solid var(--color-border);
+    }
+
+    .assistant-tip code {
+      font-family: ui-monospace, SFMono-Regular, monospace;
+      color: var(--color-primary);
+      font-weight: var(--weight-semibold);
+    }
+
+    .tip-badge {
+      font-size: 9px;
+      font-weight: var(--weight-bold);
+      color: var(--color-accent);
+      background: var(--color-accent-soft);
+      padding: 1px 5px;
+      border-radius: 3px;
+      margin-right: 5px;
+      letter-spacing: 0.4px;
+    }
+
+    /* Modal Backdrop & Panels for High-Fidelity Media Viewports */
+    .media-modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(18, 20, 18, 0.55);
+      backdrop-filter: blur(4px);
+      z-index: 1050;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      transition: opacity 180ms ease-out;
+    }
+
+    .media-modal-backdrop.is-open,
+    .media-modal-backdrop.is-active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .media-modal {
+      width: 100%;
+      max-width: 880px;
+      max-height: 90vh;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-panel);
+      box-shadow: 0 20px 48px rgba(0,0,0,0.22);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      animation: modalFadeUp 200ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes modalFadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.98);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .media-modal-head {
+      height: 58px;
+      padding: 0 20px;
+      border-bottom: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--color-surface);
+    }
+
+    .media-modal-title {
+      font-size: 15px;
+      font-weight: var(--weight-bold);
+      color: var(--color-text-primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .modal-close-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-text-secondary);
+      cursor: pointer;
+      transition: background var(--transition-timing);
+    }
+
+    .modal-close-btn:hover {
+      background: var(--color-surface-muted);
+      color: var(--color-text-primary);
+    }
+
+    .media-modal-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      overflow-y: auto;
+      max-height: calc(90vh - 58px);
+    }
+
+    @media (max-width: 768px) {
+      .media-modal-body {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .media-stage-col {
+      background: #0f1110;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 360px;
+      overflow: hidden;
+    }
+
+    .media-stage-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .media-details-col {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      background: var(--color-surface);
+    }
+
+    .media-tabs {
+      display: flex;
+      gap: 8px;
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: 12px;
+    }
+
+    .media-tab-btn {
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: var(--weight-medium);
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+      color: var(--color-text-secondary);
+      cursor: pointer;
+      transition: all var(--transition-timing);
+    }
+
+    .media-tab-btn.is-active {
+      background: var(--color-primary);
+      color: var(--color-text-inverse);
+      border-color: var(--color-primary);
+      font-weight: var(--weight-semibold);
+    }
+
+    .media-spec-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--color-border);
+      font-size: 13px;
+    }
+
+    .media-spec-label {
+      color: var(--color-text-secondary);
+    }
+
+    .media-spec-val {
+      font-weight: var(--weight-semibold);
+      color: var(--color-text-primary);
+    }
+
+    /* Accessibility: Reduced Motion Support (§14.7) */
+    @media (prefers-reduced-motion: reduce) {
+      .media-stage-video {
+        animation: none !important;
+      }
+      .assistant-character-img {
+        animation: none !important;
+      }
+      * {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* ==========================================================================
+       RESPONSIVE ADAPTATIONS (§13.4, §13.5, §13.6, §13.7, §13.8)
+       ========================================================================== */
+    @media (max-width: 899px) {
+      .app-shell {
+        grid-template-columns: 1fr;
+      }
+      .sidebar {
+        position: fixed;
+        left: -320px;
+        top: var(--header-height);
+        height: calc(100vh - var(--header-height));
+        width: 300px;
+        z-index: 95;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        transition: left 240ms cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .sidebar.is-open {
+        left: 0;
+      }
+      .page-actions-group {
+        width: 100%;
+        justify-content: flex-start;
+      }
+    }
+
+    /* Narrow screens: preserve the source → target relationship as a paired card.
+       Do not squeeze a four-column desktop grid into a phone viewport. */
+    @media (max-width: 600px) {
+      .app-header {
+        gap: 8px;
+        padding-inline: 12px;
+      }
+      .header-left {
+        min-width: 0;
+        gap: 8px;
+      }
+      .brand-group {
+        min-width: 0;
+        max-width: 132px;
+        overflow: hidden;
+      }
+      .brand-group .brand-subtext,
+      .primary-nav,
+      .workspace-status {
+        display: none !important;
+      }
+      .header-right {
+        flex-shrink: 0;
+        gap: 6px;
+      }
+      .breadcrumb-row {
+        padding-inline: 12px;
+        gap: 8px;
+      }
+      .breadcrumb-path {
+        min-width: 0;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+      .main-workspace {
+        min-width: 0;
+        padding: var(--page-padding-y) var(--page-padding-x);
+      }
+      .decision-layer {
+        padding: 14px 16px;
+        gap: 14px;
+      }
+      .decision-header-row {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .page-actions-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        width: 100%;
+      }
+      .decision-progress-strip {
+        padding-top: 12px;
+        gap: 10px;
+      }
+      .decision-progress-strip .completion-rate-text {
+        justify-self: start;
+      }
+      .context-toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+        padding: 0;
+      }
+      .context-entities-left,
+      .filters-right {
+        max-width: 100%;
+        flex-wrap: wrap;
+      }
+      .mapping-workspace-card {
+        padding: 12px;
+        overflow-x: visible;
+      }
+      .mapping-header-row {
+        display: none !important;
+      }
+      .mapping-rows-stack {
+        min-width: 0;
+        gap: 12px;
+      }
+      .mapping-row-item.mapping-grid {
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 10px;
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-lg);
+        background: var(--color-surface);
+      }
+      .source-box,
+      .target-box {
+        width: 100%;
+        min-width: 0;
+        min-height: 64px;
+        padding: 10px;
+      }
+      .source-field-name,
+      .target-field-name,
+      .source-example-val,
+      .target-meta-desc {
+        white-space: normal;
+        overflow-wrap: anywhere;
+        text-overflow: clip;
+      }
+      .source-example-val {
+        padding-left: 14px;
+      }
+      .connector-slot {
+        width: 100%;
+        height: 30px;
+        justify-content: flex-start;
+        padding-left: 16px;
+      }
+      .connector-svg {
+        width: 24px;
+        height: 24px;
+        transform: rotate(90deg);
+        transform-origin: center;
+      }
+      .target-box {
+        align-items: center;
+      }
+      .target-text-stack {
+        flex: 1 1 auto;
+      }
+      .disconnect-action-btn {
+        flex: 0 0 auto;
+        padding-inline: 8px;
+      }
+      .status-slot {
+        align-self: flex-start;
+        margin-top: 8px;
+      }
+    }
+
+    @media (max-width: 359px) {
+      .file-cards-grid {
+        grid-template-columns: 1fr;
+      }
+      .mapping-workspace-card {
+        padding: 8px;
+      }
+      .mapping-row-item.mapping-grid {
+        padding: 8px;
+      }
+      .target-box {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Drawer Backdrop for mobile (§13.4) -->
+  <div class="sidebar-drawer-overlay" id="drawerBackdrop"></div>
+
+  <!-- 1. Global Application Header -->
+  <header class="app-header">
+    <div class="header-left">
+      <button class="menu-btn" id="btnToggleSidebar" aria-label="Toggle navigation drawer" title="Toggle navigation drawer">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+
+      <a href="#" class="brand-group">
+        <div class="brand-mark">R</div>
+        <div>
+          <span class="brand-text">RelayCRM</span>
+          <span class="brand-subtext">Studio</span>
+        </div>
+      </a>
+
+      <nav class="primary-nav" aria-label="Global Navigation">
+        <a href="#" class="nav-item">Home</a>
+        <a href="#" class="nav-item">Leads</a>
+        <a href="#" class="nav-item">Contacts</a>
+        <a href="#" class="nav-item">Deals</a>
+        <a href="#" class="nav-item is-active">Migrations</a>
+        <a href="#" class="nav-item">Reports</a>
+        <a href="#" class="nav-item">Tools</a>
+      </nav>
+    </div>
+
+    <div class="header-right">
+      <div class="workspace-status">
+        <span class="status-dot"></span>
+        <span>Active Workspace</span>
+      </div>
+
+      <button class="header-icon-btn" aria-label="Notifications" title="Notifications">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+      </button>
+
+      <button class="header-icon-btn" aria-label="Settings" title="Settings">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+      </button>
+
+      <div class="user-avatar" title="Sakhi · Lead Migration Architect">
+        <img src="public/crm-assets/avatar.png" alt="User avatar" class="user-avatar-img" onerror="this.onerror=null; this.src='/Users/sakhi/Downloads/aboard---nature-inspired-onboarding-&-auth/public/avatar.png';">
+      </div>
+    </div>
+  </header>
+
+  <!-- 2. Breadcrumb Row -->
+  <div class="breadcrumb-row">
+    <div class="breadcrumb-path">
+      <a href="#">Migrations</a>
+      <span class="breadcrumb-sep">/</span>
+      <a href="#">HubSpot to Salesforce</a>
+      <span class="breadcrumb-sep">/</span>
+      <span class="breadcrumb-current">Field Mapping</span>
+    </div>
+
+    <div class="save-indicator">
+      <span class="save-dot"></span>
+      <span>Draft saved</span>
+    </div>
+  </div>
+
+  <!-- 3. Workspace Shell -->
+  <div class="app-shell">
+
+    <!-- Sidebar with Drawer Support -->
+    <aside class="sidebar" id="appSidebar" role="complementary" aria-label="Source Files Sidebar">
+      <div class="sidebar-head">
+        <span class="sidebar-title">Source Files</span>
+        <span style="font-size:12px; color:var(--color-text-secondary);">6 items</span>
+      </div>
+
+      <div class="sidebar-search-box">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" class="sidebar-search-input" id="sidebarSearch" placeholder="Search files..." aria-label="Search source files" />
+      </div>
+
+      <!-- Contacts & People -->
+      <div class="entity-group">
+        <button class="entity-group-header" onclick="toggleEntityGroup(this)">
+          <div class="entity-group-left">
+            <div class="entity-icon">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            </div>
+            <span class="entity-name">Contacts & People</span>
+          </div>
+          <span class="entity-count">3 files</span>
+        </button>
+
+        <div class="file-cards-grid">
+          <div class="file-card is-active" onclick="switchSourceFile('contacts_export_v2.csv', this)">
+            <div class="file-card-top">
+              <span class="file-badge">CSV</span>
+              <div class="file-status-label">
+                <span class="dot-pink"></span>
+                <span style="color:var(--color-accent); font-weight:600;">Active</span>
+              </div>
+            </div>
+            <div class="file-name">contacts_export_v2.csv</div>
+            <div class="file-meta">
+              <span>12,450 rows</span>
+              <span>8 fields</span>
+            </div>
+          </div>
+
+          <div class="file-card is-ready" onclick="switchSourceFile('leads_q3_import.csv', this)">
+            <div class="file-card-top">
+              <span class="file-badge">CSV</span>
+              <div class="file-status-label">
+                <span class="dot-green"></span>
+                <span style="color:var(--color-success); font-weight:600;">Ready</span>
+              </div>
+            </div>
+            <div class="file-name">leads_q3_import.csv</div>
+            <div class="file-meta">
+              <span>4,120 rows</span>
+              <span>6 fields</span>
+            </div>
+          </div>
+
+          <div class="add-source-card" onclick="triggerAddSource()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+            <span style="font-size:12px; font-weight:var(--weight-medium);">Add source</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Deals & Pipelines -->
+      <div class="entity-group">
+        <button class="entity-group-header" onclick="toggleEntityGroup(this)">
+          <div class="entity-group-left">
+            <div class="entity-icon">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+            </div>
+            <span class="entity-name">Deals & Pipelines</span>
+          </div>
+          <span class="entity-count">2 files</span>
+        </button>
+
+        <div class="file-cards-grid is-collapsed">
+          <div class="file-card" onclick="switchSourceFile('deals_closed_2026.csv', this)">
+            <div class="file-card-top">
+              <span class="file-badge">CSV</span>
+            </div>
+            <div class="file-name">deals_closed_2026.csv</div>
+            <div class="file-meta">
+              <span>850 rows</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Accounts & Orgs -->
+      <div class="entity-group">
+        <button class="entity-group-header" onclick="toggleEntityGroup(this)">
+          <div class="entity-group-left">
+            <div class="entity-icon">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M3 7v14M21 7v14M9 3h6v4H9zM10 11h4M10 16h4"></path></svg>
+            </div>
+            <span class="entity-name">Accounts & Orgs</span>
+          </div>
+          <span class="entity-count">1 file</span>
+        </button>
+
+        <div class="file-cards-grid is-collapsed">
+          <div class="file-card" onclick="switchSourceFile('companies_master.csv', this)">
+            <div class="file-card-top">
+              <span class="file-badge">CSV</span>
+            </div>
+            <div class="file-name">companies_master.csv</div>
+            <div class="file-meta">
+              <span>1,200 rows</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Migration Assistant Card (§14.3 & §14.5 Featuring character.gif) -->
+      <div class="assistant-card" id="assistantCard">
+        <div class="assistant-header">
+          <div class="assistant-character-box">
+            <img src="public/crm-assets/character.gif" alt="Relay Assistant" class="assistant-character-img" onerror="this.onerror=null; this.src='/Users/sakhi/Downloads/aboard---nature-inspired-onboarding-&-auth/public/character.gif';">
+          </div>
+          <div class="assistant-text">
+            <span class="assistant-title">AI Mapper Active</span>
+            <span class="assistant-desc">5/6 attributes matched</span>
+          </div>
+          <button class="assistant-close-btn" onclick="toggleAssistant(false)" title="Minimize assistant" aria-label="Minimize assistant">×</button>
+        </div>
+        <div class="assistant-tip">
+          <span class="tip-badge">INSIGHT</span>
+          <span><code>phone_mobile</code> needs E.164 parsing. Click warning row to inspect.</span>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- Main Workspace -->
+    <main class="main-workspace">
+
+      <!-- 2. DECISION LAYER (§15.2 One composed header area, not four unrelated cards) -->
+      <section class="decision-layer">
+        <div class="decision-header-row">
+          <div class="header-text-group">
+            <h1 class="title-h1">Field Mapping</h1>
+            <p class="title-desc">Map source attributes from HubSpot contacts export to target Salesforce contact properties. Verify data types, sample values, and validation integrity before proceeding.</p>
+          </div>
+
+          <div class="page-actions-group">
+            <button class="btn btn-neutral" onclick="openArchitectureModal()" title="View Schema Architecture Spec">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+              Architecture
+            </button>
+            <button class="btn btn-neutral" onclick="openPreviewModal()" title="Preview Mapped Client View">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+              Live App View
+            </button>
+            <button class="btn btn-neutral" onclick="handleReset()">Reset</button>
+            <button class="btn btn-automap" id="btnAutoMap" onclick="handleAutoMap()">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path></svg>
+              Auto-Map Fields
+            </button>
+            <button class="btn btn-primary-dark" id="btnRunValidation" onclick="handleRunValidation()">
+              <span id="validationBtnLabel">Run Validation</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Integrated Progress Summary Strip (§15.3: Bar is visual conclusion of metrics) -->
+        <div class="decision-progress-strip">
+          <div class="progress-stats-top">
+            <div class="metrics-group-left">
+              <div class="metric-badge badge-mapped">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span id="mappedCountText">4 Mapped</span>
+              </div>
+
+              <div class="metric-badge badge-unmapped">
+                <span id="unmappedCountText">1 Unmapped</span>
+              </div>
+
+              <div class="metric-badge badge-warning" id="warningBadge">
+                <span id="warningCountText">1 Warning</span>
+              </div>
+
+              <span class="metric-total-text">Total 6 Target Attributes</span>
+            </div>
+
+            <div class="completion-rate-text" id="completionPercentageText">83% Complete</div>
+          </div>
+
+          <div class="progress-bar-slot" aria-label="Mapping progress">
+            <div class="progress-bar-meter" id="progressBarMeter" style="width: 83%;"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Source/Target Context & Filters Toolbar (§15.3: Distinct through spacing/alignment, not another heavy card) -->
+      <section class="context-toolbar">
+        <div class="context-entities-left">
+          <div class="crm-chip">
+            <div class="crm-avatar avatar-hubspot">H</div>
+            <span>HubSpot Contacts</span>
+          </div>
+
+          <div class="arrow-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </div>
+
+          <div class="crm-chip">
+            <div class="crm-avatar avatar-salesforce">S</div>
+            <span>Salesforce Contact (Standard)</span>
+          </div>
+        </div>
+
+        <div class="filters-right" role="tablist">
+          <button class="filter-chip is-active" onclick="handleFilterChange('all', this)">All (6)</button>
+          <button class="filter-chip" onclick="handleFilterChange('mapped', this)">Mapped</button>
+          <button class="filter-chip" onclick="handleFilterChange('unmapped', this)">Unmapped</button>
+          <button class="filter-chip" onclick="handleFilterChange('warnings', this)">Warnings (1)</button>
+        </div>
+      </section>
+
+      <!-- Mapping Workspace (Controlled Horizontal & Shared Grid §13.8) -->
+      <section class="mapping-workspace-card">
+        
+        <!-- Aligned Column Headers -->
+        <div class="mapping-grid mapping-header-row">
+          <div class="col-head-source">SOURCE FIELD</div>
+          <div class="col-head-connector">CONNECTOR</div>
+          <div class="col-head-target">TARGET FIELD</div>
+          <div class="col-head-status">STATUS</div>
+        </div>
+
+        <!-- Aligned Rows Stack -->
+        <div class="mapping-rows-stack" id="mappingRowsStack">
+          <!-- Dynamically populated rows sharing the exact same grid geometry -->
+        </div>
+
+        <!-- Validation Inline Callout -->
+        <div class="validation-callout" id="validationCallout">
+          <div id="validationCalloutText" style="display:flex; align-items:center; gap:8px;"></div>
+          <button class="btn btn-neutral" style="height:32px; padding:0 12px; font-size:12px;" onclick="dismissCallout()">Dismiss</button>
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- 4. SCHEMA ARCHITECTURE MODAL (§14.3 & §14.5 Featuring ink_type_architecture.mp4 & vrindopnishad-flyover.mp4) -->
+  <div class="media-modal-backdrop" id="archModalBackdrop" onclick="if(event.target===this) closeArchitectureModal()">
+    <div class="media-modal" role="dialog" aria-labelledby="archModalTitle" aria-modal="true">
+      <div class="media-modal-head">
+        <div class="media-modal-title" id="archModalTitle">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+          <span>Schema Topology & Transformation Architecture</span>
+        </div>
+        <button class="modal-close-btn" onclick="closeArchitectureModal()" aria-label="Close dialog">✕</button>
+      </div>
+      <div class="media-modal-body">
+        <div class="media-stage-col">
+          <video class="media-stage-video" id="archVideo" autoplay loop muted playsinline poster="/tmp/crm_assets_preview/ink_type.jpg">
+            <source src="public/crm-assets/ink_type_architecture.mp4" type="video/mp4">
+            <source src="/Users/sakhi/Downloads/ink_type_architecture.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="media-details-col">
+          <div class="media-tabs" role="tablist">
+            <button class="media-tab-btn is-active" id="tabArchSpec" onclick="switchArchMedia('ink', this)">Schema Blueprint</button>
+            <button class="media-tab-btn" id="tabArchFlyover" onclick="switchArchMedia('flyover', this)">Pipeline Topology</button>
+          </div>
+          <div>
+            <h4 style="font-size:14px; font-weight:var(--weight-bold); margin-bottom:4px; color:var(--color-text-primary);" id="archPanelHeading">Architectural Ingestion Model</h4>
+            <p style="font-size:12px; color:var(--color-text-secondary); line-height:1.5;" id="archPanelDesc">
+              RelayCRM Studio utilizes declarative schema mapping with zero egress waste, SWR validation cache, and strict type-coercion policies between HubSpot JSON and Salesforce SOQL entities.
+            </p>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:2px; margin-top:4px;">
+            <div class="media-spec-row">
+              <span class="media-spec-label">Source System</span>
+              <span class="media-spec-val">HubSpot Contacts API v3</span>
+            </div>
+            <div class="media-spec-row">
+              <span class="media-spec-label">Destination CRM</span>
+              <span class="media-spec-val">Salesforce Contact Standard</span>
+            </div>
+            <div class="media-spec-row">
+              <span class="media-spec-label">Sync Protocol</span>
+              <span class="media-spec-val">Transactional Batch + Webhook</span>
+            </div>
+            <div class="media-spec-row">
+              <span class="media-spec-label">Field Validation</span>
+              <span class="media-spec-val" style="color:var(--color-success);">Strict Strict-Null Safe</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. CLIENT APP PREVIEW MODAL (§14.3 & §14.5 Featuring 12345.mp4 & H12345.mp4) -->
+  <div class="media-modal-backdrop" id="previewModalBackdrop" onclick="if(event.target===this) closePreviewModal()">
+    <div class="media-modal" role="dialog" aria-labelledby="previewModalTitle" aria-modal="true">
+      <div class="media-modal-head">
+        <div class="media-modal-title" id="previewModalTitle">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+          <span>Live Downstream Client Application View</span>
+        </div>
+        <button class="modal-close-btn" onclick="closePreviewModal()" aria-label="Close dialog">✕</button>
+      </div>
+      <div class="media-modal-body">
+        <div class="media-stage-col" style="background:#000;">
+          <video class="media-stage-video" id="previewVideo" autoplay loop muted playsinline poster="/tmp/crm_assets_preview/12345.jpg">
+            <source src="public/crm-assets/12345.mp4" type="video/mp4">
+            <source src="/Users/sakhi/Downloads/12345.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="media-details-col">
+          <div class="media-tabs" role="tablist">
+            <button class="media-tab-btn is-active" id="tabPrevMobile" onclick="switchPreviewMedia('mobile', this)">Mobile Experience</button>
+            <button class="media-tab-btn" id="tabPrevMotion" onclick="switchPreviewMedia('motion', this)">Transformation Flow</button>
+            <button class="media-tab-btn" id="tabPrevChannels" onclick="switchPreviewMedia('channels', this)">Multi-Platform Sync</button>
+          </div>
+          <div>
+            <h4 style="font-size:14px; font-weight:var(--weight-bold); margin-bottom:4px; color:var(--color-text-primary);" id="prevPanelHeading">Client Projection Simulation</h4>
+            <p style="font-size:12px; color:var(--color-text-secondary); line-height:1.5;" id="prevPanelDesc">
+              Live preview reflecting mapped schema attributes. Fields verified here instantly propagate to native customer applications, push notification gateways, and partner channels.
+            </p>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:2px; margin-top:4px;">
+            <div class="media-spec-row">
+              <span class="media-spec-label">Contact Entity</span>
+              <span class="media-spec-val">Sarah Connors</span>
+            </div>
+            <div class="media-spec-row">
+              <span class="media-spec-label">Primary Email</span>
+              <span class="media-spec-val">sarah.c@cloudscale.io</span>
+            </div>
+            <div class="media-spec-row">
+              <span class="media-spec-label">Phone E.164</span>
+              <span class="media-spec-val">+1 (555) 0199</span>
+            </div>
+            <div class="media-spec-row">
+              <span class="media-spec-label">Pipeline Deal Status</span>
+              <span class="media-spec-val" style="color:var(--color-success); font-weight:600;">Active Account</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // --------------------------------------------------------------------------
+    // DATA REPOSITORY (§10 Data Integrity)
+    // --------------------------------------------------------------------------
+    const dataset = [
+      {
+        id: 'r_first_name',
+        source: { name: 'first_name', type: 'string', sample: 'Aarav, Priya, Vikram' },
+        target: { name: 'FirstName', type: 'String (40)', required: true },
+        status: 'mapped',
+        warningText: null
+      },
+      {
+        id: 'r_last_name',
+        source: { name: 'last_name', type: 'string', sample: 'Sharma, Verma, Patel' },
+        target: { name: 'LastName', type: 'String (80)', required: true },
+        status: 'mapped',
+        warningText: null
+      },
+      {
+        id: 'r_email',
+        source: { name: 'email', type: 'email', sample: 'aarav@vrinda.in, priya@tech.co' },
+        target: { name: 'Email', type: 'Email', required: true },
+        status: 'mapped',
+        warningText: null
+      },
+      {
+        id: 'r_phone',
+        source: { name: 'phone_mobile', type: 'string', sample: '+91 98765 43210, +91 99887 76655' },
+        target: { name: 'MobilePhone', type: 'Phone', required: false },
+        status: 'mapped',
+        warningText: null
+      },
+      {
+        id: 'r_revenue',
+        source: { name: 'annual_revenue_usd', type: 'float', sample: '145000.50, 2300000.00' },
+        target: { name: 'AnnualRevenue', type: 'Currency (16,2)', required: false },
+        status: 'warning',
+        warningText: 'Precision truncation possible on high decimal values'
+      },
+      {
+        id: 'r_account_id',
+        source: null,
+        target: { name: 'AccountId', type: 'Reference (Account)', required: true },
+        status: 'unmapped',
+        warningText: null
+      }
+    ];
+
+    let rowsData = JSON.parse(JSON.stringify(dataset));
+    let currentFilter = 'all';
+    let selectedId = 'r_revenue';
+
+    const rowsStack = document.getElementById('mappingRowsStack');
+
+    function renderRows() {
+      rowsStack.innerHTML = '';
+
+      const filtered = rowsData.filter(r => {
+        if (currentFilter === 'mapped') return r.status === 'mapped';
+        if (currentFilter === 'unmapped') return r.status === 'unmapped';
+        if (currentFilter === 'warnings') return r.status === 'warning';
+        return true;
+      });
+
+      if (filtered.length === 0) {
+        rowsStack.innerHTML = `<div style="padding:40px; text-align:center; color:var(--color-text-secondary); font-size:13px;">No attributes found for current filter.</div>`;
+        refreshMetrics();
+        return;
+      }
+
+      filtered.forEach(row => {
+        const isMapped = row.status === 'mapped';
+        const isWarning = row.status === 'warning';
+        const isUnmapped = row.status === 'unmapped';
+        const isSelected = selectedId === row.id;
+
+        const rowContainer = document.createElement('div');
+        rowContainer.className = 'mapping-row-item mapping-grid';
+        rowContainer.id = row.id;
+        rowContainer.onclick = () => { selectedId = row.id; renderRows(); };
+
+        // 1. Source Col
+        const sourceCol = row.source ? `
+          <div class="source-box">
+            <div class="source-text-stack">
+              <div class="source-title-line">
+                <span class="drag-icon" aria-hidden="true">⠿</span>
+                <span class="source-field-name">${escapeText(row.source.name)}</span>
+              </div>
+              <div class="source-example-val">e.g. ${escapeText(row.source.sample)}</div>
+            </div>
+            <span class="type-pill">${escapeText(row.source.type)}</span>
+          </div>
+        ` : `
+          <div class="source-box" style="background:var(--color-surface-subtle); border-style:dashed; border-color:var(--color-border); justify-content:center;">
+            <span style="font-size:12px; color:var(--color-text-muted);">No source field connected</span>
+          </div>
+        `;
+
+        // 2. Connector Col (Centered SVG)
+        let strokeClass = 'vector-stroke';
+        let nodeClass = 'anchor-node';
+        if (isSelected) {
+          strokeClass += ' stroke-selected';
+          nodeClass += ' is-selected';
+        } else if (isWarning) {
+          strokeClass += ' stroke-warning';
+          nodeClass += ' is-warning';
+        } else if (isMapped) {
+          strokeClass += ' stroke-mapped';
+          nodeClass += ' is-active';
+        }
+
+        const connectorCol = `
+          <div class="connector-slot">
+            <svg class="connector-svg" viewBox="0 0 76 24">
+              <circle cx="6" cy="12" r="3" class="${nodeClass}"></circle>
+              ${isMapped || isWarning ? `
+                <path d="M 6 12 L 70 12" class="${strokeClass}"></path>
+                <circle cx="70" cy="12" r="3" class="${nodeClass}"></circle>
+              ` : `
+                <path d="M 6 12 L 70 12" class="vector-stroke" style="stroke-dasharray:3,3; stroke:var(--color-border);"></path>
+                <circle cx="70" cy="12" r="3" class="anchor-node"></circle>
+              `}
+            </svg>
+          </div>
+        `;
+
+        // 3. Target Col
+        let targetBoxClass = 'target-box';
+        if (isSelected) targetBoxClass += ' is-selected';
+        else if (isWarning) targetBoxClass += ' is-warning';
+        else if (isUnmapped) targetBoxClass += ' is-unmapped';
+
+        const targetCol = `
+          <div class="${targetBoxClass}">
+            <div class="target-text-stack">
+              <div style="display:flex; align-items:center;">
+                <span class="target-field-name">${escapeText(row.target.name)}</span>
+                ${row.target.required ? '<span class="req-mark" title="Required field">*</span>' : ''}
+              </div>
+              <div class="target-meta-desc">${escapeText(row.target.type)}</div>
+              ${isWarning && row.warningText ? `
+                <div class="warning-explanation" title="${escapeText(row.warningText)}">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0;"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                  <span>${escapeText(row.warningText)}</span>
+                </div>
+              ` : ''}
+            </div>
+            ${row.source ? `
+              <button class="disconnect-action-btn" onclick="event.stopPropagation(); disconnectRow('${row.id}')">Disconnect</button>
+            ` : `
+              <span style="font-size:11px; color:var(--color-text-muted);">Awaiting source</span>
+            `}
+          </div>
+        `;
+
+        // 4. Status Col
+        let statusCol = '';
+        if (isWarning) {
+          statusCol = `
+            <div class="status-slot">
+              <span class="status-pill pill-warning" title="${escapeText(row.warningText || 'Warning')}">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                Warning
+              </span>
+            </div>
+          `;
+        } else if (isMapped) {
+          statusCol = `
+            <div class="status-slot">
+              <span class="status-pill pill-mapped">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Mapped
+              </span>
+            </div>
+          `;
+        } else {
+          statusCol = `
+            <div class="status-slot">
+              <span class="status-pill pill-unmapped">Unmapped</span>
+            </div>
+          `;
+        }
+
+        rowContainer.innerHTML = sourceCol + connectorCol + targetCol + statusCol;
+        rowsStack.appendChild(rowContainer);
+      });
+
+      refreshMetrics();
+    }
+
+    function refreshMetrics() {
+      const total = rowsData.length;
+      const mapped = rowsData.filter(r => r.status === 'mapped').length;
+      const warnings = rowsData.filter(r => r.status === 'warning').length;
+      const unmapped = rowsData.filter(r => r.status === 'unmapped').length;
+      const percentage = Math.round(((mapped + warnings) / total) * 100);
+
+      document.getElementById('mappedCountText').textContent = `${mapped} Mapped`;
+      document.getElementById('unmappedCountText').textContent = `${unmapped} Unmapped`;
+      document.getElementById('completionPercentageText').textContent = `${percentage}% Complete`;
+      document.getElementById('progressBarMeter').style.width = `${percentage}%`;
+
+      const warningBadge = document.getElementById('warningBadge');
+      if (warnings > 0) {
+        warningBadge.style.display = 'inline-flex';
+        document.getElementById('warningCountText').textContent = `${warnings} Warning${warnings > 1 ? 's' : ''}`;
+      } else {
+        warningBadge.style.display = 'none';
+      }
+    }
+
+    function disconnectRow(id) {
+      const r = rowsData.find(x => x.id === id);
+      if (!r) return;
+      r.source = null;
+      r.status = 'unmapped';
+      r.warningText = null;
+      showToast(`Disconnected ${r.target.name}`);
+      renderRows();
+    }
+
+    function handleReset() {
+      if (!confirm('Are you sure you want to reset all field connections?')) return;
+      rowsData = JSON.parse(JSON.stringify(dataset));
+      selectedId = null;
+      dismissCallout();
+      renderRows();
+      showToast('Mappings reset to initial draft state');
+    }
+
+    function handleAutoMap() {
+      const btn = document.getElementById('btnAutoMap');
+      btn.disabled = true;
+      showToast('Matching attributes with heuristic scoring...');
+
+      setTimeout(() => {
+        btn.disabled = false;
+        let linked = 0;
+        rowsData.forEach(r => {
+          if (!r.source && r.id === 'r_account_id') {
+            r.source = { name: 'associated_account_id', type: 'string', sample: 'ACC-89102, ACC-99211' };
+            r.status = 'mapped';
+            linked++;
+          }
+        });
+        renderRows();
+        showToast(`Auto-mapped ${linked} attribute(s) successfully`);
+      }, 350);
+    }
+
+    function handleRunValidation() {
+      const btn = document.getElementById('btnRunValidation');
+      const label = document.getElementById('validationBtnLabel');
+      btn.disabled = true;
+      label.innerHTML = '<span class="spinner-disc"></span> Validating...';
+
+      setTimeout(() => {
+        btn.disabled = false;
+        label.textContent = 'Run Validation';
+
+        const warnings = rowsData.filter(r => r.status === 'warning').length;
+        const unmappedReq = rowsData.filter(r => r.status === 'unmapped' && r.target.required).length;
+
+        const callout = document.getElementById('validationCallout');
+        const text = document.getElementById('validationCalloutText');
+
+        if (unmappedReq > 0 || warnings > 0) {
+          callout.className = 'validation-callout is-visible callout-warning';
+          text.innerHTML = `
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+            <span><strong>Validation Complete:</strong> ${unmappedReq} required field(s) unmapped, ${warnings} schema warning(s) detected.</span>
+          `;
+          showToast(`Validation: ${warnings} warning(s) require review`);
+        } else {
+          callout.className = 'validation-callout is-visible callout-success';
+          text.innerHTML = `
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Validation Passed:</strong> All attributes meet target schema constraints and type integrity requirements.</span>
+          `;
+          showToast('Validation passed: Ready for migration');
+        }
+      }, 600);
+    }
+
+    function dismissCallout() {
+      document.getElementById('validationCallout').classList.remove('is-visible');
+    }
+
+    function handleFilterChange(filterKey, chipBtn) {
+      currentFilter = filterKey;
+      document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('is-active'));
+      chipBtn.classList.add('is-active');
+      renderRows();
+    }
+
+    function toggleEntityGroup(headerBtn) {
+      const grid = headerBtn.nextElementSibling;
+      grid.classList.toggle('is-collapsed');
+    }
+
+    function switchSourceFile(filename, cardEl) {
+      document.querySelectorAll('.file-card').forEach(c => c.classList.remove('is-active'));
+      cardEl.classList.add('is-active');
+      showToast(`Selected source file: ${filename}`);
+      closeDrawer();
+    }
+
+    function triggerAddSource() {
+      showToast('Add source file modal invoked (CSV / JSON supported)');
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toastPill');
+      const text = document.getElementById('toastMsgText');
+      text.textContent = msg;
+      toast.classList.add('is-show');
+
+      clearTimeout(window._toastTimer);
+      window._toastTimer = setTimeout(() => {
+        toast.classList.remove('is-show');
+      }, 2600);
+    }
+
+    function escapeText(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    // Mobile Drawer (§13.4)
+    const sidebar = document.getElementById('appSidebar');
+    const backdrop = document.getElementById('drawerBackdrop');
+    const btnToggle = document.getElementById('btnToggleSidebar');
+
+    function openDrawer() {
+      sidebar.classList.add('is-open');
+      backdrop.classList.add('is-active');
+    }
+
+    function closeDrawer() {
+      sidebar.classList.remove('is-open');
+      backdrop.classList.remove('is-active');
+    }
+
+    btnToggle.addEventListener('click', () => {
+      if (sidebar.classList.contains('is-open')) {
+        closeDrawer();
+      } else {
+        openDrawer();
+      }
+    });
+
+    backdrop.addEventListener('click', closeDrawer);
+
+    // Media & Modal Controllers (§14.3, §14.5, §14.7)
+    function openArchitectureModal() {
+      const modal = document.getElementById('archModalBackdrop');
+      modal.classList.add('is-active');
+      const video = document.getElementById('archVideo');
+      if (video) video.play().catch(() => {});
+    }
+
+    function closeArchitectureModal() {
+      const modal = document.getElementById('archModalBackdrop');
+      modal.classList.remove('is-active');
+      const video = document.getElementById('archVideo');
+      if (video) video.pause();
+    }
+
+    function switchArchMedia(type, btn) {
+      document.querySelectorAll('#archModalBackdrop .media-tab-btn').forEach(b => b.classList.remove('is-active'));
+      if (btn) btn.classList.add('is-active');
+      const video = document.getElementById('archVideo');
+      const heading = document.getElementById('archPanelHeading');
+      const desc = document.getElementById('archPanelDesc');
+
+      if (type === 'flyover') {
+        video.src = 'public/crm-assets/vrindopnishad-flyover.mp4';
+        video.poster = '/tmp/crm_assets_preview/flyover.jpg';
+        heading.textContent = 'Multi-Node Pipeline Topology';
+        desc.textContent = 'High-throughput transactional flyover visualizing real-time ingress routing, dead-letter queue recovery, and cluster node synchronization across target endpoints.';
+      } else {
+        video.src = 'public/crm-assets/ink_type_architecture.mp4';
+        video.poster = '/tmp/crm_assets_preview/ink_type.jpg';
+        heading.textContent = 'Architectural Ingestion Model';
+        desc.textContent = 'RelayCRM Studio utilizes declarative schema mapping with zero egress waste, SWR validation cache, and strict type-coercion policies between HubSpot JSON and Salesforce SOQL entities.';
+      }
+      video.play().catch(() => {});
+    }
+
+    function openPreviewModal() {
+      const modal = document.getElementById('previewModalBackdrop');
+      modal.classList.add('is-active');
+      const video = document.getElementById('previewVideo');
+      if (video) video.play().catch(() => {});
+    }
+
+    function closePreviewModal() {
+      const modal = document.getElementById('previewModalBackdrop');
+      modal.classList.remove('is-active');
+      const video = document.getElementById('previewVideo');
+      if (video) video.pause();
+    }
+
+    function switchPreviewMedia(type, btn) {
+      document.querySelectorAll('#previewModalBackdrop .media-tab-btn').forEach(b => b.classList.remove('is-active'));
+      if (btn) btn.classList.add('is-active');
+      const video = document.getElementById('previewVideo');
+      const heading = document.getElementById('prevPanelHeading');
+      const desc = document.getElementById('prevPanelDesc');
+
+      if (type === 'channels') {
+        video.src = 'public/crm-assets/H12345.mp4';
+        video.poster = '/tmp/crm_assets_preview/H12345.jpg';
+        heading.textContent = 'Cross-Channel Distribution Hub';
+        desc.textContent = 'Continuous synchronization between customer CRM attributes, dynamic marketing boards, partner lead lists, and external automation pipelines.';
+      } else if (type === 'motion') {
+        video.src = 'public/crm-assets/f2345.mp4';
+        video.poster = '/tmp/crm_assets_preview/f2345.jpg';
+        heading.textContent = 'Transformation Flow & Audio-Visual Sync';
+        desc.textContent = 'Low-latency attribute morphing engine performing regex sanitization, E.164 normalization, and zero-loss schema transmutations with haptic pulse telemetry.';
+      } else {
+        video.src = 'public/crm-assets/12345.mp4';
+        video.poster = '/tmp/crm_assets_preview/12345.jpg';
+        heading.textContent = 'Client Projection Simulation';
+        desc.textContent = 'Live preview reflecting mapped schema attributes. Fields verified here instantly propagate to native customer applications, push notification gateways, and partner channels.';
+      }
+      video.play().catch(() => {});
+    }
+
+    function toggleAssistant(show) {
+      const card = document.getElementById('assistantCard');
+      if (card) {
+        card.style.display = show ? 'block' : 'none';
+        if (!show) {
+          showToast('Assistant minimized. You can focus on field comparison.');
+        }
+      }
+    }
+
+    // Escape key listener for accessible drawer and modal closing (§13.4 & §14.7)
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const archModal = document.getElementById('archModalBackdrop');
+        const prevModal = document.getElementById('previewModalBackdrop');
+        if (archModal && archModal.classList.contains('is-active')) {
+          closeArchitectureModal();
+        } else if (prevModal && prevModal.classList.contains('is-active')) {
+          closePreviewModal();
+        } else if (sidebar.classList.contains('is-open')) {
+          closeDrawer();
+          btnToggle.focus();
+        }
+      }
+    });
+
+    // Sidebar search filter
+    document.getElementById('sidebarSearch').addEventListener('input', (e) => {
+      const term = e.target.value.toLowerCase();
+      document.querySelectorAll('.file-card').forEach(card => {
+        const name = card.querySelector('.file-name').textContent.toLowerCase();
+        card.style.display = name.includes(term) ? 'flex' : 'none';
+      });
+    });
+
+    renderRows();
+  </script>
+</body>
+</html>
