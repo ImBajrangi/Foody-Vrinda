@@ -315,13 +315,13 @@
     "semantic_hash": ""
   },
   "foody_vrinda_v3/src/components/ActiveOrderTrackingModal.jsx": {
-    "mtime": 1793620593.816926,
-    "ast_hash": "8f867b9f0fc1f470975ca4db4b44d613",
+    "mtime": 1793684926.6693168,
+    "ast_hash": "d4fd8ca7116328ae152b8241c35c5361",
     "semantic_hash": ""
   },
   "foody_vrinda_v3/src/components/AuthModal.jsx": {
-    "mtime": 1793201824.7814748,
-    "ast_hash": "37c05c2e960b780e39eeb87fe0cb0b0e",
+    "mtime": 1793682754.555343,
+    "ast_hash": "bd2454f543b15cd41d6bb498a8237c4a",
     "semantic_hash": ""
   },
   "foody_vrinda_v3/src/components/Header.jsx": {
@@ -335,8 +335,8 @@
     "semantic_hash": ""
   },
   "foody_vrinda_v3/src/components/MapPicker.jsx": {
-    "mtime": 1791815753.5522137,
-    "ast_hash": "5a7bc097776a489f9f273d1ac11b56cb",
+    "mtime": 1793682780.126204,
+    "ast_hash": "c8399d92b9288f7d76464ed91a367ca8",
     "semantic_hash": ""
   },
   "foody_vrinda_v3/src/components/NotificationPanel.jsx": {
@@ -450,28 +450,28 @@
     "semantic_hash": ""
   },
   "foody_vrinda_v3/src/views/CustomerView.jsx": {
-    "mtime": 1793620804.2341778,
-    "ast_hash": "9a94314c7b94e7fd70b04238085d57ff",
+    "mtime": 1793688569.5682406,
+    "ast_hash": "d538f38c5f13a3e09dca70936010fe99",
     "semantic_hash": ""
   },
   "foody_vrinda_v3/src/views/DeveloperView.jsx": {
-    "mtime": 1793607844.8530636,
-    "ast_hash": "997a91ac1f16b8f0fb3c17c4cfb0302c",
+    "mtime": 1793682786.1272106,
+    "ast_hash": "22aed79bb0be87b05d1a35360f1fda74",
     "semantic_hash": ""
   },
   "foody_vrinda_v3/src/views/KitchenView.jsx": {
-    "mtime": 1793607264.8585389,
-    "ast_hash": "ea698f5843075a240b6af74f246cc8d5",
+    "mtime": 1793677195.8821433,
+    "ast_hash": "0fdd4cc7dbdecc40b0839d5f5296d36c",
     "semantic_hash": ""
   },
   "foody_vrinda_v3/src/views/OwnerView.jsx": {
-    "mtime": 1793607629.7393394,
-    "ast_hash": "2dfcf0b270b2f9fb3d395ae1c8fb7552",
+    "mtime": 1793677205.0559628,
+    "ast_hash": "30fe78adf0cf9ae4b22f407610e578c8",
     "semantic_hash": ""
   },
   "foody_vrinda_v3/src/views/TransportView.jsx": {
-    "mtime": 1793616069.6140175,
-    "ast_hash": "077e9330f992ae195946d43b07fb762c",
+    "mtime": 1793687852.2290506,
+    "ast_hash": "e4e167ab0d4e93b806300666154c960a",
     "semantic_hash": ""
   },
   "foody_vrinda_v3/vite.config.js": {
@@ -615,8 +615,8 @@
     "semantic_hash": ""
   },
   "foody_vrinda_v3/src/hooks/useGeolocation.js": {
-    "mtime": 1791816378.3179166,
-    "ast_hash": "c96a7a0d8efcfc4d5a5ebf4892394565",
+    "mtime": 1793684091.7137318,
+    "ast_hash": "4aa1ff65961b07fe3296cbe402a3210f",
     "semantic_hash": ""
   },
   "foody_vrinda_v3/src/components/OrderHistoryDrawer.jsx": {
@@ -630,8 +630,8 @@
     "semantic_hash": ""
   },
   "foody_vrinda_v3/src/services/addressService.js": {
-    "mtime": 1788885172.907544,
-    "ast_hash": "5cafd79b73cc5e240412b656dab7d222",
+    "mtime": 1793684810.1991422,
+    "ast_hash": "063ff324873bcc104a22e1c48b9af640",
     "semantic_hash": ""
   },
   "foody_vrinda_v3/src/services/hitSoochiService.js": {
@@ -675,8 +675,8 @@
     "semantic_hash": ""
   },
   "foody_vrinda_v3/src/components/ErrorBoundary.jsx": {
-    "mtime": 1791796194.9475105,
-    "ast_hash": "2c43f3ef245560efcdc9de6010e454f5",
+    "mtime": 1793682769.537215,
+    "ast_hash": "7367157e3982ab1e0c29ba140e1b0ee2",
     "semantic_hash": ""
   },
   "foody_vrinda_v3/src/components/ui/SocialLinksBar.jsx": {
@@ -855,8 +855,8 @@
     "semantic_hash": ""
   },
   "foody_vrinda_v3/src/services/appUpdateService.js": {
-    "mtime": 1793621098.7498174,
-    "ast_hash": "079eb9371d28fcf022d540b8594a03c0",
+    "mtime": 1793683491.449493,
+    "ast_hash": "52e60ad474ded2bbbf7dc3ed46a3736d",
     "semantic_hash": ""
   },
   "foody_vrinda_v3/supabase/functions/order-push-notification/index.ts": {
@@ -1060,8 +1060,8 @@
     "semantic_hash": ""
   },
   "foody_vrinda_v3/src/services/supabase/menus.service.js": {
-    "mtime": 1793012905.4846165,
-    "ast_hash": "b2b2af4a169877b074cd7898f23732d1",
+    "mtime": 1793677157.3062034,
+    "ast_hash": "ce9cadd375fd4279372a773bcb3de124",
     "semantic_hash": ""
   },
   "foody_vrinda_v3/src/services/supabase/notifications.service.js": {
@@ -1075,13 +1075,13 @@
     "semantic_hash": ""
   },
   "foody_vrinda_v3/src/services/supabase/orders.service.js": {
-    "mtime": 1793620459.7778747,
-    "ast_hash": "84d55be34f514b25b51a40e787999fb7",
+    "mtime": 1793677293.779289,
+    "ast_hash": "514a52a0c7ee164a10a173ddb83422d3",
     "semantic_hash": ""
   },
   "foody_vrinda_v3/src/services/supabase/realtime.service.js": {
-    "mtime": 1793602295.9905076,
-    "ast_hash": "e5b6abe8b57f1003937f2fe513c34318",
+    "mtime": 1793677168.2802413,
+    "ast_hash": "ae4d51015bf044e9007ebeb8ab6de859",
     "semantic_hash": ""
   },
   "foody_vrinda_v3/src/services/supabase/reviews.service.js": {
@@ -1155,8 +1155,8 @@
     "semantic_hash": ""
   },
   "foody_vrinda_v3/src/components/OrderSuccessCelebrationModal.jsx": {
-    "mtime": 1793607314.9317548,
-    "ast_hash": "a76f5c1233759a64bce7451b71683968",
+    "mtime": 1793676614.0787077,
+    "ast_hash": "338e10b50f2dad9079d60645d23279a9",
     "semantic_hash": ""
   },
   "foody_vrinda_v3/src/foody/FoodyOrderHop.jsx": {
