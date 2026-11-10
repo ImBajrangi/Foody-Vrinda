@@ -1,16 +1,16 @@
 # Graph Report - Foody-Vrinda  (2026-11-10)
 
 ## Corpus Check
-- 260 files · ~472,140 words
+- 257 files · ~459,015 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 3193 nodes · 5825 edges · 170 communities (138 shown, 32 thin omitted)
+- 3166 nodes · 5783 edges · 169 communities (135 shown, 34 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 12 edges (avg confidence: 0.63)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `3bbed053`
+- Built from commit: `363393d5`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -46,11 +46,11 @@
 - address_autocomplete_field.dart
 - inputs.dart
 - .ensureSubscribed
-- String?
+- menu_item_model.dart
 - main.dart
 - order_notification_manager.dart
 - login_screen.dart
-- DeveloperView.jsx
+- users.service.js
 - notification_settings_screen.dart
 - supabase.monolith.backup.js
 - fvWalletService.js
@@ -59,8 +59,8 @@
 - notification_sound_settings.dart
 - NotificationManager
 - test-role-and-tutorial.mjs
-- supabase.js
-- cash_transaction_model.dart
+- CustomerView.jsx
+- String?
 - notification_model.dart
 - kitchen_alarm_service.dart
 - search_service.dart
@@ -68,12 +68,12 @@
 - telegram_page_route.dart
 - package:audioplayers_web/audioplayers_web.dart
 - App.jsx
-- AuthProvider
+- CompleteProfileModal.jsx
 - bool get
 - supabase_config.dart
 - FastOrderMonitor
 - verify_roles_and_db_sync.mjs
-- cart_item_model.dart
+- AuthProvider
 - foody_cache_service.dart
 - menus.service.js
 - 🏛️ MASTER UI/UX & FULL-STACK APP ENGINEERING PLAYBOOK
@@ -86,7 +86,7 @@
 - @example
 - setup_notification_sounds.sh
 - pressable_scale.dart
-- CustomerView.jsx
+- cart_item_model.dart
 - package:cloud_firestore_web/cloud_firestore_web.dart
 - package:firebase_auth_web/firebase_auth_web.dart
 - package:firebase_core_web/firebase_core_web.dart
@@ -119,15 +119,15 @@
 - package:shared_preferences_web/shared_preferences_web.dart
 - package:url_launcher_web/url_launcher_web.dart
 - StackedBars.tsx
-- CompleteProfileModal.jsx
+- order_widgets.dart
 - orders.service.js
 - fv_wallet_service.dart
 - dispatchSafeEvent
-- cache.js
+- DeveloperView.jsx
 - 🛡️ Foody Vrinda v5.3.1 — Core Production Security Validation Complete
-- review_model.dart
+- test-order-name-fixes.js
 - .ensureSubscribed
-- firebase.js
+- test-delivery-and-customer-handshake.mjs
 - StatefulWidget
 - Foody Vrinda — Design System & Theme Architecture Specification
 - CreateMenu.tsx
@@ -146,7 +146,7 @@
 - verify-delivery-hardened-evidence.js
 - static const String
 - seed-synthetic-beta-data.js
-- AuthContext.jsx
+- AuthModal.jsx
 - getCachedItem
 - verify-dr-integrity.js
 - lint-migrations.js
@@ -163,34 +163,33 @@
 - RollingCounter.tsx
 - ErrorBoundary
 - StatelessWidget
-- App
-- ../config/theme.dart
-- delivery_alarm_service.dart
+- backHandlerService.js
+- MockLocalStorage
+- CashStatus
 - test-combo-engine.mjs
 - foodySplash.core.js
 - run-all-tests.mjs
 - order_tracking_screen.dart
 - test-user-flow-e2e.mjs
 - AppUpdateService
-- buttons.dart
-- RoleBasedTutorialTour.jsx
+- ../config/theme.dart
+- HitSoochiService
 - runAtomicShopDeletionTests
 - test-developer-api-sync.mjs
 - package:flutter/material.dart
 - OwnerView.jsx
-- Foody Vrinda — Authoritative Billing, Cash Reconciliation & Courier Handover Architecture
 
 ## God Nodes (most connected - your core abstractions)
 1. `AuthProvider` - 59 edges
-2. `dispatchSafeEvent()` - 44 edges
-3. `DeveloperView()` - 43 edges
+2. `DeveloperView()` - 43 edges
+3. `dispatchSafeEvent()` - 42 edges
 4. `getOrderDisplayToken()` - 37 edges
 5. `NativeNotificationService` - 34 edges
 6. `getCachedShops()` - 32 edges
 7. `CustomerView()` - 32 edges
 8. `setCachedItem()` - 30 edges
 9. `dispatchSafeEvent()` - 30 edges
-10. `OwnerView()` - 28 edges
+10. `useAuth()` - 27 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `React + Vite Entry Point` --conceptually_related_to--> `Foody Vrinda - Authentic Satvik Cloud Kitchen`  [INFERRED]
@@ -199,15 +198,15 @@
   foody_vrinda_app/lib/screens/dashboard/dashboard_view.dart → foody_vrinda_app/lib/providers/auth_provider.dart
 - `_loadStats` --references--> `AuthProvider`  [EXTRACTED]
   foody_vrinda_app/lib/screens/dashboard/dashboard_view.dart → foody_vrinda_app/lib/providers/auth_provider.dart
+- `_showSettlementConfirm` --references--> `AuthProvider`  [EXTRACTED]
+  foody_vrinda_app/lib/screens/dashboard/dashboard_view.dart → foody_vrinda_app/lib/providers/auth_provider.dart
 - `build` --references--> `AuthProvider`  [EXTRACTED]
-  foody_vrinda_app/lib/screens/kitchen/kitchen_view.dart → foody_vrinda_app/lib/providers/auth_provider.dart
-- `_initNotificationListener` --references--> `AuthProvider`  [EXTRACTED]
   foody_vrinda_app/lib/screens/kitchen/kitchen_view.dart → foody_vrinda_app/lib/providers/auth_provider.dart
 
 ## Import Cycles
 - None detected.
 
-## Communities (170 total, 32 thin omitted)
+## Communities (169 total, 34 thin omitted)
 
 ### Community 0 - "developer_panel.dart"
 Cohesion: 0.01
@@ -239,7 +238,7 @@ Nodes (22): addMenuItem, _cachedShops, createShop, deleteMenuItem, deleteShop, g
 
 ### Community 7 - "order_model.dart"
 Cohesion: 0.04
-Nodes (48): cashCollectedAt, cashSettledAt, CashStatus, CashStatusExtension, collectedBy, contactAttempts, copyWith, createdAt (+40 more)
+Nodes (46): cashCollectedAt, cashSettledAt, collectedBy, contactAttempts, copyWith, createdAt, customerLatitude, customerLongitude (+38 more)
 
 ### Community 8 - "shop_model.dart"
 Cohesion: 0.05
@@ -255,7 +254,7 @@ Nodes (20): ../cart/cart_screen.dart, ../../config/design_system.dart, _buildCat
 
 ### Community 11 - "delivery_dashboard_view.dart"
 Cohesion: 0.05
-Nodes (43): _AllTimeCard, amount, _buildAllTimeStats, _buildCashPanel, _buildFilterChip, _buildHeader, _buildLegendItem, _buildLocationPanel (+35 more)
+Nodes (38): amount, _buildAllTimeStats, _buildCashPanel, _buildFilterChip, _buildHeader, _buildLegendItem, _buildLocationPanel, _buildTodayStats (+30 more)
 
 ### Community 12 - "design_system.dart"
 Cohesion: 0.06
@@ -271,11 +270,11 @@ Nodes (34): FlutterLocalNotificationsPlugin, completeOrderWorkflow, createOrderW
 
 ### Community 15 - "dashboard_view.dart"
 Cohesion: 0.06
-Nodes (35): _acknowledgeReturn, amount, build, _buildCashManagement, _buildChartsRow, _buildHeader, _buildKPICards, _buildOrderHistory (+27 more)
+Nodes (33): _acknowledgeReturn, amount, build, _buildCashManagement, _buildChartsRow, _buildHeader, _buildKPICards, _buildOrderHistory (+25 more)
 
 ### Community 16 - "kitchen_view.dart"
-Cohesion: 0.06
-Nodes (31): OrderModel, _alarmService, _bellAnimation, _bellController, build, _buildAlarmBanner, _buildHeader, createState (+23 more)
+Cohesion: 0.07
+Nodes (29): _alarmService, _bellAnimation, _bellController, build, _buildAlarmBanner, _buildHeader, createState, dispose (+21 more)
 
 ### Community 17 - "animations.dart"
 Cohesion: 0.06
@@ -290,8 +289,8 @@ Cohesion: 0.10
 Nodes (33): collectCash, createOrder, deleteCashTransaction, deleteOrder, getAllOrders, getCashTransactions, getCompletedOrders, getDeliveryOrders (+25 more)
 
 ### Community 20 - "cards.dart"
-Cohesion: 0.07
-Nodes (28): EdgeInsetsGeometry?, address, backgroundColor, build, _buildPlaceholder, child, cuisines, deliveryTime (+20 more)
+Cohesion: 0.06
+Nodes (31): EdgeInsetsGeometry?, address, AppCard, backgroundColor, build, _buildPlaceholder, child, cuisines (+23 more)
 
 ### Community 21 - "user_model.dart"
 Cohesion: 0.12
@@ -329,13 +328,17 @@ Nodes (27): dart:ui, _inputDecoration, AddressAutocompleteField, _AddressAutocom
 Cohesion: 0.11
 Nodes (18): AppDropdown, AppInputField, build, controller, enabled, hintText, items, keyboardType (+10 more)
 
-### Community 31 - "String?"
-Cohesion: 0.09
-Nodes (22): double?, category, copyWith, createdAt, description, formattedOriginalPrice, formattedPrice, fromMap (+14 more)
+### Community 30 - ".ensureSubscribed"
+Cohesion: 0.17
+Nodes (6): app, auth, db, broadcastCloudNotification(), RealtimeMultiplexer, subscribeCloudOffers()
+
+### Community 31 - "menu_item_model.dart"
+Cohesion: 0.10
+Nodes (20): double?, category, copyWith, createdAt, description, formattedOriginalPrice, formattedPrice, fromMap (+12 more)
 
 ### Community 32 - "main.dart"
 Cohesion: 0.09
-Nodes (22): _bounceAnimation, _bounceController, build, createState, dispose, _fadeAnimation, _fadeController, FoodyVrindaApp (+14 more)
+Nodes (21): _bounceAnimation, _bounceController, build, createState, dispose, _fadeAnimation, _fadeController, FoodyVrindaApp (+13 more)
 
 ### Community 33 - "order_notification_manager.dart"
 Cohesion: 0.07
@@ -345,21 +348,21 @@ Nodes (26): delivery_alarm_service.dart, _currentShopId, _currentUserId, _curren
 Cohesion: 0.05
 Nodes (44): _addressEditController, _buildAlertBanner, _buildAuthenticatedProfileView, _buildHeaderRow, _buildInputField, _buildMethodTab, _buildPasswordField, _buildRoleChip (+36 more)
 
-### Community 35 - "DeveloperView.jsx"
-Cohesion: 0.14
-Nodes (43): CURRENT_APP_VERSION, dispatchSafeEvent(), normalizeDevPermissions(), purgeAllDemoOrders(), setCachedItem(), isForbiddenError(), isTableWriteForbidden(), markTableWriteForbidden() (+35 more)
+### Community 35 - "users.service.js"
+Cohesion: 0.12
+Nodes (40): dispatchSafeEvent(), getDefaultActiveShopId(), normalizeDevPermissions(), safeStorage, setCachedItem(), _forbiddenWriteTables, isForbiddenError(), isTableWriteForbidden() (+32 more)
 
 ### Community 36 - "notification_settings_screen.dart"
-Cohesion: 0.11
-Nodes (18): AudioPlayer, class, ../../config/notification_sound_config.dart, _audioPlayer, _availableSounds, build, _buildSoundTile, createState (+10 more)
+Cohesion: 0.12
+Nodes (16): class, ../../config/notification_sound_config.dart, _audioPlayer, _availableSounds, build, _buildSoundTile, createState, dispose (+8 more)
 
 ### Community 37 - "supabase.monolith.backup.js"
 Cohesion: 0.05
 Nodes (33): ALLOWED_ORDER_TRANSITIONS, broadcastAlarmEvent(), CACHE_TTL_MS, calculateDistanceInMeters(), calculateDistanceKm(), calculateOptimalDispatchWindow(), checkDeliveryGeofence(), COMPLETE_FOODY_DATABASE_SCHEMA_SQL (+25 more)
 
 ### Community 38 - "fvWalletService.js"
-Cohesion: 0.07
-Nodes (32): filtered, rawMockDbLeaderboard, autoGenCases, scenario1, scenario2, scenario3, testCases, AppInstallModal() (+24 more)
+Cohesion: 0.09
+Nodes (25): filtered, rawMockDbLeaderboard, AppInstallModal(), FVRewardsDashboard(), hasDevPermission(), Header(), FoodyVrindaLogo(), FoodyVrindaWordmark() (+17 more)
 
 ### Community 39 - "app_config.dart"
 Cohesion: 0.09
@@ -370,48 +373,48 @@ Cohesion: 0.05
 Nodes (36): _client, createCloudUser, createMenuItem, createOffer, createOrder, createShop, deleteMenuItem, deleteOffer (+28 more)
 
 ### Community 41 - "notification_sound_settings.dart"
-Cohesion: 0.10
-Nodes (20): _audioPlayer, availableSounds, build, _buildRoleCard, _buildTestButton, createState, dispose, _getRoleIcon (+12 more)
+Cohesion: 0.11
+Nodes (19): _audioPlayer, availableSounds, build, _buildRoleCard, _buildTestButton, createState, dispose, _getRoleIcon (+11 more)
 
 ### Community 43 - "test-role-and-tutorial.mjs"
-Cohesion: 0.23
-Nodes (19): deliveryAliases, mockSessionStorage, mockStorage, negativeRoles, ownerAliases, progressAfterStep1, restaurantAliases, getCanonicalRole() (+11 more)
+Cohesion: 0.17
+Nodes (25): deliveryAliases, mockSessionStorage, mockStorage, negativeRoles, ownerAliases, progressAfterStep1, restaurantAliases, App() (+17 more)
 
-### Community 44 - "supabase.js"
-Cohesion: 0.10
-Nodes (20): assert(), failures, runTestSuite(), supabase, CHEF_TAGS, ReviewModal(), RIDER_TAGS, getDefaultActiveShopId() (+12 more)
+### Community 44 - "CustomerView.jsx"
+Cohesion: 0.09
+Nodes (41): mockStorage, ActiveOrderCapsule(), BouncingLoader(), StyledWrapper, AuthContext, AUTHORIZED_ADMIN_EMAILS, AUTHORIZED_DEV_EMAILS, AuthProvider() (+33 more)
 
-### Community 45 - "cash_transaction_model.dart"
-Cohesion: 0.13
-Nodes (14): amount, CashTransactionModel, CashTransactionType, formattedAmount, fromMap, id, notes, orderId (+6 more)
+### Community 45 - "String?"
+Cohesion: 0.07
+Nodes (27): DateTime?, amount, CashTransactionModel, CashTransactionType, formattedAmount, fromMap, id, notes (+19 more)
 
 ### Community 46 - "notification_model.dart"
-Cohesion: 0.09
-Nodes (23): category, copyWith, createdAt, data, fromMap, fromString, id, isRead (+15 more)
+Cohesion: 0.08
+Nodes (24): category, copyWith, createdAt, data, fromMap, fromString, id, isRead (+16 more)
 
 ### Community 47 - "kitchen_alarm_service.dart"
-Cohesion: 0.19
-Nodes (18): dart:async, acknowledgeAll, acknowledgeOrder, _alarmSoundFile, _audioPlayer, dispose, initialize, _instance (+10 more)
+Cohesion: 0.08
+Nodes (39): AudioPlayer, ChangeNotifier, dart:async, acknowledgeAll, acknowledgeOrder, _audioPlayer, DeliveryAlarmService, dispose (+31 more)
 
 ### Community 48 - "search_service.dart"
 Cohesion: 0.10
 Nodes (32): ShopModel, HitSoochiService, original, RecommendationResponse, confidence, detectedIntent, enhancedSearch, EnhancedSearchResponse (+24 more)
 
 ### Community 49 - "NativeNotificationService"
-Cohesion: 0.09
-Nodes (12): AuthModal(), DESK_CONFIG, SoundTrialsModal(), clamp(), LabelInput(), LabelInputProps, SocialLinksBar(), SOCIAL_CHANNELS (+4 more)
+Cohesion: 0.13
+Nodes (4): SoundTrialsModal(), FoodyContinuousAlarm, NativeNotificationService, NOTIFICATION_TRIALS
 
 ### Community 50 - "telegram_page_route.dart"
 Cohesion: 0.22
 Nodes (17): child, TelegramPageRoute, UserPreferencesProvider, _showLoginRequiredDialog, _openOrdersOnMap, _buildCustomerHomeTab, _buildHeader, _buildOfferCard (+9 more)
 
 ### Community 52 - "App.jsx"
-Cohesion: 0.12
-Nodes (16): AppInstallModal, AppUpdateModal, AuthModal, CompleteProfileModal, CustomerView, DeveloperView, KitchenView, NotificationPanel (+8 more)
+Cohesion: 0.11
+Nodes (17): AppInstallModal, AppUpdateModal, AuthModal, CompleteProfileModal, CustomerView, DeveloperView, hasDevPermission(), KitchenView (+9 more)
 
-### Community 53 - "AuthProvider"
-Cohesion: 0.08
-Nodes (25): AuthProvider, build, _handleEmailSubmit, _handleGoogleSignIn, _handlePhoneSubmit, initState, _saveProfileEdits, _loadWalletPoints (+17 more)
+### Community 53 - "CompleteProfileModal.jsx"
+Cohesion: 0.27
+Nodes (13): CompleteProfileModal(), MapPicker(), useGeolocation(), fetchAddressSuggestions(), getStorageCache(), memoryReverseCache, memorySuggestionsCache, reverseGeocodeCoords() (+5 more)
 
 ### Community 54 - "bool get"
 Cohesion: 0.15
@@ -425,17 +428,17 @@ Nodes (12): loggedUsersTable, menusTable, notificationsTable, offersTable, order
 Cohesion: 0.50
 Nodes (4): recordTest(), results, runTestSuite(), supabase
 
-### Community 58 - "cart_item_model.dart"
-Cohesion: 0.20
-Nodes (9): double get, CartItemModel, copyWith, formattedTotal, menuItem, quantity, total, menu_item_model.dart (+1 more)
+### Community 58 - "AuthProvider"
+Cohesion: 0.09
+Nodes (23): AuthProvider, build, _handleEmailSubmit, _handleGoogleSignIn, _handlePhoneSubmit, initState, _saveProfileEdits, _loadWalletPoints (+15 more)
 
 ### Community 59 - "foody_cache_service.dart"
 Cohesion: 0.16
 Nodes (22): dart:convert, foody_cache_service.dart, _cacheExpiry, cacheMenuItems, cacheShops, clearAllCache, FoodyCacheService, getCachedMenuItems (+14 more)
 
 ### Community 60 - "menus.service.js"
-Cohesion: 0.11
-Nodes (39): COLORS, pass(), runTestSuite(), section(), QUANTITIES, QuantityPickerSheet(), activePresetDishes, DEFAULT_PRESET_DISHES (+31 more)
+Cohesion: 0.13
+Nodes (34): COLORS, pass(), runTestSuite(), section(), QUANTITIES, QuantityPickerSheet(), UnifiedSearchModal(), activePresetDishes (+26 more)
 
 ### Community 61 - "🏛️ MASTER UI/UX & FULL-STACK APP ENGINEERING PLAYBOOK"
 Cohesion: 0.07
@@ -462,12 +465,12 @@ Cohesion: 0.12
 Nodes (16): 💻 Code Snippets, ⚡ Common Issues & Fixes, 🔔 Custom Notification Sounds - Quick Reference, 🔗 Documentation Links, 📂 File Locations, 🔍 Free Sound Resources, Import, Initialize (in main.dart) (+8 more)
 
 ### Community 72 - "pressable_scale.dart"
-Cohesion: 0.10
-Nodes (20): Animation, AnimationController, Duration, _animation, build, child, _controller, createState (+12 more)
+Cohesion: 0.11
+Nodes (18): Animation, AnimationController, Duration, _animation, build, child, _controller, createState (+10 more)
 
-### Community 73 - "CustomerView.jsx"
-Cohesion: 0.08
-Nodes (32): ActiveOrderCapsule(), ActiveOrderTrackingModal(), NotificationPanel(), OrderHistoryDrawer(), BouncingLoader(), StyledWrapper, SearchableDropdown(), CURATED_CRAVINGS_VISUALS (+24 more)
+### Community 73 - "cart_item_model.dart"
+Cohesion: 0.18
+Nodes (10): double get, CartItemModel, copyWith, formattedTotal, menuItem, quantity, total, MenuItemModel (+2 more)
 
 ### Community 80 - "Key Accomplishments"
 Cohesion: 0.14
@@ -513,13 +516,13 @@ Nodes (15): 1. UI/UX Design System & Palette, 2. Dynamic Island Toast Notificati
 Cohesion: 0.19
 Nodes (11): Bar, CATS, fmt(), fmtDay(), LAST, makeBars(), Mode, MONTHS (+3 more)
 
-### Community 107 - "CompleteProfileModal.jsx"
-Cohesion: 0.13
-Nodes (20): MockLocalStorage, mockStorage, CompleteProfileModal(), MapPicker(), useGeolocation(), fetchAddressSuggestions(), getStorageCache(), memoryReverseCache (+12 more)
+### Community 107 - "order_widgets.dart"
+Cohesion: 0.10
+Nodes (21): OrderModel, OrderStatus, OrderStatusExtension, build, currentStatus, _getColor, _getIcon, icon (+13 more)
 
 ### Community 108 - "orders.service.js"
-Cohesion: 0.13
-Nodes (23): COLORS, runAdversarialTestSuite(), section(), getCachedItem(), ALLOWED_ORDER_TRANSITIONS, calculateAuthoritativeOrderTotals(), claimOrderPickupAtomic(), createCloudOrder() (+15 more)
+Cohesion: 0.10
+Nodes (38): COLORS, runAdversarialTestSuite(), section(), OrderSuccessCelebrationModal(), getCachedItem(), createCloudNotification(), getRiderCashLedger(), getUserTrustScore() (+30 more)
 
 ### Community 109 - "fv_wallet_service.dart"
 Cohesion: 0.10
@@ -529,29 +532,29 @@ Nodes (20): _client, exchangeRate, FVWalletService, generateWhatsAppShareUrl, ge
 Cohesion: 0.30
 Nodes (20): adminBlockUser(), adminRevokeUser(), adminUnblockUser(), createCloudReview(), createCloudUser(), deleteCloudUser(), dispatchSafeEvent(), getCachedUsers() (+12 more)
 
-### Community 111 - "cache.js"
-Cohesion: 0.12
-Nodes (30): assert(), errors, evaluateCustomerDeliveryAvailable(), runTest(), supabase, assert(), errors, evaluateCustomerDeliveryAvailable() (+22 more)
+### Community 111 - "DeveloperView.jsx"
+Cohesion: 0.11
+Nodes (40): assert(), errors, evaluateCustomerDeliveryAvailable(), runTest(), supabase, CURRENT_APP_VERSION, nativeNotify, addDeletedShopId() (+32 more)
 
 ### Community 112 - "🛡️ Foody Vrinda v5.3.1 — Core Production Security Validation Complete"
 Cohesion: 0.07
 Nodes (26): 1. Executive Summary, 2. Test Execution Matrix (22 / 22 Regression Tests), 3. Security Property Verification & Evidence Status, 4.1 Request Processing & Verification Pipeline, 4.2 Separation of Privilege & Execution Pipelines, 4. Architectural Analysis: End-to-End Control Flow, 5.1 Caller Identity Binding (`claim_order_pickup_atomic` & `verify_delivery_otp_atomic`), 5.2 One-Time Use OTP Verification (+18 more)
 
-### Community 113 - "review_model.dart"
-Cohesion: 0.15
-Nodes (12): DateTime?, comment, createdAt, fromMap, id, rating, ReviewModel, shopId (+4 more)
+### Community 113 - "test-order-name-fixes.js"
+Cohesion: 0.29
+Nodes (5): autoGenCases, scenario1, scenario2, scenario3, testCases
 
 ### Community 114 - ".ensureSubscribed"
 Cohesion: 0.15
 Nodes (10): claimDeliveryOrder(), invalidateCache(), RealtimeMultiplexer, subscribeCloudMenus(), subscribeCloudNotifications(), subscribeCloudOffers(), subscribeCloudOrders(), subscribeCloudShops() (+2 more)
 
-### Community 115 - "firebase.js"
-Cohesion: 0.50
-Nodes (3): app, auth, db
+### Community 115 - "test-delivery-and-customer-handshake.mjs"
+Cohesion: 0.43
+Nodes (6): assert(), errors, evaluateCustomerDeliveryAvailable(), runTest(), simulateTransportViewMount(), supabase
 
 ### Community 116 - "StatefulWidget"
 Cohesion: 0.13
-Nodes (27): SplashScreen, _SplashScreenState, DeveloperPanel, _DeveloperPanelState, _FullShopDashboard, _FullShopDashboardState, _AnimatedAlarmBanner, _AnimatedAlarmBannerState (+19 more)
+Nodes (29): SplashScreen, _SplashScreenState, DeveloperPanel, _DeveloperPanelState, _FullShopDashboard, _FullShopDashboardState, _AnimatedAlarmBanner, _AnimatedAlarmBannerState (+21 more)
 
 ### Community 117 - "Foody Vrinda — Design System & Theme Architecture Specification"
 Cohesion: 0.08
@@ -613,9 +616,9 @@ Nodes (8): apiKey, appId, authDomain, FirebaseConfig, messagingSenderId, project
 Cohesion: 0.25
 Nodes (6): envName, supabase, SYNTHETIC_MENUS, SYNTHETIC_SHOPS, targetKey, targetUrl
 
-### Community 135 - "AuthContext.jsx"
-Cohesion: 0.14
-Nodes (21): AuthContext, AUTHORIZED_ADMIN_EMAILS, AUTHORIZED_DEV_EMAILS, AuthProvider(), isAdminUser(), isDeveloperUser(), isStaffRole(), resolveDisplayName() (+13 more)
+### Community 135 - "AuthModal.jsx"
+Cohesion: 0.09
+Nodes (28): ActiveOrderTrackingModal(), AuthModal(), DESK_CONFIG, NotificationPanel(), OrderHistoryDrawer(), CHEF_TAGS, ReviewModal(), RIDER_TAGS (+20 more)
 
 ### Community 136 - "getCachedItem"
 Cohesion: 0.15
@@ -674,20 +677,12 @@ Cohesion: 0.21
 Nodes (4): ErrorBoundary, createFoodyHop(), hopMarkup, FoodyOrderHop
 
 ### Community 152 - "StatelessWidget"
-Cohesion: 0.06
-Nodes (36): OrderStatus, OrderStatusExtension, _AnalyticsCard, _AuditSummaryCard, _ConsistencyTile, _DevCard, _FilterBtn, _FilterChip (+28 more)
+Cohesion: 0.08
+Nodes (24): _CashSummaryCard, _CompletedOrderTile, _FilterChip, _AllTimeCard, _CashSummaryCard, _LocationButton, _RecentDeliveryTile, _StatItem (+16 more)
 
-### Community 153 - "App"
-Cohesion: 0.19
-Nodes (12): App(), hasDevPermission(), useBackHandler(), backHandlers, executeTopBackHandler(), handleKeyboardOrInputDismiss(), initKeyboardListeners(), registerBackHandler() (+4 more)
-
-### Community 154 - "../config/theme.dart"
-Cohesion: 0.13
-Nodes (14): ../config/theme.dart, build, isSelected, onChanged, onTap, period, selectedPeriods, showHeader (+6 more)
-
-### Community 155 - "delivery_alarm_service.dart"
-Cohesion: 0.11
-Nodes (19): ChangeNotifier, acknowledgeAll, acknowledgeOrder, _audioPlayer, DeliveryAlarmService, dispose, initialize, _instance (+11 more)
+### Community 153 - "backHandlerService.js"
+Cohesion: 0.29
+Nodes (5): backHandlers, executeTopBackHandler(), handleKeyboardOrInputDismiss(), initKeyboardListeners(), shouldAllowAppExit()
 
 ### Community 156 - "test-combo-engine.mjs"
 Cohesion: 0.53
@@ -709,13 +704,9 @@ Nodes (24): ../../config/telegram_page_route.dart, isInline, OrderHistoryScreen,
 Cohesion: 0.67
 Nodes (3): assert(), runRealUserFlowTests(), supabase
 
-### Community 163 - "buttons.dart"
-Cohesion: 0.11
-Nodes (17): Color?, AppButton, backgroundColor, build, DangerButton, _getButtonColor, height, icon (+9 more)
-
-### Community 164 - "RoleBasedTutorialTour.jsx"
-Cohesion: 0.27
-Nodes (6): RoleBasedTutorialTour(), SELECTOR_FALLBACKS, ThemeContext, ThemeProvider(), useTheme(), ROLE_TUTORIAL_DATA
+### Community 163 - "../config/theme.dart"
+Cohesion: 0.06
+Nodes (31): Color?, ../config/theme.dart, AppButton, backgroundColor, build, DangerButton, _getButtonColor, height (+23 more)
 
 ### Community 165 - "runAtomicShopDeletionTests"
 Cohesion: 0.67
@@ -730,29 +721,25 @@ Cohesion: 0.20
 Nodes (8): EmojiToIcon, getIcon, getIconWidget, main, package:flutter/material.dart, package:flutter_test/flutter_test.dart, package:foody_vrinda/main.dart, package:iconsax/iconsax.dart
 
 ### Community 168 - "OwnerView.jsx"
-Cohesion: 0.10
-Nodes (44): RFC-4180, testRealtime(), OrderSuccessCelebrationModal(), ActiveAlarmBanner(), DynamicToast(), NativeTimePicker(), useAuth(), DEFAULT_SEEDS (+36 more)
-
-### Community 169 - "Foody Vrinda — Authoritative Billing, Cash Reconciliation & Courier Handover Architecture"
-Cohesion: 0.20
-Nodes (9): 1. Architectural Overview & Single Source of Truth, 2. Relational Ledger & Settlement Schema, 3. Security Architecture & Zero-Trust RLS Policies, 4. Authoritative PostgreSQL RPC: `record_rider_cash_settlement`, 5. Frontend Service Integration & SWR Pattern, 6. Realtime & Cross-Device Courier Security, 7. UI/UX Design System Compliance, 8. Automated Test Suite Certification (Suites A through O) (+1 more)
+Cohesion: 0.11
+Nodes (33): testRealtime(), ActiveAlarmBanner(), DynamicToast(), NativeTimePicker(), CURATED_CRAVINGS_VISUALS, POPULAR_CATEGORIES, useAuth(), DEFAULT_SEEDS (+25 more)
 
 ## Knowledge Gaps
-- **1672 isolated node(s):** `fast_transcribe.sh script`, `AppConfig`, `developerEmail`, `developerPassword`, `defaultShopImage` (+1667 more)
+- **1659 isolated node(s):** `fast_transcribe.sh script`, `AppConfig`, `developerEmail`, `developerPassword`, `defaultShopImage` (+1654 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **32 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **34 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `STAFF_ROLES` connect `AuthContext.jsx` to `DeveloperView.jsx`, `dispatchSafeEvent`?**
-  _High betweenness centrality (0.020) - this node is a cross-community bridge._
-- **Why does `AuthProvider` connect `AuthProvider` to `developer_panel.dart`, `order_tracking_screen.dart`, `login_screen.dart`, `home_screen.dart`, `cart_screen.dart`, `delivery_dashboard_view.dart`, `delivery_alarm_service.dart`, `delivery_view.dart`, `fv_rewards_sheet.dart`, `dashboard_view.dart`, `kitchen_view.dart`, `auth_provider.dart`, `telegram_page_route.dart`, `StatefulWidget`, `cart_provider.dart`?**
+- **Why does `STAFF_ROLES` connect `CustomerView.jsx` to `users.service.js`, `dispatchSafeEvent`?**
+  _High betweenness centrality (0.022) - this node is a cross-community bridge._
+- **Why does `AuthProvider` connect `AuthProvider` to `developer_panel.dart`, `order_tracking_screen.dart`, `login_screen.dart`, `home_screen.dart`, `cart_screen.dart`, `delivery_dashboard_view.dart`, `fv_rewards_sheet.dart`, `delivery_view.dart`, `kitchen_alarm_service.dart`, `dashboard_view.dart`, `kitchen_view.dart`, `auth_provider.dart`, `telegram_page_route.dart`, `StatefulWidget`, `StatelessWidget`, `cart_provider.dart`?**
   _High betweenness centrality (0.008) - this node is a cross-community bridge._
-- **Why does `dispatchSafeEvent()` connect `dispatchSafeEvent` to `isTableMissing`, `supabase.monolith.backup.js`, `.ensureSubscribed`, `getCachedShops`?**
-  _High betweenness centrality (0.005) - this node is a cross-community bridge._
+- **Why does `NativeNotificationService` connect `NativeNotificationService` to `DeveloperView.jsx`?**
+  _High betweenness centrality (0.004) - this node is a cross-community bridge._
 - **What connects `fast_transcribe.sh script`, `AppConfig`, `developerEmail` to the rest of the system?**
-  _1672 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _1659 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `developer_panel.dart` be split into smaller, more focused modules?**
   _Cohesion score 0.012121212121212121 - nodes in this community are weakly interconnected._
 - **Should `theme.dart` be split into smaller, more focused modules?**
