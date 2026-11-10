@@ -1,3 +1,5 @@
 *.apk
 .venv/
 *.srt
+.wrangler/
+
