@@ -855,8 +855,8 @@
     "semantic_hash": ""
   },
   "foody_vrinda_v3/src/services/appUpdateService.js": {
-    "mtime": 1794304894.4875214,
-    "ast_hash": "6b06a72416b410b6f4e7ca9abdfdfae9",
+    "mtime": 1794308690.6565642,
+    "ast_hash": "a3893430e3b8632059e058693abc772f",
     "semantic_hash": ""
   },
   "foody_vrinda_v3/supabase/functions/order-push-notification/index.ts": {
