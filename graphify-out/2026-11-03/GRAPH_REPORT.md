@@ -1,16 +1,16 @@
 # Graph Report - Foody-Vrinda  (2026-11-03)
 
 ## Corpus Check
-- 252 files · ~451,644 words
+- 252 files · ~451,840 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 3145 nodes · 5723 edges · 166 communities (133 shown, 33 thin omitted)
+- 3145 nodes · 5723 edges · 167 communities (134 shown, 33 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 12 edges (avg confidence: 0.63)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `a01d98ea`
+- Built from commit: `c6f52132`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -123,6 +123,7 @@
 - StatelessWidget
 - fv_wallet_service.dart
 - dispatchSafeEvent
+- realtime.service.js
 - 🛡️ Foody Vrinda v5.3.1 — Core Production Security Validation Complete
 - review_model.dart
 - .ensureSubscribed
@@ -162,7 +163,7 @@
 - RollingCounter.tsx
 - ErrorBoundary
 - order_widgets.dart
-- realtime.service.js
+- AuthModal.jsx
 - time_period_selector.dart
 - delivery_alarm_service.dart
 - test-combo-engine.mjs
@@ -203,7 +204,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (166 total, 33 thin omitted)
+## Communities (167 total, 33 thin omitted)
 
 ### Community 0 - "developer_panel.dart"
 Cohesion: 0.01
@@ -342,8 +343,8 @@ Cohesion: 0.05
 Nodes (44): _addressEditController, _buildAlertBanner, _buildAuthenticatedProfileView, _buildHeaderRow, _buildInputField, _buildMethodTab, _buildPasswordField, _buildRoleChip (+36 more)
 
 ### Community 35 - "DeveloperView.jsx"
-Cohesion: 0.15
-Nodes (41): dispatchSafeEvent(), getCachedItem(), normalizeDevPermissions(), purgeAllDemoOrders(), setCachedItem(), isForbiddenError(), createCloudOffer(), deleteCloudOffer() (+33 more)
+Cohesion: 0.14
+Nodes (42): CURRENT_APP_VERSION, dispatchSafeEvent(), getCachedItem(), normalizeDevPermissions(), purgeAllDemoOrders(), setCachedItem(), isForbiddenError(), createCloudOffer() (+34 more)
 
 ### Community 36 - "notification_settings_screen.dart"
 Cohesion: 0.11
@@ -521,6 +522,10 @@ Nodes (20): _client, exchangeRate, FVWalletService, generateWhatsAppShareUrl, ge
 Cohesion: 0.30
 Nodes (20): adminBlockUser(), adminRevokeUser(), adminUnblockUser(), createCloudReview(), createCloudUser(), deleteCloudUser(), dispatchSafeEvent(), getCachedUsers() (+12 more)
 
+### Community 111 - "realtime.service.js"
+Cohesion: 0.33
+Nodes (5): SoundTrialsModal(), nativeNotify, NOTIFICATION_TRIALS, multiplexer, subscribeCloudOffers()
+
 ### Community 112 - "🛡️ Foody Vrinda v5.3.1 — Core Production Security Validation Complete"
 Cohesion: 0.07
 Nodes (26): 1. Executive Summary, 2. Test Execution Matrix (22 / 22 Regression Tests), 3. Security Property Verification & Evidence Status, 4.1 Request Processing & Verification Pipeline, 4.2 Separation of Privilege & Execution Pipelines, 4. Architectural Analysis: End-to-End Control Flow, 5.1 Caller Identity Binding (`claim_order_pickup_atomic` & `verify_delivery_otp_atomic`), 5.2 One-Time Use OTP Verification (+18 more)
@@ -602,8 +607,8 @@ Cohesion: 0.25
 Nodes (6): envName, supabase, SYNTHETIC_MENUS, SYNTHETIC_SHOPS, targetKey, targetUrl
 
 ### Community 135 - "orders.service.js"
-Cohesion: 0.09
-Nodes (31): COLORS, runAdversarialTestSuite(), section(), testRealtime(), CURRENT_APP_VERSION, getDefaultActiveShopId(), safeStorage, _forbiddenWriteTables (+23 more)
+Cohesion: 0.11
+Nodes (28): COLORS, runAdversarialTestSuite(), section(), getDefaultActiveShopId(), safeStorage, _forbiddenWriteTables, isTableWriteForbidden(), markTableWriteForbidden() (+20 more)
 
 ### Community 136 - "getCachedItem"
 Cohesion: 0.15
@@ -665,9 +670,9 @@ Nodes (4): ErrorBoundary, createFoodyHop(), hopMarkup, FoodyOrderHop
 Cohesion: 0.10
 Nodes (21): OrderModel, OrderStatus, OrderStatusExtension, build, currentStatus, _getColor, _getIcon, icon (+13 more)
 
-### Community 153 - "realtime.service.js"
-Cohesion: 0.07
-Nodes (33): App(), ActiveOrderTrackingModal(), AuthModal(), DESK_CONFIG, hasDevPermission(), Header(), NotificationPanel(), SoundTrialsModal() (+25 more)
+### Community 153 - "AuthModal.jsx"
+Cohesion: 0.08
+Nodes (32): App(), ActiveOrderTrackingModal(), AuthModal(), DESK_CONFIG, hasDevPermission(), Header(), NotificationPanel(), FoodyVrindaLogo() (+24 more)
 
 ### Community 154 - "time_period_selector.dart"
 Cohesion: 0.13
@@ -711,7 +716,7 @@ Nodes (8): EmojiToIcon, getIcon, getIconWidget, main, package:flutter/material.d
 
 ### Community 168 - "OwnerView.jsx"
 Cohesion: 0.08
-Nodes (55): MapPicker(), OrderHistoryDrawer(), OrderSuccessCelebrationModal(), CHEF_TAGS, ReviewModal(), RIDER_TAGS, ActiveAlarmBanner(), DynamicToast() (+47 more)
+Nodes (53): testRealtime(), MapPicker(), OrderHistoryDrawer(), OrderSuccessCelebrationModal(), CHEF_TAGS, ReviewModal(), RIDER_TAGS, ActiveAlarmBanner() (+45 more)
 
 ## Knowledge Gaps
 - **1654 isolated node(s):** `fast_transcribe.sh script`, `AppConfig`, `developerEmail`, `developerPassword`, `defaultShopImage` (+1649 more)
